@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "name": "Afonso Beato",
+    "pronouns": "they/them",
+    "role": {
+      "en": "Team Captain, Management & Fundraising Lead",
+      "pt": "Capitão de Equipa e Líder de Gestão e Angariação de Fundos"
+    },
+    "description": "Afonso Beato (also known as Fonz, whatbeato and headpatsyou online) is the team captain of Heroes of the Sea. They are responsible for overseeing the team's operations, coordinating efforts across all departments, and leading fundraising initiatives to secure resources for the team's success. They are also a part of Hack Club's Clubs Operations team and is also a Satelite Event Organizer for them.",
+    "image": "/team/1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Martim Glória",
+    "pronouns": "he/him",
+    "role": {
+      "en": "Team Co-Capitain",
+      "pt": "Co-Capitão de Equipa"
+    },
+    "description": "Martim Glória is the team co-captain of Heroes of the Sea. He assists in leading the team, coordinating efforts across all departments, and supporting fundraising initiatives to secure resources for the team's success.",
+    "image": "/team/member2.jpg"
+  }
+]

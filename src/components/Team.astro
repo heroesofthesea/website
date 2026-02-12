@@ -1,0 +1,176 @@
+---
+import { getTranslation } from '../i18n/translations';
+import teamData from '../data/team.json';
+
+interface Props {
+  lang?: 'en' | 'pt';
+}
+
+const { lang = 'en' } = Astro.props;
+---
+
+<section class="bg-slate-950 py-20 px-6 min-h-screen">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="font-logo font-black text-4xl sm:text-5xl md:text-6xl text-white mb-6">
+        {getTranslation(lang, 'meetTheTeam')}
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto">
+        {getTranslation(lang, 'teamDescription')}
+      </p>
+    </div>
+
+    <!-- Team Members Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {teamData.map((member) => (
+        <button 
+          class="team-member-card bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-hots-green/50 hover:bg-slate-800/70 transition-all duration-300 flex items-center gap-4 cursor-pointer text-left w-full"
+          data-member-id={member.id}
+          data-member-name={member.name}
+          data-member-pronouns={member.pronouns}
+          data-member-role={member.role[lang]}
+          data-member-description={member.description}
+          data-member-image={member.image}
+        >
+          <!-- Profile Picture -->
+          <div class="flex-shrink-0">
+            <img 
+              src={member.image} 
+              alt={member.name}
+              class="w-20 h-20 rounded-full object-cover border-2 border-slate-600"
+              onError="this.src='/team/placeholder.jpg'"
+            />
+          </div>
+          
+          <!-- Name and Role -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="font-bold text-lg text-white truncate">
+                {member.name}
+              </h3>
+              {member.pronouns && (
+                <span class="text-sm text-slate-500">({member.pronouns})</span>
+              )}
+            </div>
+            <p class="text-sm text-slate-400">
+              {member.role[lang]}
+            </p>
+          </div>
+        </button>
+      ))}
+    </div>
+
+    <!-- No Members Message (if empty) -->
+    {teamData.length === 0 && (
+      <div class="text-center py-20">
+        <p class="text-slate-400 text-lg">
+          No team members added yet. Edit <code class="bg-slate-800 px-2 py-1 rounded text-hots-green">src/data/team.json</code> to add team members.
+        </p>
+      </div>
+    )}
+  </div>
+
+  <!-- Modal -->
+  <div id="member-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+      <!-- Close Button -->
+      <button 
+        id="close-modal"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800"
+        aria-label="Close"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Modal Content -->
+      <div class="p-8">
+        <div class="flex items-start gap-6 mb-6">
+          <!-- Profile Picture -->
+          <div class="flex-shrink-0">
+            <img 
+              id="modal-image"
+              src=""
+              alt=""
+              class="w-32 h-32 rounded-full object-cover border-4 border-slate-700"
+            />
+          </div>
+          
+          <!-- Name and Role -->
+          <div class="flex-1">
+            <div class="flex items-baseline gap-3 mb-2">
+              <h2 id="modal-name" class="font-logo font-black text-3xl text-white"></h2>
+              <span id="modal-pronouns" class="text-lg text-slate-500"></span>
+            </div>
+            <p id="modal-role" class="text-lg text-hots-green font-semibold"></p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="border-t border-slate-700 pt-6">
+          <p id="modal-description" class="text-slate-300 text-base leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Modal functionality
+  const modal = document.getElementById('member-modal');
+  const closeBtn = document.getElementById('close-modal');
+  const memberCards = document.querySelectorAll('.team-member-card');
+
+  // Open modal
+  memberCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const name = card.getAttribute('data-member-name');
+      const pronouns = card.getAttribute('data-member-pronouns');
+      const role = card.getAttribute('data-member-role');
+      const description = card.getAttribute('data-member-description');
+      const image = card.getAttribute('data-member-image');
+
+      document.getElementById('modal-name')!.textContent = name || '';
+      const pronounsElement = document.getElementById('modal-pronouns');
+      if (pronounsElement) {
+        pronounsElement.textContent = pronouns ? `(${pronouns})` : '';
+      }
+      document.getElementById('modal-role')!.textContent = role || '';
+      document.getElementById('modal-description')!.textContent = description || '';
+      const imgElement = document.getElementById('modal-image') as HTMLImageElement;
+      if (imgElement) {
+        imgElement.src = image || '';
+        imgElement.alt = name || '';
+      }
+
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close modal
+  const closeModal = () => {
+    modal?.classList.add('hidden');
+    modal?.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  };
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  // Close on outside click
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+</script>

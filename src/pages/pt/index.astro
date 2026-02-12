@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+const lang = 'pt';
+---
+
+<Layout lang={lang} currentPage="">
+  <main>
+    <Hero lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Layout>

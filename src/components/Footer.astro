@@ -1,0 +1,87 @@
+---
+import { getTranslation } from '../i18n/translations';
+
+interface Props {
+  lang?: 'en' | 'pt';
+}
+
+const { lang = 'en' } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-950 text-slate-300 py-16 px-6 border-t border-slate-800">
+  <div class="max-w-5xl mx-auto">
+    <!-- Main Footer Content -->
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <!-- Contact Info -->
+      <div>
+        <h3 class="font-bold text-white text-lg mb-4">{getTranslation(lang, 'contactUs')}</h3>
+        <p class="mb-3">
+          <a 
+            href="mailto:team@heroesofthesea.pt" 
+            class="hover:text-white transition-colors duration-300 focus:outline-none focus:underline"
+          >
+            team@heroesofthesea.pt
+          </a>
+        </p>
+        <p class="text-sm mt-4 text-slate-400">
+          {getTranslation(lang, 'basedIn')}
+        </p>
+      </div>
+      
+      <!-- Team Info -->
+      <div class="text-center">
+        <div class="font-logo font-black text-2xl text-white mb-2">
+          HEROES OF THE SEA
+        </div>
+        <p class="text-base text-slate-400 font-bold">
+          FTC Team #34200
+        </p>
+      </div>
+      
+      <!-- Social Media -->
+      <div class="md:text-right">
+        <h3 class="font-bold text-white text-lg mb-4">{getTranslation(lang, 'followUs')}</h3>
+        <div class="flex gap-6 md:justify-end">
+          <a 
+            href="https://instagram.com/heroesofthesea" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition-colors duration-300 text-2xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:rounded"
+            aria-label="Follow us on Instagram"
+          >
+            📷
+          </a>
+          <a 
+            href="https://twitter.com/heroesofthesea" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition-colors duration-300 text-2xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:rounded"
+            aria-label="Follow us on Twitter/X"
+          >
+            𝕏
+          </a>
+          <a 
+            href="https://youtube.com/@heroesofthesea" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition-colors duration-300 text-2xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:rounded"
+            aria-label="Subscribe to our YouTube channel"
+          >
+            ▶️
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Copyright & Legal -->
+    <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-400">
+      <p>
+        {getTranslation(lang, 'copyright').replace('{year}', currentYear.toString())}
+      </p>
+      <p class="mt-3 text-xs text-slate-500">
+        {getTranslation(lang, 'sponsorNote')}
+      </p>
+    </div>
+  </div>
+</footer>

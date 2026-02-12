@@ -1,0 +1,94 @@
+---
+import { languages, defaultLang, getTranslation } from '../i18n/translations';
+
+interface Props {
+  currentLang?: string;
+  currentPage?: string;
+  headerLinks?: Array<{ label: string; url: string }>;
+}
+
+const { currentLang = defaultLang, currentPage = '', headerLinks = [] } = Astro.props;
+
+const navLinks = [
+  { label: getTranslation(currentLang as 'en' | 'pt', 'login'), url: 'https://id.heroesofthesea.pt' },
+  { label: getTranslation(currentLang as 'en' | 'pt', 'joinUs'), url: 'https://register.heroesofthesea.pt' },
+  { label: getTranslation(currentLang as 'en' | 'pt', 'team'), url: currentLang === 'pt' ? '/pt/team' : '/team', internal: true },
+  { label: getTranslation(currentLang as 'en' | 'pt', 'firstWebsite'), url: 'https://firstinspires.org/', hideOnMobile: true },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-sm border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 py-1 flex items-center justify-between">
+    <!-- Left: Navigation Links -->
+    <nav class="flex gap-4 md:gap-8 flex-1">
+      {navLinks.map((link) => (
+        <a href={link.url} target={link.internal ? undefined : '_blank'} rel={link.internal ? undefined : 'noopener noreferrer'} class={`text-slate-300 hover:text-white transition-colors text-sm ${link.hideOnMobile ? 'hidden md:inline' : ''}`}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right: Language Switcher -->
+    <div class="flex items-center gap-4 ml-auto">
+      <div class="relative group">
+        <button
+          class="px-3 py-1 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-hots-green/50"
+          aria-label="Select language"
+          aria-expanded="false"
+        >
+          <span id="lang-display">{languages[currentLang as keyof typeof languages]}</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div class="absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          {Object.entries(languages).map(([langCode, langName]) => {
+            const targetUrl = langCode === 'en' ? `/${currentPage}` : `/${langCode}/${currentPage}`;
+            return (
+              <a
+                href={targetUrl}
+                class={`block w-full px-4 py-3 text-sm transition-colors ${
+                  currentLang === langCode
+                    ? 'bg-hots-green/20 text-hots-green font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                } ${langCode === 'pt' ? '' : 'border-b border-slate-700'}`}
+              >
+                {langName}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer to account for fixed header -->
+<div class="h-10"></div>
+
+<script>
+  // Enhance dropdown accessibility
+  const button = document.querySelector('button[aria-label="Select language"]') as HTMLButtonElement;
+  const dropdown = button?.parentElement?.querySelector('div');
+
+  if (button && dropdown) {
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', (!isOpen).toString());
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!button.parentElement?.contains(e.target as Node)) {
+        button.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+<style>
+  :global(.hots-green) {
+    @apply text-cyan-400;
+  }
+</style>

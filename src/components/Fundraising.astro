@@ -1,0 +1,165 @@
+---
+import { getTranslation } from '../i18n/translations';
+
+interface Props {
+  lang?: 'en' | 'pt';
+}
+
+const { lang = 'en' } = Astro.props;
+---
+
+<section id="fundraising" class="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 py-20 px-6 border-t border-slate-800">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-logo font-black text-4xl sm:text-5xl md:text-6xl text-white mb-6 text-center">
+      {getTranslation(lang, 'helpCompete')}
+    </h2>
+    
+    <p class="text-lg sm:text-xl text-slate-300 text-center mb-16 max-w-3xl mx-auto">
+      {getTranslation(lang, 'supportDescription')}
+    </p>
+    
+    <!-- Funding Needs -->
+    <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl mb-16 max-w-3xl mx-auto border border-slate-700">
+      <h3 class="font-bold text-2xl sm:text-3xl text-white mb-8 text-center">
+        {getTranslation(lang, 'whereYourDonationGoes')}
+      </h3>
+      <div class="grid sm:grid-cols-2 gap-8 text-base">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl flex-shrink-0">🏆</span>
+          <div>
+            <p class="font-bold text-white mb-1">{getTranslation(lang, 'competitionRegistration')}</p>
+            <p class="text-slate-400">{getTranslation(lang, 'competitionRegistrationDesc')}</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-3xl flex-shrink-0">🔩</span>
+          <div>
+            <p class="font-bold text-white mb-1">{getTranslation(lang, 'robotParts')}</p>
+            <p class="text-slate-400">{getTranslation(lang, 'robotPartsDesc')}</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-3xl flex-shrink-0">✈️</span>
+          <div>
+            <p class="font-bold text-white mb-1">{getTranslation(lang, 'travelToCompetitions')}</p>
+            <p class="text-slate-400">{getTranslation(lang, 'travelToCompetitionsDesc')}</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-3xl flex-shrink-0">🛠️</span>
+          <div>
+            <p class="font-bold text-white mb-1">{getTranslation(lang, 'teamEquipment')}</p>
+            <p class="text-slate-400">{getTranslation(lang, 'teamEquipmentDesc')}</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 sm:col-span-2">
+          <span class="text-3xl flex-shrink-0">🤝</span>
+          <div>
+            <p class="font-bold text-white mb-1">{getTranslation(lang, 'supportOtherTeams')}</p>
+            <p class="text-slate-400">{getTranslation(lang, 'supportOtherTeamsDesc')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Donation Options -->
+    <div class="max-w-6xl mx-auto mb-20">
+      <h3 class="font-bold text-2xl text-white mb-8 text-center">
+        {getTranslation(lang, 'supportUs')}
+      </h3>
+      
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <!-- Left Column: HCB Donation Form -->
+        <div class="flex justify-center">
+          <iframe 
+            src="https://hcb.hackclub.com/donations/start/heroesofthesea" 
+            class="w-full rounded-xl"
+            style="border:none;" 
+            name="donateFrame" 
+            scrolling="yes" 
+            title="Donation Form"
+            height="512" 
+            width="512" 
+            loading="lazy"
+          ></iframe>
+        </div>
+        
+        <!-- Right Column: Other Methods -->
+        <div class="flex flex-col gap-4">
+          <p class="text-slate-300 font-bold text-lg mb-2">{getTranslation(lang, 'otherWaysToHelp')}</p>
+          
+          <!-- MB Way -->
+          <div class="relative bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 flex items-center justify-between gap-4 opacity-50">
+            <div class="flex items-center gap-4 flex-1">
+              <img src="/donation/mbway.png" alt="MB Way" class="w-12 h-12 flex-shrink-0 object-contain grayscale" />
+              <div>
+                <h4 class="font-bold text-base text-slate-400">{getTranslation(lang, 'mbWay')}</h4>
+                <p class="text-xs text-slate-500">{getTranslation(lang, 'mbWayDesc')}</p>
+              </div>
+            </div>
+            <div class="absolute top-2 right-2 bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">
+              {getTranslation(lang, 'comingSoon')}
+            </div>
+            <button 
+              disabled
+              class="flex-shrink-0 bg-slate-700 text-slate-500 font-bold text-xs py-2 px-4 rounded-lg cursor-not-allowed whitespace-nowrap"
+            >
+              {getTranslation(lang, 'donate')}
+            </button>
+          </div>
+          
+          <!-- Cryptocurrencies -->
+          <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4 flex-1">
+              <div class="text-4xl flex-shrink-0">₿</div>
+              <div>
+                <h4 class="font-bold text-base text-white">{getTranslation(lang, 'cryptocurrencies')}</h4>
+                <p class="text-xs text-slate-400">{getTranslation(lang, 'cryptocurrenciesDesc')}</p>
+              </div>
+            </div>
+            <a 
+              href="#crypto-form"
+              class="flex-shrink-0 bg-hots-green hover:bg-hots-green/90 text-white font-bold text-xs py-2 px-4 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-hots-green/50 whitespace-nowrap"
+            >
+              {getTranslation(lang, 'donate')}
+            </a>
+          </div>
+          
+          <!-- Hardware/Physical Donations -->
+          <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4 flex-1">
+              <div class="text-4xl flex-shrink-0">🔧</div>
+              <div>
+                <h4 class="font-bold text-base text-white">{getTranslation(lang, 'hardwareDonations')}</h4>
+                <p class="text-xs text-slate-400">{getTranslation(lang, 'hardwareDonationsDesc')}</p>
+              </div>
+            </div>
+            <a 
+              href="#hardware-form"
+              class="flex-shrink-0 bg-hots-green hover:bg-hots-green/90 text-white font-bold text-xs py-2 px-4 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-hots-green/50 whitespace-nowrap"
+            >
+              {getTranslation(lang, 'donate')}
+            </a>
+          </div>
+
+          <!-- Financial Transparency -->
+          <div class="pt-4 mt-2 border-t border-slate-700">
+            <a 
+              href="https://hcb.hackclub.com/heroesofthesea/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-slate-300 hover:text-white font-bold text-sm transition-colors duration-300 focus:outline-none"
+              aria-label="View our transparent finances on HCB"
+            >
+              <span>📊</span>
+              <span>{getTranslation(lang, 'viewTransparentFinances')}</span>
+            </a>
+            <p class="text-slate-400 mt-2 text-xs">
+              {getTranslation(lang, 'seeWhereMoneyGoes')}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+import Header from '../components/Header.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'en' | 'pt';
+  currentPage?: string;
+  headerLinks?: Array<{ label: string; url: string }>;
+}
+
+const {
+  title = 'Heroes Of The Sea - FTC Team #34200',
+  description = 'Supporting Portuguese robotics innovation. Heroes Of The Sea is an FIRST Tech Challenge team competing internationally.',
+  lang = 'en',
+  currentPage = '',
+  headerLinks = [],
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="FTC, FIRST Tech Challenge, robotics, Portugal, team 34200, Heroes Of The Sea" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" 
+      rel="stylesheet"
+    />
+    
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <Header currentLang={lang} currentPage={currentPage} headerLinks={headerLinks} />
+    <slot />
+  </body>
+</html>
