@@ -39,7 +39,7 @@ const { lang = 'en' } = Astro.props;
               src={member.image} 
               alt={member.name}
               class="w-20 h-20 rounded-full object-cover border-2 border-slate-600"
-              onError="this.src='/team/placeholder.jpg'"
+              onerror="this.src='/team/placeholder.jpg'"
             />
           </div>
           
