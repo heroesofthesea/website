@@ -1,75 +1,38 @@
 {
   "members": [
     {
-      "name": "TODO: Member Name",
-      "role": "Team Captain",
+      "name": "Beato",
+      "pronouns": "(they/them)",
+      "role": "Team Lead and Outreach",
       "group": "Leadership",
-      "bio": "TODO: Short bio describing this member's role and contributions to the team.",
-      "photo": "",
+      "bio": "Beato is a part of the Leadership team of HOTS and Hack Club's Club Operations team.",
+      "photo": "https://cdn.hackclub.com/019e8829-432c-719c-b7c9-c34ea4b84821/05-22-2026-0928.png",
       "links": [
-        { "type": "github", "url": "https://github.com/" },
-        { "type": "linkedin", "url": "https://linkedin.com/in/" }
+        { "type": "github", "url": "https://github.com/whatbeato" },
+        { "type": "linkedin", "url": "https://linkedin.com/in/whatbeatoo" }
       ]
     },
     {
-      "name": "TODO: Member Name",
-      "role": "Head Programmer",
-      "group": "Programming",
-      "bio": "TODO: Short bio.",
+      "name": "Martim Glória",
+      "pronouns": "(he/him)",
+      "role": "Team Captain and Batman",
+      "group": "Leadership",
+      "bio": "They call him Batman of Azeitão",
+      "photo": "https://cdn.hackclub.com/019e8835-2601-7f02-81b2-85e5dbd63b08/mgloria.png",
+      "links": [
+        { "type": "linkedin", "url": "https://www.linkedin.com/in/martim-gl%C3%B3ria-396179349/" }
+      ]
+    },
+    {
+      "name": "Lourenço  F.",
+      "pronouns": "(he/him)",
+      "role": "Lead Developer",
+      "group": "Development",
+      "bio": "404: too short for a bio  ",
       "photo": "",
       "links": [
         { "type": "github", "url": "https://github.com/" }
       ]
-    },
-    {
-      "name": "TODO: Member Name",
-      "role": "Software Engineer",
-      "group": "Programming",
-      "bio": "",
-      "photo": "",
-      "links": []
-    },
-    {
-      "name": "TODO: Member Name",
-      "role": "Lead Builder",
-      "group": "Build",
-      "bio": "TODO: Short bio.",
-      "photo": "",
-      "links": []
-    },
-    {
-      "name": "TODO: Member Name",
-      "role": "Mechanical Engineer",
-      "group": "Build",
-      "bio": "",
-      "photo": "",
-      "links": []
-    },
-    {
-      "name": "TODO: Member Name",
-      "role": "CAD Designer",
-      "group": "Build",
-      "bio": "",
-      "photo": "",
-      "links": []
-    },
-    {
-      "name": "TODO: Member Name",
-      "role": "Outreach Lead",
-      "group": "Outreach",
-      "bio": "TODO: Short bio.",
-      "photo": "",
-      "links": [
-        { "type": "linkedin", "url": "https://linkedin.com/in/" }
-      ]
-    },
-    {
-      "name": "TODO: Member Name",
-      "role": "Media & Communications",
-      "group": "Outreach",
-      "bio": "",
-      "photo": "",
-      "links": []
     }
   ]
 }

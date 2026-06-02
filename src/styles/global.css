@@ -75,7 +75,9 @@
 /* ── Base ───────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* clip instead of hidden — same visual result but does NOT create a scroll
+     container, so it doesn't force overflow-y:auto and break position:sticky */
+  overflow-x: clip;
 }
 
 body {
@@ -86,7 +88,7 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Extremely subtle scanline texture — adds depth without noise */
@@ -343,7 +345,8 @@ main { padding-top: 72px; }
   background: var(--color-bg-2);
   border-top: 1px solid var(--color-border);
   padding: var(--space-12) 0 var(--space-8);
-  margin-top: var(--space-24);
+  /* No margin-top — each page's last section already carries bottom padding */
+  margin-top: 0;
 }
 
 .footer-inner {
@@ -650,10 +653,23 @@ main { padding-top: 72px; }
 }
 
 .member-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--color-text); }
+
+.member-pronouns {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-left: var(--space-2);
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
 .member-role { font-size: 0.75rem; font-weight: 700; color: var(--color-accent-text); text-transform: uppercase; letter-spacing: 0.1em; }
 .member-bio  { font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.6; max-width: none; }
 
-.member-links { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-2); }
+.member-links { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-2); list-style: none; padding: 0; }
 
 .member-link {
   display: inline-flex;
@@ -1022,7 +1038,7 @@ main { padding-top: 72px; }
   gap: var(--space-6);
 }
 @media (min-width: 600px) {
-  .trust-items { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .trust-items { grid-template-columns: repeat(2, 1fr); gap: 0; }
 }
 
 .trust-item {
@@ -1082,20 +1098,12 @@ main { padding-top: 72px; }
 .donate-form-intro h2 { margin-bottom: var(--space-4); }
 .donate-form-intro p  { color: var(--color-text-muted); max-width: none; }
 
-.donate-frame-box {
-  width: 100%;
-  max-width: 560px;
-  background: var(--color-bg-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.04);
+
+/* Larger pill for the standalone donate CTA */
+.donate-cta-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
 }
-.donate-frame-box iframe { display: block; width: 100%; min-height: 512px; }
 
 .donate-footer-note {
   font-size: 0.875rem;
@@ -1112,8 +1120,15 @@ main { padding-top: 72px; }
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: var(--space-20) 0 var(--space-14);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  /*
+    Pull the banner up by exactly the header height (72px) so it starts
+    behind the transparent fixed header — eliminates the thin body-bg strip
+    that would otherwise show between the nav and the photo overlay.
+    The padding-top compensates so the visible content stays below the header.
+  */
+  margin-top: -72px;
+  padding-top: calc(var(--space-20) + 72px);
+  padding-bottom: var(--space-14);
 
   background-image: url('/images/background.png');
   background-size: cover;
@@ -1121,14 +1136,15 @@ main { padding-top: 72px; }
   background-color: var(--color-bg);
 }
 
-/* Multi-layer overlay: dark vignette on the left + top/bottom fades */
+/* Multi-layer overlay — stronger at the very top so the header transition
+   is seamless even when the header is transparent on first load             */
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
     linear-gradient(to right, rgba(20,20,20,0.88) 0%, rgba(20,20,20,0.65) 60%, rgba(20,20,20,0.72) 100%),
-    linear-gradient(to bottom, rgba(20,20,20,0.55) 0%, rgba(20,20,20,0.0) 40%, rgba(20,20,20,0.80) 100%);
+    linear-gradient(to bottom, rgba(20,20,20,0.82) 0%, rgba(20,20,20,0.0) 35%, rgba(20,20,20,0.82) 100%);
   z-index: 0;
 }
 

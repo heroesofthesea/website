@@ -114,21 +114,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="trust-item">
           <div class="trust-icon" aria-hidden="true">
-            <!-- Shield / verified icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-          </div>
-          <strong>Tax-deductible</strong>
-          <p>
-            Processed by HCB, a registered 501(c)(3) nonprofit.
-            Keep your receipt for your records.
-          </p>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon" aria-hidden="true">
             <!-- Eye / transparency icon -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
@@ -137,8 +122,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <strong>Fully transparent</strong>
           <p>
-            HCB keeps a public ledger of all transactions.
-            Every dollar is visible and accountable.
+            HCB keeps a public ledger of every transaction.
+            <a href="https://hcb.hackclub.com/heroesofthesea" target="_blank" rel="noopener noreferrer">
+              View our finances
+            </a>.
           </p>
         </div>
 
@@ -174,25 +161,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <!--
-      DONATION IFRAME — do not change the src attribute.
-      src: https://hcb.hackclub.com/donations/start/heroesofthesea
-    -->
-    <div class="donate-frame-box" role="region" aria-label="Donation form">
-      <iframe
-        src="https://hcb.hackclub.com/donations/start/heroesofthesea"
-        style="border:none;"
-        name="donateFrame"
-        scrolling="yes"
-        frameborder="0"
-        marginheight="0px"
-        marginwidth="0px"
-        height="512px"
-        width="512px"
-        allowfullscreen
-        title="Donate to Heroes of the Sea"
-      ></iframe>
-    </div>
+    <a
+      href="https://hcb.hackclub.com/donations/start/heroesofthesea"
+      class="btn-primary donate-cta-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Donate now
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
 
     <p class="donate-footer-note">
       For other payment methods, please contact

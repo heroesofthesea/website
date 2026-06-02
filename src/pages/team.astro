@@ -1,7 +1,6 @@
 ---
 // Team page (/team)
 // Driven by src/data/team.json — edit that file to add/remove members
-// Groups members by the optional "group" field
 import BaseLayout from '../layouts/BaseLayout.astro';
 import teamData from '../data/team.json';
 
@@ -13,6 +12,7 @@ interface MemberLink {
 
 interface Member {
   name: string;
+  pronouns?: string;
   role: string;
   group?: string;
   bio?: string;
@@ -21,20 +21,6 @@ interface Member {
 }
 
 const members = teamData.members as Member[];
-
-// ── Group members ──────────────────────────────────────────────────────
-// Members without a group fall into "Team"
-const groupOrder: string[] = [];
-const grouped = new Map<string, Member[]>();
-
-for (const member of members) {
-  const group = member.group?.trim() || 'Team';
-  if (!grouped.has(group)) {
-    grouped.set(group, []);
-    groupOrder.push(group);
-  }
-  grouped.get(group)!.push(member);
-}
 
 // ── Helpers ────────────────────────────────────────────────────────────
 function getInitials(name: string): string {
@@ -66,68 +52,64 @@ const linkIcons: Record<string, string> = {
     </div>
   </div>
 
-  <!-- Team groups -->
+  <!-- Team grid — flat, no subteam grouping -->
   <section class="section section--tight" aria-label="Team members">
     <div class="container">
+      <div class="member-grid">
+        {members.map(member => (
+          <article class="member-card" aria-label={`${member.name}, ${member.role}`}>
 
-      {groupOrder.map(groupName => (
-        <div class="team-group">
-          <h2 class="team-group-title">{groupName}</h2>
+            <!-- Photo or initials placeholder -->
+            <div class="member-photo-wrap" aria-hidden="true">
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={`Photo of ${member.name}`}
+                  width="72"
+                  height="72"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="member-initials">{getInitials(member.name)}</div>
+              )}
+            </div>
 
-          <div class="member-grid">
-            {grouped.get(groupName)!.map(member => (
-              <article class="member-card" aria-label={`${member.name}, ${member.role}`}>
-
-                <!-- Photo or initials placeholder -->
-                <div class="member-photo-wrap" aria-hidden="true">
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={`Photo of ${member.name}`}
-                      width="72"
-                      height="72"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div class="member-initials">{getInitials(member.name)}</div>
-                  )}
-                </div>
-
-                <div>
-                  <p class="member-name">{member.name}</p>
-                  <p class="member-role">{member.role}</p>
-                </div>
-
-                {member.bio && member.bio.trim() && (
-                  <p class="member-bio">{member.bio}</p>
+            <div>
+              <p class="member-name">
+                {member.name}
+                {member.pronouns && member.pronouns.trim() && (
+                  <span class="member-pronouns">{member.pronouns}</span>
                 )}
+              </p>
+              <p class="member-role">{member.role}</p>
+            </div>
 
-                {/* Social / profile links */}
-                {member.links && member.links.length > 0 && (
-                  <ul class="member-links" role="list" aria-label={`Links for ${member.name}`}>
-                    {member.links.map(link => (
-                      <li>
-                        <a
-                          class="member-link"
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${member.name} on ${link.type.charAt(0).toUpperCase() + link.type.slice(1)}`}
-                        >
-                          <Fragment set:html={linkIcons[link.type] ?? ''} />
-                          {link.type.charAt(0).toUpperCase() + link.type.slice(1)}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+            {member.bio && member.bio.trim() && (
+              <p class="member-bio">{member.bio}</p>
+            )}
 
-              </article>
-            ))}
-          </div>
-        </div>
-      ))}
+            {member.links && member.links.length > 0 && (
+              <ul class="member-links" role="list" aria-label={`Links for ${member.name}`}>
+                {member.links.map(link => (
+                  <li>
+                    <a
+                      class="member-link"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on ${link.type.charAt(0).toUpperCase() + link.type.slice(1)}`}
+                    >
+                      <Fragment set:html={linkIcons[link.type] ?? ''} />
+                      {link.type.charAt(0).toUpperCase() + link.type.slice(1)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
 
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 

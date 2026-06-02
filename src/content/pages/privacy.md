@@ -16,21 +16,25 @@ TODO: Describe what information is collected directly from users (e.g., contact 
 
 ### Automatically Collected Information
 
-TODO: Describe analytics, server logs, or any tracking technologies in use (e.g., cookies, browser fingerprinting). If none are used, state that clearly.
+This site uses **Plausible Analytics**, a privacy-friendly analytics tool hosted at [plausible.comfy.solutions](https://plausible.comfy.solutions/). Plausible collects anonymous, aggregate statistics about page visits (such as page views, referrer, browser, and country) to help us understand how the site is used and improve it over time.
+
+Plausible does **not** use cookies, does not collect personal data, does not track visitors across sites, and is fully compliant with GDPR, CCPA, and PECR. No personal information is stored or transmitted. You can learn more about how Plausible works at [plausible.io/privacy-focused-web-analytics](https://plausible.io/privacy-focused-web-analytics).
 
 ## How We Use Information
 
-TODO: Describe the purposes for which collected data is used (e.g., responding to inquiries, improving the website, processing donations).
+We use the anonymous analytics data collected by Plausible solely to understand how visitors use this website and to improve its content and performance. We do not use it for advertising or profiling.
 
-We do not sell, rent, or share your personal information with third parties except as described in this policy.
+We do not sell, rent, or share any information with third parties except as described in this policy.
 
 ## Cookies and Tracking
 
-TODO: Describe cookie usage. If the site uses no cookies beyond essential session cookies, state that. If third-party scripts are embedded (e.g., HCB donation iframe), note that those services have their own privacy policies.
+This site does **not** use cookies for analytics or tracking. Plausible Analytics operates without cookies entirely.
 
 ### Third-Party Services
 
-This site embeds a donation page provided by HCB. Donations are processed by HCB and subject to [their privacy policy](https://hackclub.com/privacy/). We do not directly handle payment information.
+**Plausible Analytics** — anonymous, cookieless page-view statistics. No personal data is collected. See above for details.
+
+**HCB** — if you make a donation via the link on our Donate page, you will be directed to a payment page operated by HCB. Donations are subject to [HCB's privacy policy](https://hackclub.com/privacy/). We do not handle payment information directly.
 
 ## Data Retention
 
