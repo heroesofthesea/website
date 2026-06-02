@@ -1,0 +1,234 @@
+---
+// Home page (/)
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Fetch latest 2 posts for the home page preview
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(date);
+}
+
+function readingTime(body: string): number {
+  return Math.max(1, Math.ceil(body.trim().split(/\s+/).filter(Boolean).length / 200));
+}
+---
+
+<BaseLayout
+  title="Home"
+  description="Heroes of the Sea is a student-led FIRST Tech Challenge robotics team (#34200) building robots, community, and the next generation of problem-solvers."
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <!-- Background image: /images/background.png (competition arena) -->
+  <section class="hero" aria-label="Hero">
+    <div class="container hero-content">
+      <span class="hero-eyebrow">FIRST Tech Challenge · Team #34200</span>
+      <h1 class="hero-headline">More than<br/><span class="hero-accent">robots.</span></h1>
+      <p class="hero-sub">
+        We're Heroes of the Sea — a student-led robotics team pushing limits,
+        building community, and competing on the world stage.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Stats Strip ────────────────────────────────────────────── -->
+  <div class="stats-strip" role="region" aria-label="Team at a glance">
+    <div class="container">
+      <!-- TODO: Update Season year, Members count as the team grows -->
+      <dl class="stats-grid">
+        <div class="stat">
+          <dt class="stat-label">Season</dt>
+          <dd class="stat-number">2024</dd>
+        </div>
+        <div class="stat">
+          <!-- TODO: Replace [X] with actual member count -->
+          <dt class="stat-label">Members</dt>
+          <dd class="stat-number">[X]</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-label">Subteams</dt>
+          <dd class="stat-number">3</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-label">Team Number</dt>
+          <dd class="stat-number">34200</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ── Who Are We ─────────────────────────────────────────────── -->
+  <section class="section" aria-labelledby="who-heading">
+    <div class="container">
+      <span class="section-label">Who are we</span>
+      <h2 id="who-heading">
+        We're a teen-ran <em>FIRST</em> Tech Challenge team
+      </h2>
+
+      <!-- Three info cards — accent color, white text (5.5:1 contrast ✓) -->
+      <div class="card-grid" style="margin-top: 3rem;">
+
+        <div class="card">
+          <h3>Our mission</h3>
+          <p>
+            We are Heroes of the Sea, a student-led robotics team. We believe that
+            building robots teaches us more than just technical skills — it teaches us
+            how to think, collaborate, and push through hard problems together.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Our team</h3>
+          <p>
+            We are a group of
+            <!-- TODO: Replace [X] with the actual number of students -->
+            [X] students from
+            <!-- TODO: Replace [school/city name] with actual school/city -->
+            [school/city name], competing in the FIRST Tech Challenge. From builders
+            to programmers to strategists, every one of us brings something different
+            to the table.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>What we do</h3>
+          <p>
+            FIRST Tech Challenge (FTC) is an international robotics competition where
+            student teams design, build, and program robots to complete game challenges.
+            Every season brings a new challenge, and every season we rise to meet it.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What is FTC? ───────────────────────────────────────────── -->
+  <section class="section section--tight" aria-labelledby="ftc-heading">
+    <div class="container">
+      <div class="ftc-grid">
+
+        <div class="ftc-text">
+          <span class="section-label">The competition</span>
+          <h2 id="ftc-heading">What is <em>FIRST</em> Tech Challenge?</h2>
+          <p>
+            FIRST Tech Challenge (FTC) is a global robotics program where teams of
+            students design, build, and program their own robots from scratch — then
+            compete at regional, national, and world championship events.
+          </p>
+          <p>
+            Every September, a brand-new game is announced. Teams have a few months to
+            understand the challenge, engineer a solution, build it, and compete. No two
+            seasons are ever the same.
+          </p>
+          <a
+            href="https://www.firstinspires.org/robotics/ftc"
+            class="btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn about FTC
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <ul class="ftc-features" role="list">
+          <li class="ftc-feature">
+            <span class="ftc-feature-num" aria-hidden="true">01</span>
+            <div class="ftc-feature-body">
+              <strong>Design &amp; Build</strong>
+              <p>Engineer from CAD model to physical robot — chassis, mechanisms, wiring — in weeks.</p>
+            </div>
+          </li>
+          <li class="ftc-feature">
+            <span class="ftc-feature-num" aria-hidden="true">02</span>
+            <div class="ftc-feature-body">
+              <strong>Program</strong>
+              <p>Autonomous routines, sensor integration, and real-time driver-control in Java or Kotlin.</p>
+            </div>
+          </li>
+          <li class="ftc-feature">
+            <span class="ftc-feature-num" aria-hidden="true">03</span>
+            <div class="ftc-feature-body">
+              <strong>Compete</strong>
+              <p>Regional qualifiers, state championships, then the World Championship for top teams.</p>
+            </div>
+          </li>
+          <li class="ftc-feature">
+            <span class="ftc-feature-num" aria-hidden="true">04</span>
+            <div class="ftc-feature-body">
+              <strong>Connect</strong>
+              <p>Engineering portfolios, community outreach events, and gracious professionalism on and off the field.</p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Latest from the Blog ───────────────────────────────────── -->
+  {latestPosts.length > 0 && (
+    <section class="section section--tight" aria-labelledby="updates-heading">
+      <div class="container">
+        <div class="home-blog-header">
+          <div>
+            <span class="section-label">Latest updates</span>
+            <h2 id="updates-heading">From the field</h2>
+          </div>
+          <a href="/blog" class="view-all-link" aria-label="View all blog posts">
+            All posts
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="home-post-grid">
+          {latestPosts.map(post => (
+            <a href={`/blog/${post.slug}`} class="home-post-card" aria-label={`Read: ${post.data.title}`}>
+              <div class="home-post-meta">
+                <time datetime={post.data.date.toISOString().split('T')[0]}>
+                  {formatDate(post.data.date)}
+                </time>
+                <span aria-hidden="true">·</span>
+                <span>{readingTime(post.body ?? '')} min read</span>
+              </div>
+              <p class="home-post-title">{post.data.title}</p>
+              <p class="home-post-excerpt">{post.data.excerpt}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── CTA — Support the team ────────────────────────────────── -->
+  <!-- Full-bleed section with the arena photo (echoes the home hero) -->
+  <div class="cta-section" role="region" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <span class="section-label">Support the team</span>
+          <h2 id="cta-heading">Fuel our next season</h2>
+          <p>
+            Every contribution goes directly toward building our robot, competing,
+            and inspiring the next generation of engineers and problem-solvers.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="/donate" class="btn-primary">Donate</a>
+          <a href="/team" class="btn-secondary">Meet the team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>

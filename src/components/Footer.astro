@@ -1,0 +1,68 @@
+---
+// Footer — team logo, fiscal sponsorship text, minimal links + social icons
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+
+      <!-- Logo + sponsorship statement -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link" aria-label="Heroes of the Sea — home">
+          <!-- TODO: If a different logo variant is preferred in the footer, swap src here -->
+          <img
+            src="/images/logo_horizontal_variant2_nobg.svg"
+            alt="Heroes of the Sea"
+            class="footer-logo-img"
+            width="140"
+            height="62"
+            loading="lazy"
+          />
+        </a>
+        <p class="footer-mission">
+          Heroes Of The Sea is fiscally sponsored by The Hack Foundation (d.b.a. Hack Club),
+          a 501(c)(3) nonprofit (EIN: 81-2908499).
+        </p>
+      </div>
+
+      <!-- Footer links -->
+      <nav class="footer-links" aria-label="Footer links">
+        <div class="footer-links-legal">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/accessibility">Accessibility</a>
+        </div>
+
+        <div class="footer-links-social" aria-label="Social media">
+          <span class="footer-social-label" id="footer-social-label">Follow us</span>
+          <div class="social-links" aria-labelledby="footer-social-label">
+
+            <!-- TODO: Replace # with actual Instagram URL -->
+            <a href="#" aria-label="Heroes of the Sea on Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+
+            <!-- TODO: Replace # with actual X/Twitter URL -->
+            <a href="#" aria-label="Heroes of the Sea on X" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; {new Date().getFullYear()} Heroes of the Sea. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

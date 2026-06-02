@@ -1,0 +1,78 @@
+---
+// ArticleLayout — blog posts, Privacy Policy, Accessibility Statement
+// Page banner (title + meta) lives in the full-width .page-hero above the fold,
+// with the competition arena background photo. Two-column grid below.
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  headings: MarkdownHeading[];
+  body?: string;
+  date?: Date;
+  author?: string;
+  /** Optional category label shown above the title (e.g. "Blog post", "Legal") */
+  category?: string;
+}
+
+const { title, description, headings, body = '', date, author, category } = Astro.props;
+
+function calcReadingTime(text: string): number {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+const readingTime = calcReadingTime(body);
+
+const formattedDate = date
+  ? new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }).format(date)
+  : null;
+---
+
+<BaseLayout title={title} description={description}>
+
+  <!-- Full-width page banner — same arena photo as the home hero -->
+  <div class="page-hero">
+    <div class="container">
+      {category && <span class="section-label">{category}</span>}
+      <h1 class="article-title">{title}</h1>
+      <div class="article-meta">
+        {formattedDate && (
+          <time datetime={date?.toISOString().split('T')[0]}>{formattedDate}</time>
+        )}
+        {author && <span>By {author}</span>}
+        <span
+          class="article-reading-time"
+          aria-label={`Estimated reading time: ${readingTime} minute${readingTime === 1 ? '' : 's'}`}
+        >
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 4.5v3.75l2.25 2.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          {readingTime} min read
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-column grid: article body (left) + sticky TOC (right) -->
+  <div class="container">
+    <div class="article-wrapper">
+
+      <article class="article-content">
+        <!-- Mobile TOC: collapsible, visible only on small screens -->
+        <TableOfContents headings={headings} variant="mobile" />
+        <div class="prose">
+          <slot />
+        </div>
+      </article>
+
+      <!-- Desktop sticky TOC sidebar -->
+      <TableOfContents headings={headings} variant="desktop" />
+
+    </div>
+  </div>
+
+</BaseLayout>

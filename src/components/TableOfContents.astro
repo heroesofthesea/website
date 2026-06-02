@@ -1,0 +1,90 @@
+---
+// TableOfContents — renders either the mobile collapsible or desktop sticky sidebar
+// variant="mobile"  → <details> collapsible, shown only on small screens
+// variant="desktop" → sticky <aside>, shown only on large screens
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  variant?: 'mobile' | 'desktop';
+}
+
+const { headings, variant = 'mobile' } = Astro.props;
+
+// Only H2 and H3 headings
+const filtered = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+{filtered.length > 0 && (
+  <>
+    {variant === 'mobile' && (
+      <!-- Mobile TOC: collapsible <details>, hidden on desktop via CSS -->
+      <details class="toc-mobile">
+        <summary>On this page</summary>
+        <nav aria-label="Table of contents">
+          <ul class="toc-list" role="list">
+            {filtered.map(h => (
+              <li class={`toc-item toc-item--h${h.depth}`}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+    )}
+
+    {variant === 'desktop' && (
+      <!-- Desktop TOC: sticky sidebar, hidden on mobile via CSS -->
+      <aside class="toc-sidebar" aria-label="Table of contents">
+        <p class="toc-heading">On this page</p>
+        <nav aria-label="Article sections">
+          <ul class="toc-list" role="list">
+            {filtered.map(h => (
+              <li class={`toc-item toc-item--h${h.depth}`} data-heading-id={h.slug}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+    )}
+  </>
+)}
+
+<script>
+  // Highlight the active section in the desktop TOC as user scrolls
+  const tocItems = document.querySelectorAll<HTMLElement>('.toc-sidebar .toc-item[data-heading-id]');
+  if (tocItems.length > 0) {
+    const headingEls = Array.from(tocItems)
+      .map(item => document.getElementById(item.dataset.headingId!))
+      .filter((el): el is HTMLElement => el !== null);
+
+    let activeId: string | null = null;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) activeId = entry.target.id;
+        });
+
+        // If nothing visible, pin to the last heading above viewport
+        if (!document.querySelector('.prose h2, .prose h3')?.checkVisibility?.()) {
+          const scrollY = window.scrollY + 120;
+          for (let i = headingEls.length - 1; i >= 0; i--) {
+            if ((headingEls[i] as HTMLElement).offsetTop <= scrollY) {
+              activeId = headingEls[i].id;
+              break;
+            }
+          }
+        }
+
+        tocItems.forEach(item =>
+          item.classList.toggle('is-active', item.dataset.headingId === activeId)
+        );
+      },
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
+    );
+
+    headingEls.forEach(el => io.observe(el));
+  }
+</script>

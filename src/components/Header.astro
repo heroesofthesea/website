@@ -1,0 +1,91 @@
+---
+// Header — fixed nav, team logo left, links right
+const navLinks = [
+  { href: '/',       label: 'Home'  },
+  { href: '/team',   label: 'Team'  },
+  { href: '/blog',   label: 'Blog'  },
+  // TODO: Add /sponsors and /robot here when those pages are built
+];
+
+const { pathname } = Astro.url;
+---
+
+<!-- Skip to main content — first focusable element on every page -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header" id="site-header" role="banner">
+  <!-- Team logo (horizontal SVG with transparent background) -->
+  <a href="/" class="site-logo" aria-label="Heroes of the Sea — home">
+    <!-- TODO: If a different logo variant is needed, swap the src here -->
+    <img
+      src="/images/logo_horizontal_variant2_nobg.svg"
+      alt="Heroes of the Sea"
+      class="site-logo-img"
+      width="160"
+      height="71"
+    />
+  </a>
+
+  <!-- Mobile hamburger toggle -->
+  <button
+    class="nav-toggle"
+    aria-expanded="false"
+    aria-controls="main-nav"
+    aria-label="Toggle navigation menu"
+  >
+    <span class="bar" aria-hidden="true"></span>
+    <span class="bar" aria-hidden="true"></span>
+    <span class="bar" aria-hidden="true"></span>
+  </button>
+
+  <!-- Main navigation -->
+  <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        aria-current={pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="/donate" class="nav-donate" aria-current={pathname === '/donate' ? 'page' : undefined}>
+      Donate
+    </a>
+  </nav>
+</header>
+
+<script>
+  const header  = document.getElementById('site-header')!;
+  const toggle  = header.querySelector('.nav-toggle') as HTMLButtonElement;
+  const nav     = document.getElementById('main-nav')!;
+
+  // Mobile nav toggle
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav.classList.toggle('is-open', !open);
+  });
+
+  // Close on link click (mobile UX)
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-open');
+  }));
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!header.contains(e.target as Node)) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    }
+  });
+
+  // Scroll-aware header: add .scrolled class for opaque backdrop
+  const sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none;';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(
+    ([e]) => header.classList.toggle('scrolled', !e.isIntersecting),
+    { rootMargin: '-1px 0px 0px 0px', threshold: 1 }
+  ).observe(sentinel);
+</script>

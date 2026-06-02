@@ -1,0 +1,85 @@
+---
+// Blog index (/blog)
+// Lists all posts from src/content/blog/, newest first
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('blog');
+
+// Sort newest first
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Reading time helper (matches ArticleLayout logic)
+function readingTime(body: string): number {
+  const words = body.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-GB', {
+    year: 'numeric', month: 'long', day: 'numeric',
+  }).format(date);
+}
+---
+
+<BaseLayout
+  title="Blog"
+  description="Updates, reflections, and season recaps from Heroes of the Sea — FIRST Tech Challenge Team #34200."
+>
+
+  <!-- Page hero -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">From the team</span>
+      <h1>Blog</h1>
+    </div>
+  </div>
+
+  <section class="section section--tight" aria-label="Blog posts">
+    <div class="container">
+      <div style="max-width: var(--content-width);">
+
+        {posts.length === 0 && (
+          <p style="color: var(--color-text-muted);">No posts yet — check back soon.</p>
+        )}
+
+        <ol class="post-list" role="list">
+          {posts.map(post => {
+            const rt = readingTime(post.body ?? '');
+            return (
+              <li class="post-card">
+                <div class="post-meta">
+                  <time class="post-date" datetime={post.data.date.toISOString().split('T')[0]}>
+                    {formatDate(post.data.date)}
+                  </time>
+                  <span class="post-reading-time" aria-label={`${rt} minute read`}>
+                    <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                      <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M8 4.5v3.75l2.25 2.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    {rt} min read
+                  </span>
+                </div>
+
+                <h2 class="post-title">
+                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                </h2>
+
+                <p class="post-excerpt">{post.data.excerpt}</p>
+
+                <a href={`/blog/${post.slug}`} class="post-readmore" aria-label={`Read full post: ${post.data.title}`}>
+                  Read post
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

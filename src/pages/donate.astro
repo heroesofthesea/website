@@ -1,0 +1,206 @@
+---
+// Donate page (/donate)
+// IMPORTANT: The iframe src must never be changed.
+// Do not refer to HCB as "Hack Club Bank" anywhere on this page.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Donate"
+  description="Support Heroes of the Sea — your donation funds the robot, the competitions, and the community work that makes this team more than just robotics."
+>
+
+  <!-- ── Page Banner ───────────────────────────────────────────── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Support the team</span>
+      <h1>Help us compete &amp; grow</h1>
+      <p style="max-width: 52ch; color: rgba(242,242,242,0.72); margin-top: 1rem; font-size: 1.0625rem;">
+        Heroes of the Sea runs entirely on the support of people who believe in what
+        student-led robotics can do. Every donation goes directly to the team.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── What You're Powering ──────────────────────────────────── -->
+  <section class="donate-powers" aria-labelledby="powers-heading">
+    <div class="container">
+
+      <div class="donate-powers-lead">
+        <span class="section-label">Where your money goes</span>
+        <h2 id="powers-heading">What you're powering</h2>
+        <p>
+          Building a competitive FTC robot — and getting it to the world stage — takes
+          real resources. Here's exactly what your contribution fuels.
+        </p>
+      </div>
+
+      <div class="powers-grid" role="list">
+
+        <!-- Card 1: Robot Construction -->
+        <div class="power-card" role="listitem">
+          <div class="power-icon" aria-hidden="true">
+            <!-- Gear / cog icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+            </svg>
+          </div>
+          <h3 class="power-title">Robot Construction</h3>
+          <p class="power-desc">
+            Custom drive trains, precision actuators, sensors, wiring harnesses, and
+            structural materials. A competition-ready FTC robot is rebuilt from scratch
+            every season.
+          </p>
+        </div>
+
+        <!-- Card 2: Competition Entry -->
+        <div class="power-card" role="listitem">
+          <div class="power-icon" aria-hidden="true">
+            <!-- Trophy icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 21h8M12 17v4M17 3H7l1 9a4 4 0 0 0 8 0l1-9Z"/>
+              <path d="M7 4H4a2 2 0 0 0 0 4h3M17 4h3a2 2 0 0 1 0 4h-3"/>
+            </svg>
+          </div>
+          <h3 class="power-title">Competition Entry</h3>
+          <p class="power-desc">
+            Registration fees for regional qualifiers and state championship events.
+            Each competition is a chance to measure our progress and push further.
+          </p>
+        </div>
+
+        <!-- Card 3: Travel -->
+        <div class="power-card" role="listitem">
+          <div class="power-icon" aria-hidden="true">
+            <!-- Map pin / route icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3 class="power-title">Travel &amp; Logistics</h3>
+          <p class="power-desc">
+            Getting the full team — and the robot — to competition venues safely.
+            Without travel support, we can't compete beyond our local region.
+          </p>
+        </div>
+
+        <!-- Card 4: Outreach -->
+        <div class="power-card" role="listitem">
+          <div class="power-icon" aria-hidden="true">
+            <!-- People / community icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="power-title">Outreach &amp; Education</h3>
+          <p class="power-desc">
+            Community workshops, school demos, and events that bring robotics to
+            students who've never had the chance to build something — yet.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trust Strip ────────────────────────────────────────────── -->
+  <div class="donate-trust" role="region" aria-label="Donation transparency">
+    <div class="container">
+      <div class="trust-items">
+
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true">
+            <!-- Shield / verified icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <strong>Tax-deductible</strong>
+          <p>
+            Processed by HCB, a registered 501(c)(3) nonprofit.
+            Keep your receipt for your records.
+          </p>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true">
+            <!-- Eye / transparency icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <strong>Fully transparent</strong>
+          <p>
+            HCB keeps a public ledger of all transactions.
+            Every dollar is visible and accountable.
+          </p>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true">
+            <!-- Target / direct icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <strong>Goes directly to us</strong>
+          <p>
+            Funds land in our team account. No overhead fees.
+            Spent entirely on robot, competition, and community.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Donation Form ──────────────────────────────────────────── -->
+  <section class="donate-form-section" aria-labelledby="form-heading">
+
+    <div class="donate-form-intro">
+      <span class="section-label">Ready to contribute</span>
+      <h2 id="form-heading">Make your donation</h2>
+      <p>
+        Secure, card-based donations processed by HCB, a 501(c)(3) nonprofit.
+        Any amount makes a real difference.
+      </p>
+    </div>
+
+    <!--
+      DONATION IFRAME — do not change the src attribute.
+      src: https://hcb.hackclub.com/donations/start/heroesofthesea
+    -->
+    <div class="donate-frame-box" role="region" aria-label="Donation form">
+      <iframe
+        src="https://hcb.hackclub.com/donations/start/heroesofthesea"
+        style="border:none;"
+        name="donateFrame"
+        scrolling="yes"
+        frameborder="0"
+        marginheight="0px"
+        marginwidth="0px"
+        height="512px"
+        width="512px"
+        allowfullscreen
+        title="Donate to Heroes of the Sea"
+      ></iframe>
+    </div>
+
+    <p class="donate-footer-note">
+      For other payment methods, please contact
+      <a href="mailto:info@heroesofthesea.pt">info@heroesofthesea.pt</a>.
+      Heroes Of The Sea is fiscally sponsored by The Hack Foundation (d.b.a.&nbsp;Hack&nbsp;Club),
+      a 501(c)(3) nonprofit (EIN:&nbsp;81-2908499).
+    </p>
+
+  </section>
+
+</BaseLayout>

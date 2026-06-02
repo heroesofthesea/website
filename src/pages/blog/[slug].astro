@@ -1,0 +1,30 @@
+---
+// Individual blog post page (/blog/[slug])
+// Rendered from src/content/blog/*.md via Astro content collections
+import { getCollection, getEntry } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+// Generate one static path per post
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props:  { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+---
+
+<ArticleLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  headings={headings}
+  body={post.body}
+  date={post.data.date}
+  author={post.data.author}
+  category="Blog post"
+>
+  <Content />
+</ArticleLayout>

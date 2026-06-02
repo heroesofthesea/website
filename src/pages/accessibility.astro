@@ -1,0 +1,22 @@
+---
+// Accessibility Statement page (/accessibility)
+// Powered by src/content/pages/accessibility.md
+// Uses ArticleLayout for the TOC sidebar + reading time treatment
+import { getEntry } from 'astro:content';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+const entry = await getEntry('pages', 'accessibility');
+if (!entry) throw new Error('Accessibility page content not found');
+
+const { Content, headings } = await entry.render();
+---
+
+<ArticleLayout
+  title={entry.data.title}
+  description="Heroes of the Sea accessibility statement — our commitment to WCAG 2.2 AA compliance."
+  headings={headings}
+  body={entry.body}
+  category="Accessibility"
+>
+  <Content />
+</ArticleLayout>

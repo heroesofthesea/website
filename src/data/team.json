@@ -1,0 +1,75 @@
+{
+  "members": [
+    {
+      "name": "TODO: Member Name",
+      "role": "Team Captain",
+      "group": "Leadership",
+      "bio": "TODO: Short bio describing this member's role and contributions to the team.",
+      "photo": "",
+      "links": [
+        { "type": "github", "url": "https://github.com/" },
+        { "type": "linkedin", "url": "https://linkedin.com/in/" }
+      ]
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "Head Programmer",
+      "group": "Programming",
+      "bio": "TODO: Short bio.",
+      "photo": "",
+      "links": [
+        { "type": "github", "url": "https://github.com/" }
+      ]
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "Software Engineer",
+      "group": "Programming",
+      "bio": "",
+      "photo": "",
+      "links": []
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "Lead Builder",
+      "group": "Build",
+      "bio": "TODO: Short bio.",
+      "photo": "",
+      "links": []
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "Mechanical Engineer",
+      "group": "Build",
+      "bio": "",
+      "photo": "",
+      "links": []
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "CAD Designer",
+      "group": "Build",
+      "bio": "",
+      "photo": "",
+      "links": []
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "Outreach Lead",
+      "group": "Outreach",
+      "bio": "TODO: Short bio.",
+      "photo": "",
+      "links": [
+        { "type": "linkedin", "url": "https://linkedin.com/in/" }
+      ]
+    },
+    {
+      "name": "TODO: Member Name",
+      "role": "Media & Communications",
+      "group": "Outreach",
+      "bio": "",
+      "photo": "",
+      "links": []
+    }
+  ]
+}
