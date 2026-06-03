@@ -4,7 +4,7 @@ title: "Accessibility Statement"
 
 <!-- TODO: Finalize this accessibility statement with your team's specific details and contact information. -->
 
-*Last reviewed: TODO: [Date]*
+*Last reviewed: 3rd of June, 2026*
 
 Heroes of the Sea is committed to ensuring this website is accessible to everyone, including people with disabilities. We believe accessibility is not a checkbox — it's an ongoing commitment to making sure no one is excluded from our story.
 
@@ -27,14 +27,11 @@ This site is built with the following accessibility practices in mind:
 
 ## Assistive Technologies
 
-This site has been tested with the following assistive technologies:
-
-- TODO: List screen readers and browsers tested (e.g., NVDA + Firefox, VoiceOver + Safari, TalkBack + Chrome)
-- TODO: List any other testing tools used (e.g., axe DevTools, Lighthouse)
+This site has not been tested with any assistive technologies.
 
 ## Known Issues
 
-TODO: List any known accessibility issues or limitations, even if you are working to resolve them. Transparency here builds trust. If there are none, state: "We are not currently aware of any accessibility issues. If you find one, please let us know."
+We are not currently aware of any accessibility issues. If you find one, please let us know.
 
 ## Third-Party Content
 
@@ -44,11 +41,7 @@ Some pages on this site embed third-party content, including the donation form p
 
 We welcome feedback on the accessibility of this website. If you experience any difficulty accessing content, or if you find an accessibility issue we have missed, please contact us:
 
-- **Email:** TODO: [accessibility contact email — can be the same as info@heroesofthesea.pt]
-- We aim to respond within **TODO: [timeframe, e.g., 5 business days]**.
+- **Email:** info@heroesofthesea.pt
+- We aim to respond within 5 business days.
 
 Your feedback helps us improve the experience for everyone.
-
-## Enforcement
-
-TODO: If applicable, note any formal accessibility enforcement body relevant to your jurisdiction (e.g., for EU sites, reference the relevant directive).
