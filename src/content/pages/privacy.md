@@ -4,7 +4,7 @@ title: "Privacy Policy"
 
 <!-- TODO: Replace placeholder text with finalized legal copy. This is a placeholder only. -->
 
-*Last updated: TODO: [Date]*
+*Last updated: 3rd of June, 2026*
 
 Heroes of the Sea ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and handle information when you visit our website at heroesofthesea.pt.
 
@@ -38,7 +38,7 @@ This site does **not** use cookies for analytics or tracking. Plausible Analytic
 
 ## Data Retention
 
-TODO: Describe how long data is stored and the deletion process.
+For data from Plausible Analytics, we store data for as long as possible for our own analytics. This data does not include any personal information.
 
 ## Your Rights
 
