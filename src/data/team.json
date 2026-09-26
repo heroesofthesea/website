@@ -1,38 +1,126 @@
 {
   "members": [
     {
+      "name": "Martim Glória",
+      "pronouns": "(he/him)",
+      "role": "Team Captain",
+      "group": "Leadership",
+      "bio": "International Student passionate about technology innovation, psychology, physics literature and so much more!!!.",
+      "photo": "/images/martimgloria.jpg",
+      "links": [
+        {
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/martim-gl%C3%B3ria-396179349/"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/MGVs009"
+        }
+      ]
+    },
+    {
+      "name": "Lourenço Freire",
+      "pronouns": "(he/him)",
+      "role": "Hardware Lead and Developer",
+      "group": "Development",
+      "bio": "Artist, cosplayer, developer, and robotics member — blending creativity, engineering, and hands-on making into every build.",
+      "photo": "/images/lourencofreire.png",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/"
+        }
+      ]
+    },
+    {
+      "name": "Bruna Rung",
+      "pronouns": "(she/her)",
+      "role": "Software Lead and Developer",
+      "group": "Development",
+      "bio": "Software developer with a love for music, logic, and creative problem-solving — turning code and creativity into meaningful projects.",
+      "photo": "/images/burna-rung.jpeg",
+      "links": []
+    },
+    {
       "name": "Beato",
       "pronouns": "(they/them)",
-      "role": "Team Lead and Outreach",
-      "group": "Leadership",
+      "role": "Social Media Lead",
+      "group": "Social Media",
       "bio": "Beato is a part of the Leadership team of HOTS and Hack Club's Club Operations team.",
       "photo": "https://cdn.hackclub.com/019e8829-432c-719c-b7c9-c34ea4b84821/05-22-2026-0928.png",
       "links": [
-        { "type": "github", "url": "https://github.com/whatbeato" },
-        { "type": "linkedin", "url": "https://linkedin.com/in/whatbeatoo" }
+        {
+          "type": "github",
+          "url": "https://github.com/whatbeato"
+        },
+        {
+          "type": "linkedin",
+          "url": "https://linkedin.com/in/whatbeatoo"
+        }
       ]
     },
     {
-      "name": "Martim Glória",
-      "pronouns": "(he/him)",
-      "role": "Team Captain and Batman",
-      "group": "Leadership",
-      "bio": "They call him Batman of Azeitão",
-      "photo": "https://cdn.hackclub.com/019e8835-2601-7f02-81b2-85e5dbd63b08/mgloria.png",
-      "links": [
-        { "type": "linkedin", "url": "https://www.linkedin.com/in/martim-gl%C3%B3ria-396179349/" }
-      ]
+      "name": "Beatriz Sousa",
+      "pronouns": "(she/her)",
+      "role": "External Mentor",
+      "group": "External Mentor",
+      "bio": "Colégio Atlântico alumnus, currently studying Computer Science at NOVA FCT. She participated in Astronauta por um Dia.",
+      "photo": "/images/beatriz-sousa.png",
+      "links": []
     },
     {
-      "name": "Lourenço  F.",
+      "name": "Pedro Dias",
       "pronouns": "(he/him)",
-      "role": "Lead Developer",
+      "role": "Lead coach",
+      "group": "Coaching",
+      "bio": "Physics, Chemistry, CS, Robotics, and STEM teacher, passionate about teaching and discovering new ways to tinker with technology.",
+      "photo": "/pedro-dias.jpg",
+      "links": []
+    },
+    {
+      "name": "Guilherme Albernaz",
+      "pronouns": "(he/him)",
+      "role": "Software Developer",
       "group": "Development",
-      "bio": "404: too short for a bio  ",
+      "bio": "Computer Science and Mathematics enthusiast, always idealizing logical systems and computational thinking.",
+      "photo": "/images/guilherme-albernaz.jpg",
+      "links": []
+    },
+    {
+      "name": "Pedro Albernaz",
+      "pronouns": "(he/him)",
+      "role": "Hardware developer",
+      "group": "Development",
+      "bio": "Chemistry and Physics student, passionate about real-world problems and their possible engineering solutions.",
+      "photo": "/images/pedro-albernaz.jpg",
+      "links": []
+    },
+    {
+      "name": "Revealing soon!",
+      "pronouns": "",
+      "role": "Team member",
+      "group": "Coming soon",
+      "bio": "Revealing soon!",
       "photo": "",
-      "links": [
-        { "type": "github", "url": "https://github.com/" }
-      ]
+      "links": []
+    },
+    {
+      "name": "Revealing soon!",
+      "pronouns": "",
+      "role": "Team member",
+      "group": "Coming soon",
+      "bio": "Revealing soon!",
+      "photo": "",
+      "links": []
+    },
+    {
+      "name": "Revealing soon!",
+      "pronouns": "",
+      "role": "Team member",
+      "group": "Coming soon",
+      "bio": "Revealing soon!",
+      "photo": "",
+      "links": []
     }
   ]
 }

@@ -2,7 +2,6 @@
 title: "Privacy Policy"
 ---
 
-<!-- TODO: Replace placeholder text with finalized legal copy. This is a placeholder only. -->
 
 *Last updated: 3rd of June, 2026*
 
@@ -12,7 +11,7 @@ Heroes of the Sea ("we," "our," or "us") is committed to protecting your privacy
 
 ### Information You Provide
 
-TODO: Describe what information is collected directly from users (e.g., contact forms, email newsletter sign-up, donation forms). If no forms are present, state that.
+This site does not currently collect personal information directly through contact forms, sign-up forms, or donation forms.
 
 ### Automatically Collected Information
 
@@ -34,8 +33,6 @@ This site does **not** use cookies for analytics or tracking. Plausible Analytic
 
 **Plausible Analytics** — anonymous, cookieless page-view statistics. No personal data is collected. See above for details.
 
-**HCB** — if you make a donation via the link on our Donate page, you will be directed to a payment page operated by HCB. Donations are subject to [HCB's privacy policy](https://hackclub.com/privacy/). We do not handle payment information directly.
-
 ## Data Retention
 
 For data from Plausible Analytics, we store data for as long as possible for our own analytics. This data does not include any personal information.
@@ -44,19 +41,10 @@ For data from Plausible Analytics, we store data for as long as possible for our
 
 Depending on your location, you may have rights regarding your personal data, including the right to access, correct, or delete information we hold about you.
 
-To exercise any of these rights, please contact us at **info@heroesofthesea.pt**.
-
 ## Children's Privacy
 
-Our website is intended for general audiences. TODO: Describe whether the site is directed at children and any applicable protections (e.g., COPPA compliance if applicable).
+Our website is intended for general audiences and does not knowingly collect personal information from children.
 
 ## Changes to This Policy
 
 We may update this Privacy Policy from time to time. We will indicate the date of the most recent revision at the top of this page. Continued use of the site after changes are posted constitutes acceptance of the revised policy.
-
-## Contact Us
-
-If you have any questions about this Privacy Policy, please contact us:
-
-- **Email:** info@heroesofthesea.pt
-- **Team:** Heroes of the Sea, FIRST Tech Challenge #34200

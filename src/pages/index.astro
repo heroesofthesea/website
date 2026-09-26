@@ -1,9 +1,7 @@
 ---
-// Home page (/)
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Fetch latest 2 posts for the home page preview
 const allPosts = await getCollection('blog');
 const latestPosts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -23,8 +21,6 @@ function readingTime(body: string): number {
   description="Heroes of the Sea is a student-led FIRST Tech Challenge robotics team (#34200) building robots, community, and the next generation of problem-solvers."
 >
 
-  <!-- ── Hero ──────────────────────────────────────────────────── -->
-  <!-- Background image: /images/background.png (competition arena) -->
   <section class="hero" aria-label="Hero">
     <div class="container hero-content">
       <span class="hero-eyebrow">FIRST Tech Challenge · Team #34200</span>
@@ -36,10 +32,8 @@ function readingTime(body: string): number {
     </div>
   </section>
 
-  <!-- ── Stats Strip ────────────────────────────────────────────── -->
   <div class="stats-strip" role="region" aria-label="Team at a glance">
     <div class="container">
-      <!-- TODO: Update Season year, Members count as the team grows -->
       <dl class="stats-grid">
         <div class="stat">
           <dt class="stat-label">Season</dt>
@@ -47,7 +41,7 @@ function readingTime(body: string): number {
         </div>
         <div class="stat">
           <dt class="stat-label">Members</dt>
-          <dd class="stat-number">5</dd>
+          <dd class="stat-number">7</dd>
         </div>
         <div class="stat">
           <dt class="stat-label">Team Number</dt>
@@ -57,7 +51,6 @@ function readingTime(body: string): number {
     </div>
   </div>
 
-  <!-- ── Who Are We ─────────────────────────────────────────────── -->
   <section class="section" aria-labelledby="who-heading">
     <div class="container">
       <span class="section-label">Who are we</span>
@@ -65,7 +58,6 @@ function readingTime(body: string): number {
         We're a teen-ran <em>FIRST</em> Tech Challenge team
       </h2>
 
-      <!-- Three info cards — accent color, white text (5.5:1 contrast ✓) -->
       <div class="card-grid" style="margin-top: 3rem;">
 
         <div class="card">
@@ -80,13 +72,9 @@ function readingTime(body: string): number {
         <div class="card">
           <h3>Our team</h3>
           <p>
-            We are a group of
-            <!-- TODO: Replace [X] with the actual number of students -->
-            [X] students from
-            <!-- TODO: Replace [school/city name] with actual school/city -->
-            [school/city name], competing in the FIRST Tech Challenge. From builders
-            to programmers to strategists, every one of us brings something different
-            to the table.
+            We are a group of 7 students from Colégio Atlântico, competing in the
+            FIRST Tech Challenge. From builders to programmers to strategists,
+            every one of us brings something different to the table.
           </p>
         </div>
 
@@ -103,7 +91,6 @@ function readingTime(body: string): number {
     </div>
   </section>
 
-  <!-- ── What is FTC? ───────────────────────────────────────────── -->
   <section class="section section--tight" aria-labelledby="ftc-heading">
     <div class="container">
       <div class="ftc-grid">
@@ -169,7 +156,23 @@ function readingTime(body: string): number {
     </div>
   </section>
 
-  <!-- ── Latest from the Blog ───────────────────────────────────── -->
+  <section class="section section--tight" aria-labelledby="scrimmage-gallery-heading">
+    <div class="container">
+      <div class="home-blog-header">
+        <div>
+          <span class="section-label">From the scrimmage</span>
+          <h2 id="scrimmage-gallery-heading">Moments from our first event</h2>
+        </div>
+      </div>
+
+      <div class="scrimmage-gallery-grid">
+        <img src="/images/LISBON SCRIMMAGE_007.jpg" alt="Heroes of the Sea at the Lisbon Scrimmage" loading="lazy" />
+        <img src="/images/LISBON SCRIMMAGE_010.jpg" alt="Team members preparing at the Lisbon Scrimmage" loading="lazy" />
+        <img src="/images/LISBON SCRIMMAGE_016.jpg" alt="Team posing during the Lisbon Scrimmage" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   {latestPosts.length > 0 && (
     <section class="section section--tight" aria-labelledby="updates-heading">
       <div class="container">
@@ -205,8 +208,6 @@ function readingTime(body: string): number {
     </section>
   )}
 
-  <!-- ── CTA — Support the team ────────────────────────────────── -->
-  <!-- Full-bleed section with the arena photo (echoes the home hero) -->
   <div class="cta-section" role="region" aria-labelledby="cta-heading">
     <div class="container">
       <div class="cta-inner">

@@ -1,10 +1,7 @@
 ---
-// Individual blog post page (/blog/[slug])
-// Rendered from src/content/blog/*.md via Astro content collections
 import { getCollection, getEntry } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
-// Generate one static path per post
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map(post => ({

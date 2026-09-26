@@ -1,8 +1,54 @@
 ---
-// Donate page (/donate)
-// IMPORTANT: The iframe src must never be changed.
-// Do not refer to HCB as "Hack Club Bank" anywhere on this page.
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const fundingConfig = {
+  totalRaised: 500,
+  milestones: [
+    { amount: 2500, label: 'Competition Robot' },
+    { amount: 4500, label: 'First International Competition' },
+    { amount: 6500, label: 'International Advancement Reserve' },
+    { amount: 7500, label: 'Prototyping & Manufacturing' },
+    { amount: 8500, label: 'Outreach & Team Infrastructure' },
+    { amount: 10000, label: 'Fully Funded 2026/27 Season' },
+    { amount: 12500, label: 'FTC Training Field' },
+    { amount: 15000, label: 'R&D & Future Engineering Projects' },
+    { amount: 20000, label: 'Long-Term Team Development' },
+  ]
+};
+
+const milestoneState = (() => {
+  const milestones = fundingConfig.milestones;
+  const totalRaised = fundingConfig.totalRaised;
+  const latestCompleted = [...milestones]
+    .reverse()
+    .find(milestone => totalRaised >= milestone.amount);
+
+  const nextMilestone = milestones.find(milestone => totalRaised < milestone.amount) ?? milestones[milestones.length - 1];
+  const previousMilestone = [...milestones]
+    .reverse()
+    .find(milestone => milestone.amount < nextMilestone.amount) ?? { amount: 0, label: 'Start' };
+
+  const rangeStart = previousMilestone.amount;
+  const rangeEnd = nextMilestone.amount;
+  const interval = Math.max(rangeEnd - rangeStart, 1);
+  const progress = totalRaised >= rangeEnd
+    ? 100
+    : Math.max(0, Math.min(100, ((totalRaised - rangeStart) / interval) * 100));
+
+  const isCompleted = totalRaised >= milestones[milestones.length - 1].amount;
+
+  return {
+    totalRaised,
+    milestones,
+    latestCompleted,
+    nextMilestone,
+    previousMilestone,
+    rangeStart,
+    rangeEnd,
+    progress,
+    isCompleted,
+  };
+})();
 ---
 
 <BaseLayout
@@ -10,7 +56,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Support Heroes of the Sea — your donation funds the robot, the competitions, and the community work that makes this team more than just robotics."
 >
 
-  <!-- ── Page Banner ───────────────────────────────────────────── -->
   <div class="page-hero">
     <div class="container">
       <span class="section-label">Support the team</span>
@@ -22,7 +67,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div>
 
-  <!-- ── What You're Powering ──────────────────────────────────── -->
   <section class="donate-powers" aria-labelledby="powers-heading">
     <div class="container">
 
@@ -37,10 +81,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="powers-grid" role="list">
 
-        <!-- Card 1: Robot Construction -->
         <div class="power-card" role="listitem">
           <div class="power-icon" aria-hidden="true">
-            <!-- Gear / cog icon -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"/>
               <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
@@ -54,10 +96,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <!-- Card 2: Competition Entry -->
         <div class="power-card" role="listitem">
           <div class="power-icon" aria-hidden="true">
-            <!-- Trophy icon -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M8 21h8M12 17v4M17 3H7l1 9a4 4 0 0 0 8 0l1-9Z"/>
               <path d="M7 4H4a2 2 0 0 0 0 4h3M17 4h3a2 2 0 0 1 0 4h-3"/>
@@ -70,10 +110,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <!-- Card 3: Travel -->
         <div class="power-card" role="listitem">
           <div class="power-icon" aria-hidden="true">
-            <!-- Map pin / route icon -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8Z"/>
               <circle cx="12" cy="10" r="3"/>
@@ -86,10 +124,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <!-- Card 4: Outreach -->
         <div class="power-card" role="listitem">
           <div class="power-icon" aria-hidden="true">
-            <!-- People / community icon -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
@@ -107,79 +143,131 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ── Trust Strip ────────────────────────────────────────────── -->
-  <div class="donate-trust" role="region" aria-label="Donation transparency">
+  <section class="support-campaign-section" aria-labelledby="why-support-heading">
     <div class="container">
-      <div class="trust-items">
+      <div class="support-campaign-intro">
+        <span class="section-label">Why support us</span>
+        <h2 id="why-support-heading">We’ve already shown what we can do with nine days. Now we want to see what we can do with a full season.</h2>
+      </div>
 
-        <div class="trust-item">
-          <div class="trust-icon" aria-hidden="true">
-            <!-- Eye / transparency icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </div>
-          <strong>Fully transparent</strong>
-          <p>
-            HCB keeps a public ledger of every transaction.
-            <a href="https://hcb.hackclub.com/heroesofthesea" target="_blank" rel="noopener noreferrer">
-              View our finances
-            </a>.
-          </p>
-        </div>
+      <p class="support-campaign-lead">
+        Heroes of the Sea started in 2026 as one of Portugal’s first FIRST Tech Challenge teams.
+        With only nine days to design, build and program our first competition robot, we entered the
+        Lisbon Scrimmage, became Alliance Captains, and received the Sustainability Award.
+      </p>
 
-        <div class="trust-item">
-          <div class="trust-icon" aria-hidden="true">
-            <!-- Target / direct icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-            </svg>
-          </div>
-          <strong>Goes directly to us</strong>
-          <p>
-            Funds land in our team account. No overhead fees.
-            Spent entirely on robot, competition, and community.
-          </p>
-        </div>
+      <p class="support-campaign-lead">
+        Today, we are a team of around 15 students, working across hardware, software, CAD and
+        outreach, with ambitions that go beyond a single robot or competition.
+      </p>
 
+      <div class="support-values-grid" role="list" aria-label="Reasons to support the team">
+        <article class="support-value-card" role="listitem">
+          <h3>BUILD</h3>
+          <p>Turn designs into real competition robots through hardware, electronics, materials and manufacturing.</p>
+        </article>
+
+        <article class="support-value-card" role="listitem">
+          <h3>COMPETE</h3>
+          <p>Take our team and our robots beyond Portugal and compete internationally.</p>
+        </article>
+
+        <article class="support-value-card" role="listitem">
+          <h3>LEARN</h3>
+          <p>Give students the opportunity to solve real engineering problems through design, programming, manufacturing and iteration.</p>
+        </article>
+
+        <article class="support-value-card" role="listitem">
+          <h3>GROW</h3>
+          <p>Develop new projects, expand STEM outreach and help build a stronger FIRST community in Portugal.</p>
+        </article>
+      </div>
+
+      <p class="support-campaign-quote">
+        You’re not just funding a robot. You’re giving us the resources to build, compete, experiment and create what comes next.
+      </p>
+
+      <div class="support-campaign-links">
+        <a href="#our-next-goal-heading" class="support-campaign-link">→ See our next goal</a>
+        <a href="#for-partners" class="support-campaign-link">→ Become a partner</a>
       </div>
     </div>
-  </div>
-
-  <!-- ── Donation Form ──────────────────────────────────────────── -->
-  <section class="donate-form-section" aria-labelledby="form-heading">
-
-    <div class="donate-form-intro">
-      <span class="section-label">Ready to contribute</span>
-      <h2 id="form-heading">Make your donation</h2>
-      <p>
-        Secure, card-based donations processed by HCB, a 501(c)(3) nonprofit.
-        Any amount makes a real difference.
-      </p>
-    </div>
-
-    <a
-      href="https://hcb.hackclub.com/donations/start/heroesofthesea"
-      class="btn-primary donate-cta-btn"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Donate now
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-
-    <p class="donate-footer-note">
-      For other payment methods, please contact
-      <a href="mailto:info@heroesofthesea.pt">info@heroesofthesea.pt</a>.
-      Heroes Of The Sea is fiscally sponsored by The Hack Foundation (d.b.a.&nbsp;Hack&nbsp;Club),
-      a 501(c)(3) nonprofit (EIN:&nbsp;81-2908499).
-    </p>
-
   </section>
+
+  <section id="for-partners" class="partners-section" aria-labelledby="for-partners-heading">
+    <div class="container">
+      <div class="donate-powers-lead">
+        <span class="section-label">For Partners</span>
+        <h2 id="for-partners-heading">What companies and organisations receive in return</h2>
+        <p>
+          We believe the strongest partnerships are built on shared purpose. By supporting Heroes of the Sea,
+          partners help us grow while gaining meaningful visibility and a chance to invest in the next generation of innovators.
+        </p>
+      </div>
+
+      <div class="partners-grid">
+        <div class="partner-item">
+          <strong>Visibility</strong>
+          <p>Recognition on the robot, team clothing, competition materials, online channels and event presence.</p>
+        </div>
+
+        <div class="partner-item">
+          <strong>Community impact</strong>
+          <p>Support STEM education, outreach activities and the development of a stronger robotics culture in Portugal.</p>
+        </div>
+
+        <div class="partner-item">
+          <strong>Talent pipeline</strong>
+          <p>Connect with motivated students and early-career engineers who are building practical technical skills every day.</p>
+        </div>
+
+        <div class="partner-item">
+          <strong>Shared mission</strong>
+          <p>Back a team that values creativity, teamwork, problem-solving and the future of engineering in Portugal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="funding-goal-section" aria-labelledby="our-next-goal-heading">
+    <div class="container">
+      <div class="funding-goal-card">
+        <div class="funding-goal-header">
+          <span class="section-label">Our Next Goal</span>
+          <h2 id="our-next-goal-heading">€2,500 — Build our 2026/27 Competition Robot</h2>
+        </div>
+
+        <div class="funding-goal-amounts" aria-live="polite">
+          <span>€{milestoneState.totalRaised.toLocaleString()} / €{milestoneState.nextMilestone.amount.toLocaleString()}</span>
+        </div>
+
+        <div class="funding-goal-progress" aria-label="Progress toward the current milestone" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(milestoneState.progress)}>
+          <span style={{ width: `${milestoneState.progress}%` }}></span>
+        </div>
+
+        <div class="funding-goal-status">
+          {milestoneState.isCompleted ? (
+            <p><strong>Fully funded.</strong> We have reached the long-term goal.</p>
+          ) : (
+            <>
+              {milestoneState.latestCompleted ? (
+                <p><strong>Latest completed:</strong> €{milestoneState.latestCompleted.amount.toLocaleString()} — {milestoneState.latestCompleted.label} ✓</p>
+              ) : (
+                <p><strong>Latest completed:</strong> No milestone reached yet.</p>
+              )}
+              <p><strong>Next goal:</strong> €{milestoneState.nextMilestone.amount.toLocaleString()} — {milestoneState.nextMilestone.label}</p>
+            </>
+          )}
+        </div>
+
+        <p class="funding-goal-copy">
+          Our next milestone is funding the hardware and electronics required to build our BIOBUZZ competition robot.
+        </p>
+
+        <a href="https://forms.cloud.microsoft/e/j9KJUpUVYC" target="_blank" rel="noopener noreferrer" class="btn-secondary funding-goal-button">Let’s talk!</a>
+      </div>
+    </div>
+  </section>
+
 
 </BaseLayout>

@@ -1,6 +1,5 @@
 import { defineCollection, z } from 'astro:content';
 
-// Blog posts: markdown files in src/content/blog/
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
@@ -11,7 +10,6 @@ const blog = defineCollection({
   }),
 });
 
-// Static markdown pages (Privacy Policy, Accessibility Statement)
 const pages = defineCollection({
   type: 'content',
   schema: z.object({

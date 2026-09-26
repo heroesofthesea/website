@@ -1,10 +1,7 @@
 ---
-// Team page (/team)
-// Driven by src/data/team.json — edit that file to add/remove members
 import BaseLayout from '../layouts/BaseLayout.astro';
 import teamData from '../data/team.json';
 
-// ── Types ──────────────────────────────────────────────────────────────
 interface MemberLink {
   type: 'github' | 'linkedin' | string;
   url: string;
@@ -21,8 +18,13 @@ interface Member {
 }
 
 const members = teamData.members as Member[];
+const orderedFeaturedNames = ['Pedro Dias', 'Martim Glória', 'Beatriz Sousa'];
+const featuredMembers = orderedFeaturedNames
+  .map(name => members.find(member => member.name === name))
+  .filter((member): member is Member => Boolean(member));
+const otherMembers = members.filter(member => !orderedFeaturedNames.includes(member.name));
+const leaderName = 'Martim Glória';
 
-// ── Helpers ────────────────────────────────────────────────────────────
 function getInitials(name: string): string {
   return name
     .split(' ')
@@ -44,7 +46,6 @@ const linkIcons: Record<string, string> = {
   description="Meet the students of Heroes of the Sea — builders, programmers, strategists, and everything in between."
 >
 
-  <!-- Page hero -->
   <div class="page-hero">
     <div class="container">
       <span class="section-label">The people behind the robot</span>
@@ -52,14 +53,73 @@ const linkIcons: Record<string, string> = {
     </div>
   </div>
 
-  <!-- Team grid — flat, no subteam grouping -->
   <section class="section section--tight" aria-label="Team members">
     <div class="container">
-      <div class="member-grid">
-        {members.map(member => (
-          <article class="member-card" aria-label={`${member.name}, ${member.role}`}>
+      <div class="member-grid member-grid--featured">
+        {featuredMembers.map(member => (
+          <article
+            class="member-card member-card--featured"
+            aria-label={`${member.name}, ${member.role}`}
+          >
 
-            <!-- Photo or initials placeholder -->
+            <div class="member-photo-wrap" aria-hidden="true">
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={`Photo of ${member.name}`}
+                  width="72"
+                  height="72"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="member-initials">{getInitials(member.name)}</div>
+              )}
+            </div>
+
+            <div>
+              <p class="member-name">
+                {member.name}
+                {member.pronouns && member.pronouns.trim() && (
+                  <span class="member-pronouns">{member.pronouns}</span>
+                )}
+              </p>
+              <p class="member-role">{member.role}</p>
+            </div>
+
+            {member.bio && member.bio.trim() && (
+              <p class="member-bio">{member.bio}</p>
+            )}
+
+            {member.links && member.links.length > 0 && (
+              <ul class="member-links" role="list" aria-label={`Links for ${member.name}`}>
+                {member.links.map(link => (
+                  <li>
+                    <a
+                      class="member-link"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on ${link.type.charAt(0).toUpperCase() + link.type.slice(1)}`}
+                    >
+                      <Fragment set:html={linkIcons[link.type] ?? ''} />
+                      {link.type.charAt(0).toUpperCase() + link.type.slice(1)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+          </article>
+        ))}
+      </div>
+
+      <div class="member-grid">
+        {otherMembers.map(member => (
+          <article
+            class={`member-card ${member.name === leaderName ? 'member-card--leader' : ''}`}
+            aria-label={`${member.name}, ${member.role}`}
+          >
+
             <div class="member-photo-wrap" aria-hidden="true">
               {member.photo ? (
                 <img

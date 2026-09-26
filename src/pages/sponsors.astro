@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Sponsors"
+  description="Supporters and partners of Heroes of the Sea — FIRST Tech Challenge team #34200."
+>
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Our supporters</span>
+      <h1>Sponsors</h1>
+    </div>
+  </div>
+
+  <section class="section section--tight" aria-labelledby="sponsors-heading">
+    <div class="container">
+      <div class="sponsors-intro">
+        <h2 id="sponsors-heading">Partners helping us grow</h2>
+        <p>
+          We are grateful to the organisations and institutions supporting Heroes of the Sea and helping us build,
+          compete, and inspire new generations of engineers and problem-solvers.
+        </p>
+      </div>
+
+      <div class="sponsors-grid">
+        <div class="sponsor-card">
+          <img src="/images/colegioatlantico.png" alt="Colégio Atlântico" loading="lazy" />
+        </div>
+
+        <div class="sponsor-card">
+          <img src="/images/raisebox.png" alt="RaiseBox" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

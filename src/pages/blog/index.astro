@@ -1,15 +1,11 @@
 ---
-// Blog index (/blog)
-// Lists all posts from src/content/blog/, newest first
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const allPosts = await getCollection('blog');
 
-// Sort newest first
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// Reading time helper (matches ArticleLayout logic)
 function readingTime(body: string): number {
   const words = body.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 200));
@@ -27,7 +23,6 @@ function formatDate(date: Date): string {
   description="Updates, reflections, and season recaps from Heroes of the Sea — FIRST Tech Challenge Team #34200."
 >
 
-  <!-- Page hero -->
   <div class="page-hero">
     <div class="container">
       <span class="section-label">From the team</span>
@@ -37,7 +32,15 @@ function formatDate(date: Date): string {
 
   <section class="section section--tight" aria-label="Blog posts">
     <div class="container">
-      <div style="max-width: var(--content-width);">
+      <div class="scrimmage-gallery-wrap" style="max-width: var(--content-width);">
+        <div class="scrimmage-gallery-grid scrimmage-gallery-grid--compact">
+          <img src="/images/LISBON SCRIMMAGE_007.jpg" alt="Heroes of the Sea at the Lisbon Scrimmage" loading="lazy" />
+          <img src="/images/LISBON SCRIMMAGE_010.jpg" alt="Team members preparing at the Lisbon Scrimmage" loading="lazy" />
+          <img src="/images/LISBON SCRIMMAGE_040.jpg" alt="Team celebrating during the Lisbon Scrimmage" loading="lazy" />
+        </div>
+      </div>
+
+      <div style="max-width: var(--content-width); margin-top: var(--space-10);">
 
         {posts.length === 0 && (
           <p style="color: var(--color-text-muted);">No posts yet — check back soon.</p>

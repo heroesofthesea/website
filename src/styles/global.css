@@ -1,55 +1,51 @@
-/* ============================================================
-   HEROES OF THE SEA — Global Styles
-   Palette: soft blacks · crimson red · clean white
-   The competition arena photo sets the tone — dramatic, bold.
-   ============================================================ */
 
-/* ── Custom Properties ─────────────────────────────────────── */
+
+
 :root {
-  /* ── Backgrounds (soft blacks, warm grey tones) ─── */
-  --color-bg:     #141414;   /* main background — warm near-black   */
-  --color-bg-2:   #1c1c1c;   /* cards, panels, footer               */
-  --color-bg-3:   #252525;   /* elevated surfaces, hover states      */
+  
+  --color-bg:     #141414;   
+  --color-bg-2:   #1c1c1c;   
+  --color-bg-3:   #252525;   
 
-  /* ── Red — the sole accent ─── */
-  /* Crimson for fills (buttons, card bg). White on this = 5.5:1 ✓ AA */
+  
+  
   --color-accent:       #c42828;
-  /* Slightly brighter for hover/active states */
+  
   --color-accent-hover: #d63232;
-  /* For text-level accents on dark bg. #f05050 on #141414 = 5.0:1 ✓ AA */
+  
   --color-accent-text:  #f05050;
-  /* Very subtle red wash — backgrounds, overlays */
+  
   --color-accent-wash:  rgba(196, 40, 40, 0.10);
 
-  /* ── Text & borders ─── */
-  /* #f2f2f2 on #141414 ≈ 16:1 ✓ */
+  
+  
   --color-text:         #f2f2f2;
-  /* #8a8a8a on #141414 ≈ 5.5:1 ✓ AA */
+  
   --color-text-muted:   #8a8a8a;
   --color-border:       #2e2e2e;
   --color-border-2:     #3c3c3c;
 
-  /* ── Typography ─── */
+  
   --font-display: 'Google Sans Display', 'Google Sans', sans-serif;
   --font-body:    'Google Sans', sans-serif;
 
-  /* ── Spacing ─── */
+  
   --space-1:   0.25rem;
   --space-2:   0.5rem;
   --space-3:   0.75rem;
   --space-4:   1rem;
   --space-5:   1.25rem;
   --space-6:   1.5rem;
-  --space-7:   1.75rem;  /* used in .home-post-card horizontal padding */
+  --space-7:   1.75rem;  
   --space-8:   2rem;
   --space-10:  2.5rem;
   --space-12:  3rem;
-  --space-14:  3.5rem;   /* used in .page-hero bottom padding */
+  --space-14:  3.5rem;   
   --space-16:  4rem;
   --space-20:  5rem;
   --space-24:  6rem;
 
-  /* ── Layout ─── */
+  
   --max-width:     1200px;
   --content-width: 720px;
   --radius-sm:     5px;
@@ -57,7 +53,7 @@
   --radius-lg:     16px;
   --radius-xl:     22px;
 
-  /* ── Motion ─── */
+  
   --ease:     cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --t-fast:   120ms;
@@ -65,18 +61,17 @@
   --t-slow:   350ms;
 }
 
-/* ── Reset ──────────────────────────────────────────────────── */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ── Base ───────────────────────────────────────────────────── */
+
 html {
   scroll-behavior: smooth;
-  /* clip instead of hidden — same visual result but does NOT create a scroll
-     container, so it doesn't force overflow-y:auto and break position:sticky */
+  
   overflow-x: clip;
 }
 
@@ -91,7 +86,7 @@ body {
   overflow-x: clip;
 }
 
-/* Extremely subtle scanline texture — adds depth without noise */
+
 body::before {
   content: '';
   position: fixed;
@@ -107,7 +102,7 @@ body::before {
   z-index: 9997;
 }
 
-/* ── Skip Link ──────────────────────────────────────────────── */
+
 .skip-link {
   position: absolute;
   top: -100%;
@@ -124,7 +119,7 @@ body::before {
 }
 .skip-link:focus { top: 0; }
 
-/* ── Focus ──────────────────────────────────────────────────── */
+
 :focus-visible {
   outline: 2px solid var(--color-accent-text);
   outline-offset: 3px;
@@ -132,7 +127,7 @@ body::before {
 }
 :focus:not(:focus-visible) { outline: none; }
 
-/* ── Typography ─────────────────────────────────────────────── */
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -164,7 +159,7 @@ a:hover { color: var(--color-text); }
 strong { font-weight: 700; }
 em     { font-style: italic; }
 
-/* ── Layout ─────────────────────────────────────────────────── */
+
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -174,7 +169,7 @@ em     { font-style: italic; }
 @media (min-width: 768px)  { .container { padding-inline: var(--space-8);  } }
 @media (min-width: 1024px) { .container { padding-inline: var(--space-12); } }
 
-/* ── Section Label (eyebrow text) ───────────────────────────── */
+
 .section-label {
   display: inline-block;
   font-size: 0.6875rem;
@@ -185,7 +180,7 @@ em     { font-style: italic; }
   margin-bottom: var(--space-4);
 }
 
-/* ── Keyframes ──────────────────────────────────────────────── */
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0);    }
@@ -196,7 +191,7 @@ em     { font-style: italic; }
   to   { opacity: 1; }
 }
 
-/* ── Header ─────────────────────────────────────────────────── */
+
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -205,14 +200,14 @@ em     { font-style: italic; }
   align-items: center;
   justify-content: space-between;
   padding: var(--space-3) var(--space-6);
-  /* Fades in to opaque on scroll via JS */
+  
   transition:
     background var(--t-slow) var(--ease),
     border-color var(--t-slow) var(--ease),
     backdrop-filter var(--t-slow) var(--ease);
 }
 
-/* When scrolled: solid dark background with blur */
+
 .site-header.scrolled {
   background: rgba(20, 20, 20, 0.96);
   backdrop-filter: blur(16px);
@@ -223,11 +218,11 @@ em     { font-style: italic; }
 @media (min-width: 768px)  { .site-header { padding: var(--space-3) var(--space-8);  } }
 @media (min-width: 1024px) { .site-header { padding: var(--space-3) var(--space-12); } }
 
-/* Logo */
+
 .site-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 .site-logo-img { height: 44px; width: auto; display: block; }
 
-/* Main nav */
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -249,11 +244,11 @@ em     { font-style: italic; }
   border-bottom-color: var(--color-accent-text);
 }
 
-/* Donate pill CTA */
+
 .main-nav a.nav-donate {
   padding: var(--space-2) var(--space-5);
   background: var(--color-accent);
-  color: #fff; /* white on #c42828 = 5.5:1 ✓ */
+  color: #fff; 
   border: none;
   border-radius: 100px;
   font-weight: 700;
@@ -269,7 +264,7 @@ em     { font-style: italic; }
   box-shadow: 0 4px 20px rgba(196, 40, 40, 0.40);
 }
 
-/* Hamburger */
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -337,15 +332,15 @@ em     { font-style: italic; }
   }
 }
 
-/* ── Main ───────────────────────────────────────────────────── */
+
 main { padding-top: 72px; }
 
-/* ── Footer ─────────────────────────────────────────────────── */
+
 .site-footer {
   background: var(--color-bg-2);
   border-top: 1px solid var(--color-border);
   padding: var(--space-12) 0 var(--space-8);
-  /* No margin-top — each page's last section already carries bottom padding */
+  
   margin-top: 0;
 }
 
@@ -435,44 +430,43 @@ main { padding-top: 72px; }
 }
 .footer-copy { font-size: 0.75rem; color: var(--color-text-muted); }
 
-/* ── Section ─────────────────────────────────────────────────── */
+
 .section        { padding: var(--space-24) 0; }
 .section--tight { padding: var(--space-16) 0; }
 
-/* ── Hero ───────────────────────────────────────────────────── */
+
 .hero {
   position: relative;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* Push content to roughly upper-third of the viewport */
+  
   padding-top: clamp(7rem, 26vh, 13rem);
   padding-bottom: var(--space-20);
   overflow: hidden;
 
-  /* Competition arena background photo */
+  
   background-image: url('/images/background.png');
   background-size: cover;
   background-position: center 30%;
-  background-color: var(--color-bg); /* fallback */
+  background-color: var(--color-bg); 
 }
 
-/* Gradient overlay — clears the middle so the photo breathes,
-   goes dark at bottom for text legibility                      */
+
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    /* Left-to-right dark vignette (where the text sits) */
+    
     linear-gradient(to right, rgba(20,20,20,0.75) 0%, rgba(20,20,20,0.15) 60%, transparent 100%),
-    /* Top-to-bottom fade for the header area */
+    
     linear-gradient(to bottom, rgba(20,20,20,0.65) 0%, rgba(20,20,20,0.0) 30%, rgba(20,20,20,0.0) 50%, rgba(20,20,20,0.90) 80%, rgba(20,20,20,1) 100%);
   z-index: 1;
 }
 
-/* Wave edge — transitions hero cleanly into the next section */
+
 .hero::after {
   content: '';
   position: absolute;
@@ -488,7 +482,7 @@ main { padding-top: 72px; }
   animation: fadeInUp var(--t-slow) var(--ease-out) 80ms both;
 }
 
-/* Eyebrow — small uppercase label */
+
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -507,11 +501,11 @@ main { padding-top: 72px; }
   border-radius: 50%;
   background: var(--color-accent);
   flex-shrink: 0;
-  /* Subtle pulse on load */
+  
   animation: fadeIn 600ms var(--ease-out) 300ms both;
 }
 
-/* Massive display headline */
+
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 700;
@@ -523,10 +517,10 @@ main { padding-top: 72px; }
   margin-bottom: var(--space-6);
 }
 
-/* "ROBOTS." pulled in crimson — the single bold color statement */
+
 .hero-headline .hero-accent {
   color: var(--color-accent-text);
-  /* Subtle text-shadow for depth over the photo */
+  
   text-shadow:
     0 0 60px rgba(196, 40, 40, 0.30),
     0 2px 12px rgba(0,0,0,0.5);
@@ -539,7 +533,7 @@ main { padding-top: 72px; }
   line-height: 1.65;
 }
 
-/* ── Info Cards (crimson fills, white text) ───────────────────── */
+
 .card-grid {
   display: grid;
   gap: var(--space-4);
@@ -549,8 +543,8 @@ main { padding-top: 72px; }
 @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .card {
-  background: var(--color-accent);         /* crimson */
-  color: #fff;                              /* white on #c42828 = 5.5:1 ✓ */
+  background: var(--color-accent);         
+  color: #fff;                              
   border-radius: var(--radius-lg);
   padding: var(--space-8);
   display: flex;
@@ -563,7 +557,7 @@ main { padding-top: 72px; }
     box-shadow var(--t-base) var(--ease);
 }
 
-/* Subtle diagonal highlight inside card */
+
 .card::before {
   content: '';
   position: absolute;
@@ -591,7 +585,7 @@ main { padding-top: 72px; }
   max-width: none;
 }
 
-/* ── Team Page ──────────────────────────────────────────────── */
+
 .team-group { margin-bottom: var(--space-16); }
 
 .team-group-title {
@@ -611,6 +605,11 @@ main { padding-top: 72px; }
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
+.member-grid--featured {
+  margin-bottom: var(--space-6);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .member-card {
   background: var(--color-bg-2);
   border: 1px solid var(--color-border);
@@ -628,6 +627,25 @@ main { padding-top: 72px; }
   border-color: var(--color-accent);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.25), 0 0 0 1px var(--color-accent-wash);
+}
+
+.member-card--featured {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
+.member-card--leader {
+  border-color: var(--color-border);
+  background: var(--color-bg-2);
+  box-shadow: none;
+}
+
+.member-card--leader .member-role {
+  color: var(--color-accent-text);
+}
+
+.member-card--leader .member-name {
+  font-size: 1.25rem;
 }
 
 .member-photo-wrap {
@@ -687,7 +705,7 @@ main { padding-top: 72px; }
 .member-link:hover { color: var(--color-text); border-color: var(--color-accent-text); }
 .member-link svg   { width: 12px; height: 12px; }
 
-/* ── Blog Index ──────────────────────────────────────────────── */
+
 .post-list { display: flex; flex-direction: column; }
 
 .post-card {
@@ -696,7 +714,7 @@ main { padding-top: 72px; }
   display: grid;
   gap: var(--space-3);
   position: relative;
-  /* Left-edge accent bar on hover */
+  
   padding-left: 0;
   border-left: 3px solid transparent;
   transition:
@@ -741,13 +759,13 @@ main { padding-top: 72px; }
 }
 .post-readmore:hover { gap: var(--space-4); color: var(--color-text); }
 
-/* ── Article Layout ──────────────────────────────────────────── */
+
 .article-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-12);
   align-items: start;
-  /* Top padding reduced — page header now lives in .page-hero banner above */
+  
   padding: var(--space-8) 0 var(--space-24);
 }
 @media (min-width: 1024px) {
@@ -788,7 +806,7 @@ main { padding-top: 72px; }
   font-size: 0.8125rem;
 }
 
-/* ── Prose ───────────────────────────────────────────────────── */
+
 .prose {
   color: var(--color-text);
   font-size: 1.0625rem;
@@ -847,7 +865,7 @@ main { padding-top: 72px; }
 .prose hr { border: none; border-top: 1px solid var(--color-border); margin: var(--space-12) 0; }
 .prose strong { color: var(--color-text); }
 
-/* ── TOC Sidebar ─────────────────────────────────────────────── */
+
 .toc-sidebar { display: none; }
 @media (min-width: 1024px) {
   .toc-sidebar {
@@ -907,10 +925,10 @@ main { padding-top: 72px; }
   font-weight: 700;
   background: var(--color-accent-wash);
 }
-/* H3 items indent slightly */
+
 .toc-item--h3 a { padding-left: calc(var(--space-3) + var(--space-4)); font-size: 0.75rem; }
 
-/* Mobile collapsible TOC */
+
 .toc-mobile {
   display: block;
   background: var(--color-bg-2);
@@ -943,9 +961,9 @@ main { padding-top: 72px; }
 .toc-mobile .toc-list { margin-top: var(--space-4); }
 .toc-mobile .toc-item a { font-size: 0.875rem; padding: var(--space-2) var(--space-3); }
 
-/* ── Donate Page ─────────────────────────────────────────────── */
 
-/* What you're powering — 2×2 grid of impact cards */
+
+
 .donate-powers {
   padding: var(--space-20) 0;
 }
@@ -1024,7 +1042,7 @@ main { padding-top: 72px; }
   flex-grow: 1;
 }
 
-/* Trust / transparency strip */
+
 .donate-trust {
   background: var(--color-bg-2);
   border-top: 1px solid var(--color-border);
@@ -1084,7 +1102,260 @@ main { padding-top: 72px; }
   margin: 0;
 }
 
-/* Donation form section */
+
+.support-campaign-section {
+  padding: var(--space-20) 0 var(--space-12);
+}
+
+.support-campaign-intro {
+  max-width: 68ch;
+  margin-bottom: var(--space-6);
+}
+
+.support-campaign-intro h2 {
+  margin-top: var(--space-2);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.support-campaign-lead {
+  max-width: 62ch;
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0 0 var(--space-4);
+}
+
+.support-values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+@media (min-width: 700px) {
+  .support-values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .support-values-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.support-value-card {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 100%;
+}
+
+.support-value-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+.support-value-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: none;
+}
+
+.support-campaign-quote {
+  margin: var(--space-10) 0 0;
+  padding-left: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.3;
+  color: var(--color-text);
+  max-width: 48ch;
+}
+
+.support-campaign-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.support-campaign-link {
+  color: var(--color-accent-text);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.support-campaign-link:hover {
+  color: var(--color-text);
+}
+
+.partners-section {
+  padding: 0 0 var(--space-12);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+@media (min-width: 700px) {
+  .partners-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.sponsors-intro {
+  max-width: 62ch;
+  margin-bottom: var(--space-8);
+}
+
+.sponsors-intro h2 {
+  margin-bottom: var(--space-4);
+}
+
+.sponsors-intro p {
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+@media (min-width: 700px) {
+  .sponsors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.sponsor-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: var(--space-8);
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.sponsor-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.15));
+}
+
+.partner-item {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.partner-item strong {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.partner-item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: none;
+}
+
+.funding-goal-section {
+  padding: var(--space-12) 0 0;
+}
+
+.funding-goal-card {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.funding-goal-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.funding-goal-header h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.funding-goal-amounts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.funding-goal-progress {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.funding-goal-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--color-accent);
+  border-radius: inherit;
+  transition: width 0.8s ease;
+}
+
+.funding-goal-status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.funding-goal-status p {
+  margin: 0;
+}
+
+.funding-goal-status strong {
+  color: var(--color-text);
+}
+
+.funding-goal-copy {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: none;
+}
+
+.funding-goal-button {
+  align-self: flex-start;
+}
+
 .donate-form-section {
   padding: var(--space-16) 0 var(--space-24);
   display: flex;
@@ -1099,7 +1370,7 @@ main { padding-top: 72px; }
 .donate-form-intro p  { color: var(--color-text-muted); max-width: none; }
 
 
-/* Larger pill for the standalone donate CTA */
+
 .donate-cta-btn {
   padding: 1rem 2.5rem;
   font-size: 1.125rem;
@@ -1113,19 +1384,12 @@ main { padding-top: 72px; }
 }
 .donate-footer-note a { font-weight: 700; }
 
-/* ── Page Hero — inner pages & article banners ───────────────── */
-/* Uses the competition arena photo as a backdrop, same as the home hero.
-   The .container inside must be position: relative + z-index to sit above
-   the ::before overlay. */
+
+
 .page-hero {
   position: relative;
   overflow: hidden;
-  /*
-    Pull the banner up by exactly the header height (72px) so it starts
-    behind the transparent fixed header — eliminates the thin body-bg strip
-    that would otherwise show between the nav and the photo overlay.
-    The padding-top compensates so the visible content stays below the header.
-  */
+  
   margin-top: -72px;
   padding-top: calc(var(--space-20) + 72px);
   padding-bottom: var(--space-14);
@@ -1136,8 +1400,7 @@ main { padding-top: 72px; }
   background-color: var(--color-bg);
 }
 
-/* Multi-layer overlay — stronger at the very top so the header transition
-   is seamless even when the header is transparent on first load             */
+
 .page-hero::before {
   content: '';
   position: absolute;
@@ -1148,19 +1411,19 @@ main { padding-top: 72px; }
   z-index: 0;
 }
 
-/* All direct children of .page-hero need z-index to sit above overlay */
+
 .page-hero > * {
   position: relative;
   z-index: 1;
 }
 
-/* Article title inside page-hero — readable over photo */
+
 .page-hero .article-title {
   color: var(--color-text);
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 }
 
-/* Reading time badge: slightly lighter bg when inside page-hero */
+
 .page-hero .article-reading-time {
   background: rgba(20, 20, 20, 0.6);
   border-color: rgba(255, 255, 255, 0.15);
@@ -1168,7 +1431,7 @@ main { padding-top: 72px; }
 
 .page-hero h1 { margin-top: var(--space-3); }
 
-/* ── Stats Strip ─────────────────────────────────────────────── */
+
 .stats-strip {
   background: var(--color-bg-2);
   border-top: 1px solid var(--color-border);
@@ -1209,7 +1472,7 @@ main { padding-top: 72px; }
   margin-top: var(--space-2);
 }
 
-/* ── FTC Section ─────────────────────────────────────────────── */
+
 .ftc-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1274,7 +1537,7 @@ main { padding-top: 72px; }
   margin: 0;
 }
 
-/* ── Home Blog Preview ───────────────────────────────────────── */
+
 .home-blog-header {
   display: flex;
   justify-content: space-between;
@@ -1294,7 +1557,7 @@ main { padding-top: 72px; }
   color: var(--color-accent-text);
   text-decoration: none;
   flex-shrink: 0;
-  padding-bottom: 4px; /* visual alignment with h2 baseline */
+  padding-bottom: 4px; 
   transition: gap var(--t-base) var(--ease), color var(--t-fast) var(--ease);
 }
 .view-all-link:hover { gap: var(--space-3); color: var(--color-text); }
@@ -1348,15 +1611,46 @@ main { padding-top: 72px; }
   color: var(--color-text-muted);
   line-height: 1.6;
   max-width: none;
-  /* Clamp to 3 lines */
+  
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* ── CTA Section ─────────────────────────────────────────────── */
-/* Full-bleed band with the competition photo, echoing the home hero */
+.scrimmage-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 700px) {
+  .scrimmage-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.scrimmage-gallery-grid img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-2);
+}
+
+.scrimmage-gallery-grid--compact img {
+  height: 220px;
+}
+
+.scrimmage-gallery-wrap {
+  margin-bottom: var(--space-6);
+}
+
+
+
 .cta-section {
   position: relative;
   overflow: hidden;
@@ -1398,14 +1692,14 @@ main { padding-top: 72px; }
   flex-shrink: 0;
 }
 
-/* ── Buttons ─────────────────────────────────────────────────── */
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   padding: 0.75rem 1.75rem;
   background: var(--color-accent);
-  color: #fff; /* white on #c42828 = 5.5:1 ✓ */
+  color: #fff; 
   border-radius: 100px;
   font-family: var(--font-body);
   font-size: 0.9375rem;
@@ -1445,7 +1739,7 @@ main { padding-top: 72px; }
   color: var(--color-text);
 }
 
-/* ── Utility ─────────────────────────────────────────────────── */
+
 .visually-hidden {
   position: absolute;
   width: 1px; height: 1px;
@@ -1456,7 +1750,7 @@ main { padding-top: 72px; }
   border: 0;
 }
 
-/* ── Reduced Motion ──────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

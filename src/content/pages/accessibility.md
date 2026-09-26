@@ -2,7 +2,6 @@
 title: "Accessibility Statement"
 ---
 
-<!-- TODO: Finalize this accessibility statement with your team's specific details and contact information. -->
 
 *Last reviewed: 3rd of June, 2026*
 
@@ -35,13 +34,5 @@ We are not currently aware of any accessibility issues. If you find one, please 
 
 ## Third-Party Content
 
-Some pages on this site embed third-party content, including the donation form provided by HCB. We cannot fully control the accessibility of embedded third-party content. If you encounter an accessibility barrier in embedded content, please contact us and we will do our best to provide an accessible alternative.
+Some pages on this site embed third-party content, including embedded donation and payment tools. We cannot fully control the accessibility of embedded third-party content. If you encounter an accessibility barrier in embedded content, please contact us and we will do our best to provide an accessible alternative.
 
-## Feedback and Contact
-
-We welcome feedback on the accessibility of this website. If you experience any difficulty accessing content, or if you find an accessibility issue we have missed, please contact us:
-
-- **Email:** info@heroesofthesea.pt
-- We aim to respond within 5 business days.
-
-Your feedback helps us improve the experience for everyone.
