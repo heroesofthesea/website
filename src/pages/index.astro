@@ -23,9 +23,12 @@ function readingTime(body: string): number {
 
   <section class="hero" aria-label="Hero">
     <div class="container hero-content">
-      <span class="hero-eyebrow">FIRST Tech Challenge · Team #34200</span>
-      <h1 class="hero-headline">More than<br/><span class="hero-accent">robots.</span></h1>
-      <p class="hero-sub">
+      <span class="hero-eyebrow" data-i18n="hero.eyebrow">FIRST Tech Challenge · Team #34200</span>
+      <h1 class="hero-headline">
+        <span data-i18n="hero.more">More than</span><br/>
+        <span class="hero-accent" data-i18n="hero.robots">robots.</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub">
         We're Heroes of the Sea — a student-led robotics team pushing limits,
         building community, and competing on the world stage.
       </p>
@@ -36,15 +39,15 @@ function readingTime(body: string): number {
     <div class="container">
       <dl class="stats-grid">
         <div class="stat">
-          <dt class="stat-label">Season</dt>
+          <dt class="stat-label" data-i18n="stats.season">Season</dt>
           <dd class="stat-number">2026</dd>
         </div>
         <div class="stat">
-          <dt class="stat-label">Members</dt>
+          <dt class="stat-label" data-i18n="stats.members">Members</dt>
           <dd class="stat-number">7</dd>
         </div>
         <div class="stat">
-          <dt class="stat-label">Team Number</dt>
+          <dt class="stat-label" data-i18n="stats.teamNumber">Team Number</dt>
           <dd class="stat-number">#34200</dd>
         </div>
       </dl>
@@ -53,16 +56,16 @@ function readingTime(body: string): number {
 
   <section class="section" aria-labelledby="who-heading">
     <div class="container">
-      <span class="section-label">Who are we</span>
+      <span class="section-label" data-i18n="who.label">Who are we</span>
       <h2 id="who-heading">
-        We're a teen-ran <em>FIRST</em> Tech Challenge team
+        <span data-i18n="who.line1">We're a teen-ran</span> <em>FIRST</em> <span data-i18n="who.line2">Tech Challenge team</span>
       </h2>
 
       <div class="card-grid" style="margin-top: 3rem;">
 
         <div class="card">
-          <h3>Our mission</h3>
-          <p>
+          <h3 data-i18n="mission.title">Our mission</h3>
+          <p data-i18n="mission.text">
             We are Heroes of the Sea, a student-led robotics team. We believe that
             building robots teaches us more than just technical skills — it teaches us
             how to think, collaborate, and push through hard problems together.
@@ -70,8 +73,8 @@ function readingTime(body: string): number {
         </div>
 
         <div class="card">
-          <h3>Our team</h3>
-          <p>
+          <h3 data-i18n="team.title">Our team</h3>
+          <p data-i18n="team.text">
             We are a group of 7 students from Colégio Atlântico, competing in the
             FIRST Tech Challenge. From builders to programmers to strategists,
             every one of us brings something different to the table.
@@ -79,8 +82,8 @@ function readingTime(body: string): number {
         </div>
 
         <div class="card">
-          <h3>What we do</h3>
-          <p>
+          <h3 data-i18n="work.title">What we do</h3>
+          <p data-i18n="work.text">
             FIRST Tech Challenge (FTC) is an international robotics competition where
             student teams design, build, and program robots to complete game challenges.
             Every season brings a new challenge, and every season we rise to meet it.
@@ -96,14 +99,16 @@ function readingTime(body: string): number {
       <div class="ftc-grid">
 
         <div class="ftc-text">
-          <span class="section-label">The competition</span>
-          <h2 id="ftc-heading">What is <em>FIRST</em> Tech Challenge?</h2>
-          <p>
+          <span class="section-label" data-i18n="competition.label">The competition</span>
+          <h2 id="ftc-heading">
+            <span data-i18n="competition.what">What is</span> <em>FIRST</em> <span data-i18n="competition.tech">Tech Challenge?</span>
+          </h2>
+          <p data-i18n="competition.text1">
             FIRST Tech Challenge (FTC) is a global robotics program where teams of
             students design, build, and program their own robots from scratch — then
             compete at regional, national, and world championship events.
           </p>
-          <p>
+          <p data-i18n="competition.text2">
             Every September, a brand-new game is announced. Teams have a few months to
             understand the challenge, engineer a solution, build it, and compete. No two
             seasons are ever the same.
@@ -113,6 +118,7 @@ function readingTime(body: string): number {
             class="btn-secondary"
             target="_blank"
             rel="noopener noreferrer"
+            data-i18n="competition.button"
           >
             Learn about FTC
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
@@ -125,29 +131,29 @@ function readingTime(body: string): number {
           <li class="ftc-feature">
             <span class="ftc-feature-num" aria-hidden="true">01</span>
             <div class="ftc-feature-body">
-              <strong>Design &amp; Build</strong>
-              <p>Engineer from CAD model to physical robot — chassis, mechanisms, wiring — in weeks.</p>
+              <strong data-i18n="ftc.design">Design &amp; Build</strong>
+              <p data-i18n="ftc.designText">Engineer from CAD model to physical robot — chassis, mechanisms, wiring — in weeks.</p>
             </div>
           </li>
           <li class="ftc-feature">
             <span class="ftc-feature-num" aria-hidden="true">02</span>
             <div class="ftc-feature-body">
-              <strong>Program</strong>
-              <p>Autonomous routines, sensor integration, and real-time driver-control in Java or Kotlin.</p>
+              <strong data-i18n="ftc.program">Program</strong>
+              <p data-i18n="ftc.programText">Autonomous routines, sensor integration, and real-time driver-control in Java or Kotlin.</p>
             </div>
           </li>
           <li class="ftc-feature">
             <span class="ftc-feature-num" aria-hidden="true">03</span>
             <div class="ftc-feature-body">
-              <strong>Compete</strong>
-              <p>Regional qualifiers, state championships, then the World Championship for top teams.</p>
+              <strong data-i18n="ftc.compete">Compete</strong>
+              <p data-i18n="ftc.competeText">Regional qualifiers, state championships, then the World Championship for top teams.</p>
             </div>
           </li>
           <li class="ftc-feature">
             <span class="ftc-feature-num" aria-hidden="true">04</span>
             <div class="ftc-feature-body">
-              <strong>Connect</strong>
-              <p>Engineering portfolios, community outreach events, and gracious professionalism on and off the field.</p>
+              <strong data-i18n="ftc.connect">Connect</strong>
+              <p data-i18n="ftc.connectText">Engineering portfolios, community outreach events, and gracious professionalism on and off the field.</p>
             </div>
           </li>
         </ul>
@@ -160,8 +166,8 @@ function readingTime(body: string): number {
     <div class="container">
       <div class="home-blog-header">
         <div>
-          <span class="section-label">From the scrimmage</span>
-          <h2 id="scrimmage-gallery-heading">Moments from our first event</h2>
+          <span class="section-label" data-i18n="scrimmage.label">From the scrimmage</span>
+          <h2 id="scrimmage-gallery-heading" data-i18n="scrimmage.title">Moments from our first event</h2>
         </div>
       </div>
 
@@ -178,10 +184,10 @@ function readingTime(body: string): number {
       <div class="container">
         <div class="home-blog-header">
           <div>
-            <span class="section-label">Latest updates</span>
-            <h2 id="updates-heading">From the field</h2>
+            <span class="section-label" data-i18n="updates.label">Latest updates</span>
+            <h2 id="updates-heading" data-i18n="updates.title">From the field</h2>
           </div>
-          <a href="/blog" class="view-all-link" aria-label="View all blog posts">
+          <a href="/blog" class="view-all-link" aria-label="View all blog posts" data-i18n="updates.viewAll">
             All posts
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -212,9 +218,9 @@ function readingTime(body: string): number {
     <div class="container">
       <div class="cta-inner">
         <div>
-          <span class="section-label">Support the team</span>
-          <h2 id="cta-heading">Fuel our next season</h2>
-          <p>
+          <span class="section-label" data-i18n="cta.label">Support the team</span>
+          <h2 id="cta-heading" data-i18n="cta.title">Fuel our next season</h2>
+          <p data-i18n="cta.text">
             Every contribution goes directly toward building our robot, competing,
             and inspiring the next generation of engineers and problem-solvers.
           </p>

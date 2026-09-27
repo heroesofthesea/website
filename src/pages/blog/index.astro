@@ -25,8 +25,8 @@ function formatDate(date: Date): string {
 
   <div class="page-hero">
     <div class="container">
-      <span class="section-label">From the team</span>
-      <h1>Blog</h1>
+      <span class="section-label" data-i18n="blog.fromTheTeam">From the team</span>
+      <h1 data-i18n="blog.title">Blog</h1>
     </div>
   </div>
 
@@ -43,7 +43,7 @@ function formatDate(date: Date): string {
       <div style="max-width: var(--content-width); margin-top: var(--space-10);">
 
         {posts.length === 0 && (
-          <p style="color: var(--color-text-muted);">No posts yet — check back soon.</p>
+          <p style="color: var(--color-text-muted);" data-i18n="blog.noPosts">No posts yet — check back soon.</p>
         )}
 
         <ol class="post-list" role="list">
@@ -70,7 +70,7 @@ function formatDate(date: Date): string {
 
                 <p class="post-excerpt">{post.data.excerpt}</p>
 
-                <a href={`/blog/${post.slug}`} class="post-readmore" aria-label={`Read full post: ${post.data.title}`}>
+                <a href={`/blog/${post.slug}`} class="post-readmore" aria-label={`Read full post: ${post.data.title}`} data-i18n="blog.readPost">
                   Read post
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

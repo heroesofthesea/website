@@ -1,38 +1,38 @@
 ---
-title: "Accessibility Statement"
+title: "Declaração de Acessibilidade"
 ---
 
 
-*Last reviewed: 3rd of June, 2026*
+*Última revisão: 3 de junho de 2026*
 
-Heroes of the Sea is committed to ensuring this website is accessible to everyone, including people with disabilities. We believe accessibility is not a checkbox — it's an ongoing commitment to making sure no one is excluded from our story.
+O Heroes of the Sea está empenhado em garantir que este website seja acessível a todos, incluindo pessoas com deficiência. Acreditamos que a acessibilidade não é uma caixa de verificação — é um compromisso contínuo para garantir que ninguém fique excluído da nossa história.
 
-## Our Commitment
+## O nosso compromisso
 
-We aim to conform to the **Web Content Accessibility Guidelines (WCAG) 2.2 Level AA** across all pages of this website. These guidelines cover a range of recommendations for making web content more accessible to people with disabilities, including blindness and low vision, deafness and hearing loss, mobility impairments, and cognitive disabilities.
+Objetivamos cumprir as **Web Content Accessibility Guidelines (WCAG) 2.2 Nível AA** em todas as páginas deste website. Estas diretrizes cobrem uma variedade de recomendações para tornar o conteúdo web mais acessível a pessoas com deficiência, incluindo cegueira e visão reduzida, surdez e perda de audição, dificuldades de mobilidade e deficiências cognitivas.
 
-## Standards We Follow
+## Padrões que seguimos
 
-This site is built with the following accessibility practices in mind:
+Este site foi construído com as seguintes práticas de acessibilidade em mente:
 
-- **Semantic HTML**: Pages use proper heading hierarchy, landmark regions, and meaningful element types so screen readers can navigate efficiently.
-- **Keyboard navigability**: All interactive elements — navigation, links, buttons, and form controls — are reachable and operable using only a keyboard.
-- **Visible focus indicators**: Focused elements display a clearly visible outline so keyboard users always know where they are.
-- **Sufficient color contrast**: Text and meaningful UI elements meet or exceed the WCAG 2.2 AA contrast ratio requirements (4.5:1 for normal text, 3:1 for large text).
-- **Alternative text**: All images that convey information include descriptive alt text. Decorative images are marked so they are ignored by assistive technologies.
-- **Skip navigation**: A "skip to main content" link is available at the top of every page, allowing screen reader and keyboard users to bypass repeated navigation.
-- **Responsive design**: The site is fully functional at any viewport width and supports browser zoom up to 200% without horizontal scrolling or loss of content.
-- **No seizure-triggering content**: The site does not contain flashing content that could trigger seizures.
+- **HTML semântico**: As páginas utilizam uma hierarquia correta de títulos, regiões de marcação e elementos significativos para que os leitores de ecrã consigam navegar com eficiência.
+- **Navegação por teclado**: Todos os elementos interativos — navegação, links, botões e controlos de formulário — são alcançáveis e operáveis apenas com o teclado.
+- **Indicadores visíveis de foco**: Os elementos focados exibem um contorno claramente visível para que os utilizadores de teclado saibam sempre onde estão.
+- **Contraste de cor suficiente**: O texto e os elementos de interface significativos cumprem ou excedem os requisitos de contraste WCAG 2.2 AA (4.5:1 para texto normal, 3:1 para texto grande).
+- **Texto alternativo**: Todas as imagens que transmitem informação incluem texto alternativo descritivo. As imagens decorativas são marcadas para serem ignoradas por tecnologias de apoio.
+- **Navegação por salto**: Existe uma ligação de "saltar para o conteúdo principal" no topo de cada página, permitindo que utilizadores de leitores de ecrã e teclado passem por cima da navegação repetida.
+- **Design responsivo**: O site funciona corretamente em qualquer largura de ecrã e suporta zoom do browser até 200% sem scroll horizontal nem perda de conteúdo.
+- **Conteúdo que não provoca crises epilépticas**: O site não contém conteúdo intermitente que possa provocar crises epilépticas.
 
-## Assistive Technologies
+## Tecnologias de apoio
 
-This site has not been tested with any assistive technologies.
+Este site ainda não foi testado com tecnologias de apoio.
 
-## Known Issues
+## Problemas conhecidos
 
-We are not currently aware of any accessibility issues. If you find one, please let us know.
+Atualmente não temos conhecimento de qualquer problema de acessibilidade. Se encontrar algum, por favor informe-nos.
 
-## Third-Party Content
+## Conteúdo de terceiros
 
-Some pages on this site embed third-party content, including embedded donation and payment tools. We cannot fully control the accessibility of embedded third-party content. If you encounter an accessibility barrier in embedded content, please contact us and we will do our best to provide an accessible alternative.
+Algumas páginas deste site incorporam conteúdo de terceiros, incluindo ferramentas incorporadas de doação e pagamentos. Não controlamos totalmente a acessibilidade desses conteúdos. Se encontrar uma barreira de acessibilidade em conteúdo incorporado, por favor contacte-nos e faremos o possível para fornecer uma alternativa acessível.
 

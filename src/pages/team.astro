@@ -48,8 +48,8 @@ const linkIcons: Record<string, string> = {
 
   <div class="page-hero">
     <div class="container">
-      <span class="section-label">The people behind the robot</span>
-      <h1>Meet the team</h1>
+      <span class="section-label" data-i18n="team.label">The people behind the robot</span>
+      <h1 data-i18n="team.title">Meet the team</h1>
     </div>
   </div>
 
@@ -83,11 +83,43 @@ const linkIcons: Record<string, string> = {
                   <span class="member-pronouns">{member.pronouns}</span>
                 )}
               </p>
-              <p class="member-role">{member.role}</p>
+              <p
+                class="member-role"
+                data-team-role
+                data-role-en={member.role}
+                data-role-pt={
+                  member.name === 'Martim Glória' ? 'Capitão da equipa' :
+                  member.name === 'Lourenço Freire' ? 'Líder de hardware e programador' :
+                  member.name === 'Bruna Rung' ? 'Líder de software e programadora' :
+                  member.name === 'Beato' ? 'Líder de redes sociais' :
+                  member.name === 'Beatriz Sousa' ? 'Mentora externa' :
+                  member.name === 'Pedro Dias' ? 'Treinador principal' :
+                  member.name === 'Guilherme Albernaz' ? 'Desenvolvedor de software' :
+                  member.name === 'Pedro Albernaz' ? 'Desenvolvedor de hardware' :
+                  member.name === 'Revealing soon!' ? 'Membro da equipa' :
+                  member.role
+                }
+              >{member.role}</p>
             </div>
 
             {member.bio && member.bio.trim() && (
-              <p class="member-bio">{member.bio}</p>
+              <p
+                class="member-bio"
+                data-team-bio
+                data-bio-en={member.bio}
+                data-bio-pt={
+                  member.name === 'Martim Glória' ? 'Estudante internacional apaixonado por inovação tecnológica, psicologia, literatura de física e muito mais!!!.' :
+                  member.name === 'Lourenço Freire' ? 'Artista, cosplayer, programador e membro da robótica — combinando criatividade, engenharia e criação prática em cada construção.' :
+                  member.name === 'Bruna Rung' ? 'Programadora com amor por música, lógica e resolução criativa de problemas — transformando código e criatividade em projetos significativos.' :
+                  member.name === 'Beato' ? 'Beato faz parte da equipa de liderança do HOTS e da equipa de operações da Hack Club.' :
+                  member.name === 'Beatriz Sousa' ? 'Ex-aluna do Colégio Atlântico, atualmente a estudar Ciência da Computação na NOVA FCT. Participou no Astronauta por um Dia.' :
+                  member.name === 'Pedro Dias' ? 'Professor de Física, Química, CS, Robótica e STEM, apaixonado por ensinar e descobrir novas formas de experimentar tecnologia.' :
+                  member.name === 'Guilherme Albernaz' ? 'Entusiasta de Ciência da Computação e Matemática, sempre a idealizar sistemas lógicos e pensamento computacional.' :
+                  member.name === 'Pedro Albernaz' ? 'Estudante de Química e Física, apaixonado por problemas do mundo real e pelas soluções de engenharia que lhes podem responder.' :
+                  member.name === 'Revealing soon!' ? 'A revelar em breve!' :
+                  member.bio
+                }
+              >{member.bio}</p>
             )}
 
             {member.links && member.links.length > 0 && (
@@ -141,11 +173,43 @@ const linkIcons: Record<string, string> = {
                   <span class="member-pronouns">{member.pronouns}</span>
                 )}
               </p>
-              <p class="member-role">{member.role}</p>
+              <p
+                class="member-role"
+                data-team-role
+                data-role-en={member.role}
+                data-role-pt={
+                  member.name === 'Martim Glória' ? 'Capitão da equipa' :
+                  member.name === 'Lourenço Freire' ? 'Líder de hardware e programador' :
+                  member.name === 'Bruna Rung' ? 'Líder de software e programadora' :
+                  member.name === 'Beato' ? 'Líder de redes sociais' :
+                  member.name === 'Beatriz Sousa' ? 'Mentora externa' :
+                  member.name === 'Pedro Dias' ? 'Treinador principal' :
+                  member.name === 'Guilherme Albernaz' ? 'Desenvolvedor de software' :
+                  member.name === 'Pedro Albernaz' ? 'Desenvolvedor de hardware' :
+                  member.name === 'Revealing soon!' ? 'Membro da equipa' :
+                  member.role
+                }
+              >{member.role}</p>
             </div>
 
             {member.bio && member.bio.trim() && (
-              <p class="member-bio">{member.bio}</p>
+              <p
+                class="member-bio"
+                data-team-bio
+                data-bio-en={member.bio}
+                data-bio-pt={
+                  member.name === 'Martim Glória' ? 'Estudante internacional apaixonado por inovação tecnológica, psicologia, literatura de física e muito mais!!!.' :
+                  member.name === 'Lourenço Freire' ? 'Artista, cosplayer, programador e membro da robótica — combinando criatividade, engenharia e criação prática em cada construção.' :
+                  member.name === 'Bruna Rung' ? 'Programadora com amor por música, lógica e resolução criativa de problemas — transformando código e criatividade em projetos significativos.' :
+                  member.name === 'Beato' ? 'Beato faz parte da equipa de liderança do HOTS e da equipa de operações da Hack Club.' :
+                  member.name === 'Beatriz Sousa' ? 'Ex-aluna do Colégio Atlântico, atualmente a estudar Ciência da Computação na NOVA FCT. Participou no Astronauta por um Dia.' :
+                  member.name === 'Pedro Dias' ? 'Professor de Física, Química, CS, Robótica e STEM, apaixonado por ensinar e descobrir novas formas de experimentar tecnologia.' :
+                  member.name === 'Guilherme Albernaz' ? 'Entusiasta de Ciência da Computação e Matemática, sempre a idealizar sistemas lógicos e pensamento computacional.' :
+                  member.name === 'Pedro Albernaz' ? 'Estudante de Química e Física, apaixonado por problemas do mundo real e pelas soluções de engenharia que lhes podem responder.' :
+                  member.name === 'Revealing soon!' ? 'A revelar em breve!' :
+                  member.bio
+                }
+              >{member.bio}</p>
             )}
 
             {member.links && member.links.length > 0 && (
@@ -172,5 +236,26 @@ const linkIcons: Record<string, string> = {
       </div>
     </div>
   </section>
+
+  <script>
+    const updateTeamText = () => {
+      const lang = document.documentElement.lang === 'pt' ? 'pt' : 'en';
+
+      document.querySelectorAll('[data-team-role]').forEach((element) => {
+        const el = element as HTMLElement;
+        const nextText = lang === 'pt' ? el.dataset.rolePt : el.dataset.roleEn;
+        if (nextText) el.textContent = nextText;
+      });
+
+      document.querySelectorAll('[data-team-bio]').forEach((element) => {
+        const el = element as HTMLElement;
+        const nextText = lang === 'pt' ? el.dataset.bioPt : el.dataset.bioEn;
+        if (nextText) el.textContent = nextText;
+      });
+    };
+
+    document.addEventListener('site-language-change', updateTeamText);
+    updateTeamText();
+  </script>
 
 </BaseLayout>

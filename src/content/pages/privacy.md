@@ -1,50 +1,50 @@
 ---
-title: "Privacy Policy"
+title: "Política de Privacidade"
 ---
 
 
-*Last updated: 3rd of June, 2026*
+*Última atualização: 3 de junho de 2026*
 
-Heroes of the Sea ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and handle information when you visit our website at heroesofthesea.pt.
+O Heroes of the Sea ("nós" ou "nosso") compromete-se a proteger a sua privacidade. Esta Política de Privacidade explica como recolhemos, utilizamos e tratamos as informações quando visita o nosso website em heroesofthesea.pt.
 
-## Information We Collect
+## Informação que recolhemos
 
-### Information You Provide
+### Informação que nos fornece
 
-This site does not currently collect personal information directly through contact forms, sign-up forms, or donation forms.
+Este site não recolhe, atualmente, informação pessoal diretamente através de formulários de contacto, inscrições ou doações.
 
-### Automatically Collected Information
+### Informação recolhida automaticamente
 
-This site uses **Plausible Analytics**, a privacy-friendly analytics tool hosted at [plausible.comfy.solutions](https://plausible.comfy.solutions/). Plausible collects anonymous, aggregate statistics about page visits (such as page views, referrer, browser, and country) to help us understand how the site is used and improve it over time.
+Este site utiliza **Plausible Analytics**, uma ferramenta de análise com foco na privacidade, alojada em [plausible.comfy.solutions](https://plausible.comfy.solutions/). O Plausible recolhe estatísticas anónimas e agregadas sobre visitas às páginas (como visualizações, origem, navegador e país) para nos ajudar a entender como o site é utilizado e melhorá-lo ao longo do tempo.
 
-Plausible does **not** use cookies, does not collect personal data, does not track visitors across sites, and is fully compliant with GDPR, CCPA, and PECR. No personal information is stored or transmitted. You can learn more about how Plausible works at [plausible.io/privacy-focused-web-analytics](https://plausible.io/privacy-focused-web-analytics).
+O Plausible **não** utiliza cookies, não recolhe dados pessoais, não acompanha visitantes entre websites e está totalmente em conformidade com o GDPR, CCPA e PECR. Nenhuma informação pessoal é armazenada ou transmitida. Pode saber mais sobre o funcionamento do Plausible em [plausible.io/privacy-focused-web-analytics](https://plausible.io/privacy-focused-web-analytics).
 
-## How We Use Information
+## Como utilizamos a informação
 
-We use the anonymous analytics data collected by Plausible solely to understand how visitors use this website and to improve its content and performance. We do not use it for advertising or profiling.
+Utilizamos os dados anónimos de análise recolhidos pelo Plausible apenas para compreender como os visitantes usam este website e melhorar o seu conteúdo e desempenho. Não os utilizamos para publicidade ou perfilização.
 
-We do not sell, rent, or share any information with third parties except as described in this policy.
+Não vendemos, alugamos nem partilhamos qualquer informação com terceiros, exceto conforme descrito nesta política.
 
-## Cookies and Tracking
+## Cookies e monitorização
 
-This site does **not** use cookies for analytics or tracking. Plausible Analytics operates without cookies entirely.
+Este site **não** utiliza cookies para análise ou monitorização. O Plausible Analytics funciona sem cookies.
 
-### Third-Party Services
+### Serviços de terceiros
 
-**Plausible Analytics** — anonymous, cookieless page-view statistics. No personal data is collected. See above for details.
+**Plausible Analytics** — estatísticas anónimas de visualização de páginas, sem cookies. Não são recolhidos dados pessoais. Consulte acima para mais detalhes.
 
-## Data Retention
+## Retenção de dados
 
-For data from Plausible Analytics, we store data for as long as possible for our own analytics. This data does not include any personal information.
+Para os dados do Plausible Analytics, armazenamos os dados pelo maior tempo possível para a nossa própria análise. Estes dados não incluem qualquer informação pessoal.
 
-## Your Rights
+## Os seus direitos
 
-Depending on your location, you may have rights regarding your personal data, including the right to access, correct, or delete information we hold about you.
+Dependendo da sua localização, pode ter direitos relativamente aos seus dados pessoais, incluindo o direito de aceder, corrigir ou eliminar a informação que detemos sobre si.
 
-## Children's Privacy
+## Privacidade das crianças
 
-Our website is intended for general audiences and does not knowingly collect personal information from children.
+O nosso website destina-se a públicos em geral e não recolhe, de forma intencional, informação pessoal de crianças.
 
-## Changes to This Policy
+## Alterações a esta política
 
-We may update this Privacy Policy from time to time. We will indicate the date of the most recent revision at the top of this page. Continued use of the site after changes are posted constitutes acceptance of the revised policy.
+Podemos atualizar esta Política de Privacidade periodicamente. Indicaremos a data da revisão mais recente no topo desta página. O uso contínuo do site após a publicação de alterações constitui aceitação da política revista.

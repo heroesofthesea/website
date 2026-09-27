@@ -1,20 +1,20 @@
 ---
-title: "From 9 Days to Alliance Captains: Our First FTC Event"
+title: "De 9 dias a Alliance Captains: o nosso primeiro evento FTC"
 date: 2026-09-26
-excerpt: "Heroes of the Sea entered our first FTC season with only nine days to build a robot, then finished the event ranked 6th and won the Sustainability Award."
+excerpt: "O Heroes of the Sea entrou na nossa primeira temporada FTC com apenas nove dias para construir um robô, acabando o evento em 6.º lugar e vencendo o Prémio de Sustentabilidade."
 author: "Heroes of the Sea"
 ---
 
-Heroes of the Sea entered the FIRST Tech Challenge with one slight problem: we had only nine days to build a competition-ready robot.
+O Heroes of the Sea entrou na FIRST Tech Challenge com um pequeno problema: só tínhamos nove dias para construir um robô pronto para competir.
 
-While most teams had spent months designing, building, and testing their robots, we joined the season just nine days before the Lisbon Scrimmage. In that time, our team had to learn the competition, design a robot, manufacture it, wire it, program it, test it, and somehow get it onto the field.
+Enquanto a maioria das equipas tinha passado meses a desenhar, construir e testar os seus robôs, nós juntámo-nos à temporada apenas nove dias antes da Scrimmage de Lisboa. Nesse tempo, a nossa equipa teve de aprender a competição, desenhar um robô, fabricar, ligar, programar, testar e, de alguma forma, colocá-lo em campo.
 
-And we did.
+E conseguimos.
 
-At our very first FTC event, Team #34200 — Heroes of the Sea finished the qualification stage ranked 6th, with a 3–5 record, before becoming Alliance Captains.
+No nosso primeiro evento FTC, a equipa #34200 — Heroes of the Sea terminou a fase de qualificação em 6.º lugar, com um registo de 3–5, antes de se tornar Alliance Captains.
 
-But our first competition wasn't only about what happened on the field. At the end of the event, Heroes of the Sea received the Sustainability Award, recognising the team's long-term vision and the foundations we had started building beyond the robot itself.
+Mas a nossa primeira competição não foi só sobre o que aconteceu em campo. No fim do evento, o Heroes of the Sea recebeu o Prémio de Sustentabilidade, reconhecendo a visão de longo prazo da equipa e as bases que começámos a construir para além do robô em si.
 
-Nine days. One robot. Our first competition. Alliance Captains. Sustainability Award.
+Nove dias. Um robô. A nossa primeira competição. Alliance Captains. Prémio de Sustentabilidade.
 
-The Lisbon Scrimmage was only the beginning. With a full season ahead of us, we're now taking everything we learned from those nine days and seeing just how far we can push it.
+A Scrimmage de Lisboa foi apenas o início. Com uma temporada completa à nossa frente, agora estamos a levar tudo o que aprendemos nesses nove dias e a ver até onde conseguimos ir.

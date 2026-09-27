@@ -1,9 +1,9 @@
 ---
 const navLinks = [
-  { href: '/',       label: 'Home'  },
-  { href: '/team',   label: 'Team'  },
-  { href: '/blog',   label: 'Blog'  },
-  { href: '/sponsors', label: 'Sponsors' },
+  { href: '/',       label: 'Home', labelPt: 'Início' },
+  { href: '/team',   label: 'Team', labelPt: 'Equipa' },
+  { href: '/blog',   label: 'Blog', labelPt: 'Blog' },
+  { href: '/sponsors', label: 'Sponsors', labelPt: 'Patrocinadores' },
 ];
 
 const { pathname } = Astro.url;
@@ -37,11 +37,21 @@ const { pathname } = Astro.url;
       <a
         href={link.href}
         aria-current={pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) ? 'page' : undefined}
+        data-i18n={pathname.startsWith(link.href) ? `nav.${link.href.replace('/', '') || 'home'}` : `nav.${link.href.replace('/', '') || 'home'}`}
       >
         {link.label}
       </a>
     ))}
-    <a href="/donate" class="nav-donate" aria-current={pathname === '/donate' ? 'page' : undefined}>
+    <button
+      type="button"
+      class="lang-switch"
+      data-lang-toggle
+      aria-label="Switch to Portuguese"
+      title="Switch to Portuguese"
+    >
+      PT
+    </button>
+    <a href="/donate" class="nav-donate" aria-current={pathname === '/donate' ? 'page' : undefined} data-i18n="nav.donate">
       Donate
     </a>
   </nav>
@@ -51,6 +61,262 @@ const { pathname } = Astro.url;
   const header  = document.getElementById('site-header')!;
   const toggle  = header.querySelector('.nav-toggle') as HTMLButtonElement;
   const nav     = document.getElementById('main-nav')!;
+  const langButton = nav.querySelector('[data-lang-toggle]') as HTMLButtonElement | null;
+  const translations = {
+    en: {
+      'nav.home': 'Home',
+      'nav.team': 'Team',
+      'nav.blog': 'Blog',
+      'nav.sponsors': 'Sponsors',
+      'nav.donate': 'Donate',
+      'hero.eyebrow': 'FIRST Tech Challenge · Team #34200',
+      'hero.more': 'More than',
+      'hero.robots': 'robots.',
+      'hero.sub': "We're Heroes of the Sea — a student-led robotics team pushing limits, building community, and competing on the world stage.",
+      'stats.season': 'Season',
+      'stats.members': 'Members',
+      'stats.teamNumber': 'Team Number',
+      'who.label': 'Who are we',
+      'who.line1': "We're a teen-ran",
+      'who.line2': 'Tech Challenge team',
+      'mission.title': 'Our mission',
+      'mission.text': 'We are Heroes of the Sea, a student-led robotics team. We believe that building robots teaches us more than just technical skills — it teaches us how to think, collaborate, and push through hard problems together.',
+      'team.sectionTitle': 'Our team',
+      'team.text': 'We are a group of 7 students from Colégio Atlântico, competing in the FIRST Tech Challenge. From builders to programmers to strategists, every one of us brings something different to the table.',
+      'work.title': 'What we do',
+      'work.text': 'FIRST Tech Challenge (FTC) is an international robotics competition where student teams design, build, and program robots to complete game challenges. Every season brings a new challenge, and every season we rise to meet it.',
+      'competition.label': 'The competition',
+      'competition.what': 'What is',
+      'competition.tech': 'Tech Challenge?',
+      'competition.text1': 'FIRST Tech Challenge (FTC) is a global robotics program where teams of students design, build, and program their own robots from scratch — then compete at regional, national, and world championship events.',
+      'competition.text2': 'Every September, a brand-new game is announced. Teams have a few months to understand the challenge, engineer a solution, build it, and compete. No two seasons are ever the same.',
+      'competition.button': 'Learn about FTC',
+      'ftc.design': 'Design & Build',
+      'ftc.designText': 'Engineer from CAD model to physical robot — chassis, mechanisms, wiring — in weeks.',
+      'ftc.program': 'Program',
+      'ftc.programText': 'Autonomous routines, sensor integration, and real-time driver-control in Java or Kotlin.',
+      'ftc.compete': 'Compete',
+      'ftc.competeText': 'Regional qualifiers, state championships, then the World Championship for top teams.',
+      'ftc.connect': 'Connect',
+      'ftc.connectText': 'Engineering portfolios, community outreach events, and gracious professionalism on and off the field.',
+      'scrimmage.label': 'From the scrimmage',
+      'scrimmage.title': 'Moments from our first event',
+      'updates.label': 'Latest updates',
+      'updates.title': 'From the field',
+      'updates.viewAll': 'All posts',
+      'cta.label': 'Support the team',
+      'cta.title': 'Fuel our next season',
+      'cta.text': 'Every contribution goes directly toward building our robot, competing, and inspiring the next generation of engineers and problem-solvers.',
+      'footer.privacy': 'Privacy Policy',
+      'footer.accessibility': 'Accessibility',
+      'footer.followUs': 'Follow us',
+      'footer.copyright': '© {year} Heroes of the Sea. All rights reserved.',
+      'blog.fromTheTeam': 'From the team',
+      'blog.title': 'Blog',
+      'blog.noPosts': 'No posts yet — check back soon.',
+      'blog.readPost': 'Read post',
+      'team.label': 'The people behind the robot',
+      'team.title': 'Meet the team',
+      'sponsors.label': 'Our supporters',
+      'sponsors.title': 'Sponsors',
+      'sponsors.introHeading': 'Partners helping us grow',
+      'sponsors.introText': 'We are grateful to the organisations and institutions supporting Heroes of the Sea and helping us build, compete, and inspire new generations of engineers and problem-solvers.',
+      'donate.sectionLabel': 'Support the team',
+      'donate.title': 'Help us compete & grow',
+      'donate.subtitle': 'Heroes of the Sea runs entirely on the support of people who believe in what student-led robotics can do. Every donation goes directly to the team.',
+      'donate.powersLabel': 'Where your money goes',
+      'donate.powersTitle': "What you're powering",
+      'donate.powersIntro': "Building a competitive FTC robot — and getting it to the world stage — takes real resources. Here's exactly what your contribution fuels.",
+      'donate.robotConstruction': 'Robot Construction',
+      'donate.robotConstructionDesc': 'Custom drive trains, precision actuators, sensors, wiring harnesses, and structural materials. A competition-ready FTC robot is rebuilt from scratch every season.',
+      'donate.competitionEntry': 'Competition Entry',
+      'donate.competitionEntryDesc': 'Registration fees for regional qualifiers and state championship events. Each competition is a chance to measure our progress and push further.',
+      'donate.travel': 'Travel & Logistics',
+      'donate.travelDesc': "Getting the full team — and the robot — to competition venues safely. Without travel support, we can't compete beyond our local region.",
+      'donate.outreach': 'Outreach & Education',
+      'donate.outreachDesc': "Community workshops, school demos, and events that bring robotics to students who've never had the chance to build something — yet.",
+      'donate.whySupportLabel': 'Why support us',
+      'donate.whySupportTitle': "We've already shown what we can do with nine days. Now we want to see what we can do with a full season.",
+      'donate.whySupportLead1': 'Heroes of the Sea started in 2026 as one of Portugal’s first FIRST Tech Challenge teams. With only nine days to design, build and program our first competition robot, we entered the Lisbon Scrimmage, became Alliance Captains, and received the Sustainability Award.',
+      'donate.whySupportLead2': 'Today, we are a team of around 15 students, working across hardware, software, CAD and outreach, with ambitions that go beyond a single robot or competition.',
+      'donate.build': 'BUILD',
+      'donate.buildDesc': 'Turn designs into real competition robots through hardware, electronics, materials and manufacturing.',
+      'donate.compete': 'COMPETE',
+      'donate.competeDesc': 'Take our team and our robots beyond Portugal and compete internationally.',
+      'donate.learn': 'LEARN',
+      'donate.learnDesc': 'Give students the opportunity to solve real engineering problems through design, programming, manufacturing and iteration.',
+      'donate.grow': 'GROW',
+      'donate.growDesc': 'Develop new projects, expand STEM outreach and help build a stronger FIRST community in Portugal.',
+      'donate.quote': "You're not just funding a robot. You're giving us the resources to build, compete, experiment and create what comes next.",
+      'donate.nextGoalLink': '→ See our next goal',
+      'donate.partnerLink': '→ Become a partner',
+      'donate.forPartnersLabel': 'For Partners',
+      'donate.forPartnersTitle': 'What companies and organisations receive in return',
+      'donate.forPartnersIntro': 'We believe the strongest partnerships are built on shared purpose. By supporting Heroes of the Sea, partners help us grow while gaining meaningful visibility and a chance to invest in the next generation of innovators.',
+      'donate.visibility': 'Visibility',
+      'donate.visibilityDesc': 'Recognition on the robot, team clothing, competition materials, online channels and event presence.',
+      'donate.communityImpact': 'Community impact',
+      'donate.communityImpactDesc': 'Support STEM education, outreach activities and the development of a stronger robotics culture in Portugal.',
+      'donate.talentPipeline': 'Talent pipeline',
+      'donate.talentPipelineDesc': 'Connect with motivated students and early-career engineers who are building practical technical skills every day.',
+      'donate.sharedMission': 'Shared mission',
+      'donate.sharedMissionDesc': 'Back a team that values creativity, teamwork, problem-solving and the future of engineering in Portugal.',
+      'donate.goalSectionLabel': 'Our Next Goal',
+      'donate.goalTitle': '€2,500 — Build our 2026/27 Competition Robot',
+      'donate.goalStatus': 'Fully funded. We have reached the long-term goal.',
+      'donate.goalNext': 'Next goal:',
+      'donate.goalLatest': 'Latest completed:',
+      'donate.goalStart': 'No milestone reached yet.',
+      'donate.goalCopy': 'Our next milestone is funding the hardware and electronics required to build our BIOBUZZ competition robot.',
+      'donate.ctaDonate': 'Donate',
+      'donate.ctaMeetTeam': 'Meet the team',
+      'donate.ctaTalk': 'Let’s talk!',
+    },
+    pt: {
+      'nav.home': 'Início',
+      'nav.team': 'Equipa',
+      'nav.blog': 'Blog',
+      'nav.sponsors': 'Patrocinadores',
+      'nav.donate': 'Doar',
+      'hero.eyebrow': 'FIRST Tech Challenge · Equipa #34200',
+      'hero.more': 'Mais do que',
+      'hero.robots': 'robôs.',
+      'hero.sub': 'Somos o Heroes of the Sea — uma equipa de robótica liderada por estudantes a ultrapassar limites, a construir comunidade e a competir no palco mundial.',
+      'stats.season': 'Temporada',
+      'stats.members': 'Membros',
+      'stats.teamNumber': 'Número da Equipa',
+      'who.label': 'Quem somos',
+      'who.line1': 'Somos uma equipa',
+      'who.line2': 'de FIRST Tech Challenge',
+      'mission.title': 'A nossa missão',
+      'mission.text': 'Somos o Heroes of the Sea, uma equipa de robótica liderada por estudantes. Acreditamos que construir robôs ensina muito mais do que competências técnicas — ensina-nos a pensar, a colaborar e a ultrapassar problemas difíceis juntos.',
+      'team.sectionTitle': 'A nossa equipa',
+      'team.text': 'Somos um grupo de 7 estudantes do Colégio Atlântico, a competir na FIRST Tech Challenge. Desde construtores até programadores e estrategistas, cada um de nós traz algo diferente para a mesa.',
+      'work.title': 'O que fazemos',
+      'work.text': 'A FIRST Tech Challenge (FTC) é uma competição internacional de robótica em que equipas de estudantes concebem, constroem e programam robôs para completar desafios do jogo. Cada temporada traz um novo desafio, e cada temporada enfrentamo-lo.',
+      'competition.label': 'A competição',
+      'competition.what': 'O que é',
+      'competition.tech': 'FIRST Tech Challenge?',
+      'competition.text1': 'A FIRST Tech Challenge (FTC) é um programa global de robótica em que equipas de estudantes concebem, constroem e programam os seus próprios robôs do zero — e depois competem em eventos regionais, nacionais e de campeonato mundial.',
+      'competition.text2': 'Todos os setembro, é anunciado um jogo totalmente novo. As equipas têm alguns meses para perceber o desafio, engenhar uma solução, construí-la e competir. Nunca existem duas temporadas iguais.',
+      'competition.button': 'Saiba mais sobre a FTC',
+      'ftc.design': 'Conceber & Construir',
+      'ftc.designText': 'Da modelação CAD ao robô físico — chassis, mecanismos, cablagem — em semanas.',
+      'ftc.program': 'Programar',
+      'ftc.programText': 'Rotinas autónomas, integração de sensores e controlo em tempo real em Java ou Kotlin.',
+      'ftc.compete': 'Competir',
+      'ftc.competeText': 'Qualificações regionais, campeonatos estaduais e depois o Campeonato Mundial para as melhores equipas.',
+      'ftc.connect': 'Conectar',
+      'ftc.connectText': 'Portefólios de engenharia, eventos de divulgação comunitária e profissionalismo generoso dentro e fora do campo.',
+      'scrimmage.label': 'Da scrimmage',
+      'scrimmage.title': 'Momentos do nosso primeiro evento',
+      'updates.label': 'Últimas novidades',
+      'updates.title': 'Do campo',
+      'updates.viewAll': 'Todos os artigos',
+      'cta.label': 'Apoia a equipa',
+      'cta.title': 'Impulsiona a nossa próxima temporada',
+      'cta.text': 'Cada contribuição vai diretamente para a construção do nosso robô, para a competição e para inspirar a próxima geração de engenheiros e solucionadores de problemas.',
+      'footer.privacy': 'Política de Privacidade',
+      'footer.accessibility': 'Acessibilidade',
+      'footer.followUs': 'Segue-nos',
+      'footer.copyright': '© {year} Heroes of the Sea. Todos os direitos reservados.',
+      'blog.fromTheTeam': 'Da equipa',
+      'blog.title': 'Blog',
+      'blog.noPosts': 'Ainda não há publicações — volta em breve.',
+      'blog.readPost': 'Ler artigo',
+      'team.label': 'As pessoas por detrás do robô',
+      'team.title': 'Conhece a equipa',
+      'sponsors.label': 'Os nossos apoiantes',
+      'sponsors.title': 'Patrocinadores',
+      'sponsors.introHeading': 'Parceiros que nos ajudam a crescer',
+      'sponsors.introText': 'Somos gratos às organizações e instituições que apoiam o Heroes of the Sea e ajudam-nos a construir, competir e inspirar novas gerações de engenheiros e solucionadores de problemas.',
+      'donate.sectionLabel': 'Apoia a equipa',
+      'donate.title': 'Ajuda-nos a competir e a crescer',
+      'donate.subtitle': 'O Heroes of the Sea funciona inteiramente com o apoio de pessoas que acreditam no que a robótica liderada por estudantes pode fazer. Cada doação vai diretamente para a equipa.',
+      'donate.powersLabel': 'Onde vai o teu dinheiro',
+      'donate.powersTitle': 'O que estás a apoiar',
+      'donate.powersIntro': 'Construir um robô FTC competitivo — e levá-lo ao palco mundial — exige recursos reais. Aqui está exatamente aquilo que a tua contribuição financia.',
+      'donate.robotConstruction': 'Construção do robô',
+      'donate.robotConstructionDesc': 'Trens de condução personalizados, atuadores de precisão, sensores, cablagens e materiais estruturais. Um robô FTC competitivo é reconstruído do zero em cada temporada.',
+      'donate.competitionEntry': 'Inscrição em competições',
+      'donate.competitionEntryDesc': 'Taxas de inscrição para qualificatórias regionais e campeonatos nacionais. Cada competição é uma oportunidade para medir o nosso progresso e ir mais longe.',
+      'donate.travel': 'Viagens e logística',
+      'donate.travelDesc': 'Levar a equipa inteira — e o robô — até aos locais de competição com segurança. Sem apoio de viagem, não conseguimos competir fora da nossa região.',
+      'donate.outreach': 'Ação social e educação',
+      'donate.outreachDesc': 'Workshops comunitários, demonstrações escolares e eventos que trazem a robótica a estudantes que ainda não tiveram a oportunidade de construir algo — mas que a vão ter.',
+      'donate.whySupportLabel': 'Porque apoiar-nos',
+      'donate.whySupportTitle': 'Já demonstrámos o que somos capazes de fazer em nove dias. Agora queremos ver o que podemos fazer com uma temporada completa.',
+      'donate.whySupportLead1': 'O Heroes of the Sea começou em 2026 como uma das primeiras equipas portuguesas de FIRST Tech Challenge. Com apenas nove dias para conceber, construir e programar o nosso primeiro robô de competição, entrámos na Scrimmage de Lisboa, tornámo-nos Alliance Captains e recebemos o Prémio de Sustentabilidade.',
+      'donate.whySupportLead2': 'Hoje, somos uma equipa de cerca de 15 estudantes, a trabalhar em hardware, software, CAD e outreach, com ambições que vão além de um único robô ou competição.',
+      'donate.build': 'CONSTRUIR',
+      'donate.buildDesc': 'Transforma desenhos em robôs reais de competição através de hardware, eletrónica, materiais e fabrico.',
+      'donate.compete': 'COMPETIR',
+      'donate.competeDesc': 'Leva a nossa equipa e os nossos robôs para além de Portugal e compete internacionalmente.',
+      'donate.learn': 'APRENDER',
+      'donate.learnDesc': 'Dá aos estudantes a oportunidade de resolver problemas reais de engenharia através do design, programação, fabrico e iteração.',
+      'donate.grow': 'CRESCER',
+      'donate.growDesc': 'Desenvolve novos projetos, expande a divulgação STEM e ajuda a construir uma comunidade FIRST mais forte em Portugal.',
+      'donate.quote': 'Não estás apenas a financiar um robô. Estás a dar-nos os recursos para construir, competir, experimentar e criar aquilo que vem a seguir.',
+      'donate.nextGoalLink': '→ Vê o nosso próximo objetivo',
+      'donate.partnerLink': '→ Torna-te parceiro',
+      'donate.forPartnersLabel': 'Para parceiros',
+      'donate.forPartnersTitle': 'O que empresas e organizações recebem em troca',
+      'donate.forPartnersIntro': 'Acreditamos que as parcerias mais fortes são construídas com propósito partilhado. Ao apoiar o Heroes of the Sea, os parceiros ajudam-nos a crescer enquanto ganham visibilidade significativa e a oportunidade de investir na próxima geração de inovadores.',
+      'donate.visibility': 'Visibilidade',
+      'donate.visibilityDesc': 'Reconhecimento no robô, roupa da equipa, materiais de competição, canais online e presença em eventos.',
+      'donate.communityImpact': 'Impacto na comunidade',
+      'donate.communityImpactDesc': 'Apoia a educação STEM, atividades de divulgação e o desenvolvimento de uma cultura robótica mais forte em Portugal.',
+      'donate.talentPipeline': 'Talento futuro',
+      'donate.talentPipelineDesc': 'Liga-te a estudantes motivados e engenheiros em início de carreira que estão a desenvolver competências técnicas práticas todos os dias.',
+      'donate.sharedMission': 'Missão partilhada',
+      'donate.sharedMissionDesc': 'Apoia uma equipa que valoriza a criatividade, o trabalho em equipa, a resolução de problemas e o futuro da engenharia em Portugal.',
+      'donate.goalSectionLabel': 'O nosso próximo objetivo',
+      'donate.goalTitle': '€2.500 — Construir o robô de competição 2026/27',
+      'donate.goalStatus': 'Totalmente financiado. Alcançámos o objetivo de longo prazo.',
+      'donate.goalNext': 'Próximo objetivo:',
+      'donate.goalLatest': 'Último concluído:',
+      'donate.goalStart': 'Ainda não foi atingido nenhum marco.',
+      'donate.goalCopy': 'O nosso próximo marco é financiar o hardware e a eletrónica necessários para construir o nosso robô de competição BIOBUZZ.',
+      'donate.ctaDonate': 'Doar',
+      'donate.ctaMeetTeam': 'Conhece a equipa',
+      'donate.ctaTalk': 'Vamos conversar!',
+    },
+  };
+
+  const applyLanguage = (lang: 'en' | 'pt') => {
+    document.documentElement.lang = lang;
+    document.body.dataset.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const key = element.getAttribute('data-i18n');
+      const nextText = key ? translations[lang][key] : null;
+      if (nextText) {
+        const formatted = nextText.includes('{year}')
+          ? nextText.replace('{year}', String(new Date().getFullYear()))
+          : nextText;
+        element.textContent = formatted;
+      }
+    });
+
+    document.dispatchEvent(new CustomEvent('site-language-change', { detail: { lang } }));
+
+    if (langButton) {
+      const isPortuguese = lang === 'pt';
+      langButton.textContent = isPortuguese ? 'EN' : 'PT';
+      langButton.setAttribute('aria-label', isPortuguese ? 'Switch to English' : 'Switch to Portuguese');
+      langButton.setAttribute('title', isPortuguese ? 'Switch to English' : 'Switch to Portuguese');
+    }
+  };
+
+  const savedLang = localStorage.getItem('site-language');
+  const initialLang = savedLang === 'en' ? 'en' : 'pt';
+  applyLanguage(initialLang);
+
+  langButton?.addEventListener('click', () => {
+    const nextLang = document.documentElement.lang === 'pt' ? 'en' : 'pt';
+    localStorage.setItem('site-language', nextLang);
+    applyLanguage(nextLang);
+  });
 
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
