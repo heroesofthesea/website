@@ -4,6 +4,14 @@ dist/
 
 # Dependencies
 node_modules/
+.cache/
+.parcel-cache/
+
+# Generated / logs
+*.log
+
+# Large temporary archive folders
+public/images/Lisbon Scrimmage*/
 
 # Environment
 .env
