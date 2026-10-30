@@ -5,10 +5,6 @@ const fundingConfig = {
   totalRaised: 2500,
   milestones: [
     { amount: 2500, label: 'Competition Robot' },
-    { amount: 4500, label: 'First International Competition' },
-    { amount: 6500, label: 'International Advancement Reserve' },
-    { amount: 7500, label: 'Prototyping & Manufacturing' },
-    { amount: 8500, label: 'Outreach & Team Infrastructure' },
     { amount: 10000, label: 'Fully Funded 2026/27 Season' },
     { amount: 12500, label: 'FTC Training Field' },
     { amount: 15000, label: 'R&D & Future Engineering Projects' },
@@ -24,16 +20,9 @@ const milestoneState = (() => {
     .find(milestone => totalRaised >= milestone.amount);
 
   const nextMilestone = milestones.find(milestone => totalRaised < milestone.amount) ?? milestones[milestones.length - 1];
-  const previousMilestone = [...milestones]
-    .reverse()
-    .find(milestone => milestone.amount < nextMilestone.amount) ?? { amount: 0, label: 'Start' };
-
-  const rangeStart = previousMilestone.amount;
-  const rangeEnd = nextMilestone.amount;
-  const interval = Math.max(rangeEnd - rangeStart, 1);
-  const progress = totalRaised >= rangeEnd
+  const progress = totalRaised >= nextMilestone.amount
     ? 100
-    : Math.max(0, Math.min(100, ((totalRaised - rangeStart) / interval) * 100));
+    : Math.max(0, Math.min(100, (totalRaised / nextMilestone.amount) * 100));
 
   const isCompleted = totalRaised >= milestones[milestones.length - 1].amount;
 
@@ -42,9 +31,6 @@ const milestoneState = (() => {
     milestones,
     latestCompleted,
     nextMilestone,
-    previousMilestone,
-    rangeStart,
-    rangeEnd,
     progress,
     isCompleted,
   };
@@ -234,7 +220,7 @@ const milestoneState = (() => {
       <div class="funding-goal-card">
         <div class="funding-goal-header">
           <span class="section-label" data-i18n="donate.goalSectionLabel">Our Next Goal</span>
-          <h2 id="our-next-goal-heading" data-i18n="donate.goalTitle">€2,500 goal reached!</h2>
+          <h2 id="our-next-goal-heading" data-i18n="donate.goalTitle">€10,000 — Fund our 2026/27 season</h2>
         </div>
 
         <div class="funding-goal-amounts" aria-live="polite">
@@ -261,7 +247,7 @@ const milestoneState = (() => {
         </div>
 
         <p class="funding-goal-copy" data-i18n="donate.goalCopy">
-          Thank you for helping us fund our BIOBUZZ competition robot. Our next milestone is preparing for our first international competition.
+          We have raised €2,500 toward our €10,000 goal to fund the 2026/27 season. Thank you for helping us get there.
         </p>
 
         <a href="https://forms.cloud.microsoft/e/j9KJUpUVYC" target="_blank" rel="noopener noreferrer" class="btn-secondary funding-goal-button" data-i18n="donate.ctaTalk">Let’s talk!</a>
