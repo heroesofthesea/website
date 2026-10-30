@@ -42,4 +42,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <section class="section section--tight" aria-labelledby="sponsor-tiers-heading">
+    <div class="container">
+      <div class="sponsors-intro">
+        <h2 id="sponsor-tiers-heading" data-i18n="sponsors.tiersTitle">Sponsorship levels</h2>
+        <p data-i18n="sponsors.tiersIntro">Recognition and visibility scale with the sponsorship level.</p>
+      </div>
+
+      <div class="partners-grid" role="list" aria-label="Sponsorship contribution levels">
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.supporterTier">Supporter</strong>
+          <p data-i18n="sponsors.supporterThreshold">Minimum contribution: €250</p>
+        </article>
+
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.bronzeTier">Bronze</strong>
+          <p data-i18n="sponsors.bronzeThreshold">Minimum contribution: €1,000</p>
+        </article>
+
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.silverTier">Silver</strong>
+          <p data-i18n="sponsors.silverThreshold">Minimum contribution: €2,000</p>
+        </article>
+
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.goldTier">Gold</strong>
+          <p data-i18n="sponsors.goldThreshold">Minimum contribution: €3,500+</p>
+        </article>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
