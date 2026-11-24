@@ -42,22 +42,31 @@
       "links": []
     },
     {
-      "name": "Beato",
-      "pronouns": "(they/them)",
-      "role": "Social Media and Backend Infrastructure Lead",
+      "name": "Alejandro Reyes",
+      "pronouns": "(he/him)",
+      "role": "Social Media",
       "group": "Social Media",
-      "bio": "Beato is a part of the Leadership team of HOTS and Hack Club's Clubs Resources team.",
-      "photo": "https://cdn.hackclub.com/019e8829-432c-719c-b7c9-c34ea4b84821/05-22-2026-0928.png",
-      "links": [
-        {
-          "type": "github",
-          "url": "https://github.com/whatbeato"
-        },
-        {
-          "type": "linkedin",
-          "url": "https://linkedin.com/in/whatbeatoo"
-        }
-      ]
+      "bio": "Description pending.",
+      "photo": "/images/alejandroreyes.jpg",
+      "links": []
+    },
+    {
+      "name": "Nuno Araújo",
+      "pronouns": "(he/him)",
+      "role": "Social Media",
+      "group": "Social Media",
+      "bio": "Description pending.",
+      "photo": "/images/nunoaraujo.jpg",
+      "links": []
+    },
+    {
+      "name": "Filipe Jorge",
+      "pronouns": "(he/him)",
+      "role": "Hardware",
+      "group": "Hardware",
+      "bio": "Description pending.",
+      "photo": "/images/filipejorge.jpg",
+      "links": []
     },
     {
       "name": "Beatriz Sousa",
@@ -83,7 +92,7 @@
       "role": "Software Developer",
       "group": "Development",
       "bio": "Computer Science and Mathematics enthusiast, always idealizing logical systems and computational thinking.",
-      "photo": "/images/guilherme-albernaz.jpg",
+      "photo": "/images/guilhermealbernaz.jpg",
       "links": []
     },
     {
@@ -92,34 +101,7 @@
       "role": "Hardware developer",
       "group": "Development",
       "bio": "Chemistry and Physics student, passionate about real-world problems and their possible engineering solutions.",
-      "photo": "/images/pedro-albernaz.jpg",
-      "links": []
-    },
-    {
-      "name": "Revealing soon!",
-      "pronouns": "",
-      "role": "Team member",
-      "group": "Coming soon",
-      "bio": "Revealing soon!",
-      "photo": "",
-      "links": []
-    },
-    {
-      "name": "Revealing soon!",
-      "pronouns": "",
-      "role": "Team member",
-      "group": "Coming soon",
-      "bio": "Revealing soon!",
-      "photo": "",
-      "links": []
-    },
-    {
-      "name": "Revealing soon!",
-      "pronouns": "",
-      "role": "Team member",
-      "group": "Coming soon",
-      "bio": "Revealing soon!",
-      "photo": "",
+      "photo": "/images/pedroalbernaz.jpg",
       "links": []
     }
   ]

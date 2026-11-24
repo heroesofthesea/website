@@ -2,15 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const fundingConfig = {
-  totalRaised: 2597.94,
+  totalRaised: 3000,
   milestones: [
-    { amount: 2500, label: 'Competition Robot' },
-    { amount: 10000, label: 'Fully Funded 2026/27 Season' },
-    { amount: 12500, label: 'FTC Training Field' },
-    { amount: 15000, label: 'R&D & Future Engineering Projects' },
-    { amount: 20000, label: 'Long-Term Team Development' },
+    { amount: 5000, label: 'Lab setup and tools' },
+    { amount: 10000, label: 'Competition robot' },
+    { amount: 20000, label: 'Team growth and Netherlands competition' },
+    { amount: 35000, label: 'Fully funded season and future development' },
   ]
 };
+
+const fundingRoadmap = [
+  { amount: 0, key: 'donate.roadmapStart' },
+  { amount: 5000, key: 'donate.roadmapLab' },
+  { amount: 10000, key: 'donate.roadmapRobot' },
+  { amount: 20000, key: 'donate.roadmapTeam' },
+  { amount: 35000, key: 'donate.roadmapSeason' },
+];
 
 const milestoneState = (() => {
   const milestones = fundingConfig.milestones;
@@ -20,15 +27,17 @@ const milestoneState = (() => {
     .find(milestone => totalRaised >= milestone.amount);
 
   const nextMilestone = milestones.find(milestone => totalRaised < milestone.amount) ?? milestones[milestones.length - 1];
-  const progress = totalRaised >= nextMilestone.amount
+  const overallGoal = milestones[milestones.length - 1].amount;
+  const progress = totalRaised >= overallGoal
     ? 100
-    : Math.max(0, Math.min(100, (totalRaised / nextMilestone.amount) * 100));
+    : Math.max(0, Math.min(100, (totalRaised / overallGoal) * 100));
 
-  const isCompleted = totalRaised >= milestones[milestones.length - 1].amount;
+  const isCompleted = totalRaised >= overallGoal;
 
   return {
     totalRaised,
     milestones,
+    overallGoal,
     latestCompleted,
     nextMilestone,
     progress,
@@ -215,45 +224,150 @@ const milestoneState = (() => {
     </div>
   </section>
 
-  <section class="funding-goal-section" aria-labelledby="our-next-goal-heading">
+  <section id="sponsors" class="section section--tight" aria-labelledby="sponsors-heading">
+    <div class="container">
+      <div class="sponsors-intro">
+        <span class="section-label" data-i18n="sponsors.label">Our supporters</span>
+        <h2 id="sponsors-heading" data-i18n="sponsors.introHeading">Partners helping us grow</h2>
+        <p data-i18n="sponsors.introText">
+          We are grateful to the organisations and institutions supporting Heroes of the Sea and helping us build,
+          compete, and inspire new generations of engineers and problem-solvers.
+        </p>
+      </div>
+
+      <div class="sponsors-grid">
+        <div class="sponsor-card">
+          <img src="/images/colegioatlantico.png" alt="Colégio Atlântico" loading="lazy" />
+        </div>
+        <div class="sponsor-card">
+          <img src="/images/raisebox.png" alt="RaiseBox" loading="lazy" />
+        </div>
+        <div class="sponsor-card">
+          <img src="/images/automatication_logo.png" alt="Automatication, custom development for publishing" loading="lazy" />
+        </div>
+        <div class="sponsor-card">
+          <img src="/images/paradigmoriginal-transparent.png" alt="Paradigm Original" loading="lazy" />
+        </div>
+        <div class="sponsor-card">
+          <img src="/images/Logo%20Amado%20e%20Filipe%20horizontal.png" alt="Amado e Filipe — Máquinas e Ferramentas" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="sponsors-intro" style="margin-top: var(--space-12);">
+        <h2 id="sponsor-tiers-heading" data-i18n="sponsors.tiersTitle">Sponsorship levels</h2>
+        <p data-i18n="sponsors.tiersIntro">Recognition and visibility scale with the sponsorship level.</p>
+      </div>
+
+      <div class="partners-grid" role="list" aria-label="Sponsorship contribution levels">
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.supporterTier">Supporter</strong>
+          <p data-i18n="sponsors.supporterThreshold">Minimum contribution: €250</p>
+        </article>
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.bronzeTier">Bronze</strong>
+          <p data-i18n="sponsors.bronzeThreshold">Minimum contribution: €1,000</p>
+        </article>
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.silverTier">Silver</strong>
+          <p data-i18n="sponsors.silverThreshold">Minimum contribution: €2,000</p>
+        </article>
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.goldTier">Gold</strong>
+          <p data-i18n="sponsors.goldThreshold">Minimum contribution: €3,500+</p>
+        </article>
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.diamondTier">Diamond</strong>
+          <p data-i18n="sponsors.diamondThreshold">Minimum contribution: €5,000</p>
+        </article>
+        <article class="partner-item" role="listitem">
+          <strong data-i18n="sponsors.oceanCrownTier">Ocean’s Crown</strong>
+          <p data-i18n="sponsors.oceanCrownThreshold">Minimum contribution: €10,000</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="funding-goal" class="funding-goal-section" aria-labelledby="our-next-goal-heading" data-funding-celebration>
     <div class="container">
       <div class="funding-goal-card">
         <div class="funding-goal-header">
-          <span class="section-label" data-i18n="donate.goalSectionLabel">Our Next Goal</span>
-          <h2 id="our-next-goal-heading" data-i18n="donate.goalTitle">€10,000 — Fund our 2026/27 season</h2>
+          <span class="section-label" data-i18n="donate.goalSectionLabel">Our campaign</span>
+          <h2 id="our-next-goal-heading" data-i18n="donate.goalTitle">€35,000 — Build our lab, robot and team</h2>
+        </div>
+
+        <div class="funding-celebration" aria-label="Milestone celebration">
+          <div class="funding-celebration-confetti" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="funding-celebration-kicker" data-i18n="donate.levelUp">LEVEL UP · €3,000!</span>
+          <h3 data-i18n="donate.netherlandsThanks">Thank you! We’re officially going to the Netherlands!</h3>
+          <p class="funding-celebration-next" data-i18n="donate.buildNext">Help us build our lab, robot and team.</p>
         </div>
 
         <div class="funding-goal-amounts" aria-live="polite">
-          <span>€{milestoneState.totalRaised.toLocaleString()} / €{milestoneState.nextMilestone.amount.toLocaleString()}</span>
+          <span>€{milestoneState.totalRaised.toLocaleString()} / €{milestoneState.overallGoal.toLocaleString()}</span>
+        </div>
+
+        <div class="funding-roadmap-wrap">
+          <div class="funding-roadmap-heading">
+            <h3 data-i18n="donate.roadmapTitle">Our road to €35,000</h3>
+            <p data-i18n="donate.roadmapNext">Next milestone: €5,000 for our lab</p>
+          </div>
+          <ol class="funding-roadmap" aria-label="Funding campaign milestones">
+            {fundingRoadmap.map((step) => (
+              <li class:list={['funding-roadmap-step', { 'is-reached': step.amount <= milestoneState.totalRaised }]}>
+                <span class="funding-roadmap-amount">€{step.amount.toLocaleString()}</span>
+                <span class="funding-roadmap-label" data-i18n={step.key}>
+                  {step.amount === 0 ? 'Starting line' : milestoneState.milestones.find((milestone) => milestone.amount === step.amount)?.label}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
 
         <div class="funding-goal-progress" aria-label="Progress toward the current milestone" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(milestoneState.progress)}>
           <span style={{ width: `${milestoneState.progress}%` }}></span>
         </div>
 
-        <div class="funding-goal-status">
-          {milestoneState.isCompleted ? (
-            <p><strong>Fully funded.</strong> We have reached the long-term goal.</p>
-          ) : (
-            <>
-              {milestoneState.latestCompleted ? (
-                <p><strong>Latest completed:</strong> €{milestoneState.latestCompleted.amount.toLocaleString()} — {milestoneState.latestCompleted.label} ✓</p>
-              ) : (
-                <p><strong>Latest completed:</strong> No milestone reached yet.</p>
-              )}
-              <p><strong>Next goal:</strong> €{milestoneState.nextMilestone.amount.toLocaleString()} — {milestoneState.nextMilestone.label}</p>
-            </>
-          )}
-        </div>
-
         <p class="funding-goal-copy" data-i18n="donate.goalCopy">
-          We have raised €2,500 toward our €10,000 goal to fund the 2026/27 season. Thank you for helping us get there.
+          Donations raised so far have covered transportation and accommodation for our first event, and those costs are fully paid. We are now raising funds for the rest of the 2026/27 season.
         </p>
 
         <a href="https://forms.cloud.microsoft/e/j9KJUpUVYC" target="_blank" rel="noopener noreferrer" class="btn-secondary funding-goal-button" data-i18n="donate.ctaTalk">Let’s talk!</a>
       </div>
     </div>
   </section>
+
+  <script>
+    const celebrationSection = document.querySelector<HTMLElement>('[data-funding-celebration]');
+
+    if (celebrationSection) {
+      let celebrationObserver: IntersectionObserver | undefined;
+      const revealCelebration = () => {
+        const bounds = celebrationSection.getBoundingClientRect();
+        const isVisible = bounds.top < window.innerHeight * 0.85 && bounds.bottom > window.innerHeight * 0.15;
+
+        if (isVisible) {
+          celebrationSection.classList.add('is-celebrating');
+          celebrationObserver?.disconnect();
+          window.removeEventListener('scroll', revealCelebration);
+          window.removeEventListener('resize', revealCelebration);
+        }
+      };
+
+      if ('IntersectionObserver' in window) {
+        celebrationObserver = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) revealCelebration();
+        }, { threshold: 0.1 });
+        celebrationObserver.observe(celebrationSection);
+      }
+
+      window.addEventListener('scroll', revealCelebration, { passive: true });
+      window.addEventListener('resize', revealCelebration);
+      revealCelebration();
+    }
+  </script>
 
 
 </BaseLayout>

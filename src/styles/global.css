@@ -1375,6 +1375,161 @@ main { padding-top: 72px; }
   align-self: flex-start;
 }
 
+.funding-celebration {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-bg);
+}
+
+.funding-celebration-kicker {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.funding-celebration h3 {
+  position: relative;
+  max-width: 34ch;
+  margin: var(--space-2) 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.funding-celebration p {
+  position: relative;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.funding-celebration-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.funding-celebration-confetti span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.funding-celebration-confetti span:nth-child(4n + 1) { background: #e85d4a; --confetti-x: -130px; }
+.funding-celebration-confetti span:nth-child(4n + 2) { background: #e6b944; --confetti-x: -75px; }
+.funding-celebration-confetti span:nth-child(4n + 3) { background: #20a98b; --confetti-x: 75px; }
+.funding-celebration-confetti span:nth-child(4n) { background: #438fc2; --confetti-x: 130px; }
+.funding-celebration-confetti span:nth-child(2n) { transform: rotate(35deg); }
+.funding-goal-section.is-celebrating .funding-celebration-kicker {
+  animation: funding-level-up 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.funding-goal-section.is-celebrating .funding-celebration-confetti span {
+  animation: funding-confetti 900ms ease-out both;
+}
+.funding-goal-section.is-celebrating .funding-celebration-confetti span:nth-child(2n) { animation-delay: 80ms; }
+.funding-goal-section.is-celebrating .funding-celebration-next {
+  animation: funding-next-message 500ms ease-out 900ms both;
+}
+
+@keyframes funding-level-up {
+  0% { opacity: 0.3; transform: translateY(8px) scale(0.86); }
+  70% { opacity: 1; transform: translateY(-2px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes funding-confetti {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(0); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--confetti-x), -70px) rotate(220deg); }
+}
+
+@keyframes funding-next-message {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.funding-roadmap-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+}
+
+.funding-roadmap-heading h3 {
+  margin: 0 0 var(--space-1);
+  font-size: 1.125rem;
+}
+
+.funding-roadmap-heading p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.funding-roadmap {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.funding-roadmap-step {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--color-border);
+}
+
+.funding-roadmap-step::before {
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg-2);
+  content: '';
+}
+
+.funding-roadmap-step.is-reached { border-color: var(--color-accent); }
+.funding-roadmap-step.is-reached::before { border-color: var(--color-accent); background: var(--color-accent); }
+
+.funding-roadmap-amount {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.funding-roadmap-label {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .funding-roadmap { grid-template-columns: 1fr; gap: var(--space-2); }
+  .funding-roadmap-step { padding: 0 0 var(--space-4) var(--space-6); border-top: 0; border-left: 2px solid var(--color-border); }
+  .funding-roadmap-step::before { top: 2px; left: -7px; }
+  .funding-roadmap-step.is-reached { border-left-color: var(--color-accent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .funding-goal-section.is-celebrating .funding-celebration-next { animation-delay: 0ms; }
+}
+
 .donate-form-section {
   padding: var(--space-16) 0 var(--space-24);
   display: flex;

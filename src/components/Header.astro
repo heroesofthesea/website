@@ -1,9 +1,9 @@
 ---
 const navLinks = [
-  { href: '/',       label: 'Home', labelPt: 'Início' },
-  { href: '/team',   label: 'Team', labelPt: 'Equipa' },
-  { href: '/blog',   label: 'Blog', labelPt: 'Blog' },
-  { href: '/sponsors', label: 'Sponsors', labelPt: 'Patrocinadores' },
+  { href: '/',                 key: 'home',     label: 'Home' },
+  { href: '/team',             key: 'team',     label: 'Team' },
+  { href: '/blog',             key: 'blog',     label: 'Blog' },
+  { href: '/donate#sponsors',  key: 'sponsors', label: 'Sponsors' },
 ];
 
 const { pathname } = Astro.url;
@@ -36,8 +36,8 @@ const { pathname } = Astro.url;
     {navLinks.map(link => (
       <a
         href={link.href}
-        aria-current={pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) ? 'page' : undefined}
-        data-i18n={pathname.startsWith(link.href) ? `nav.${link.href.replace('/', '') || 'home'}` : `nav.${link.href.replace('/', '') || 'home'}`}
+        aria-current={!link.href.includes('#') && (pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))) ? 'page' : undefined}
+        data-i18n={`nav.${link.key}`}
       >
         {link.label}
       </a>
@@ -51,7 +51,7 @@ const { pathname } = Astro.url;
     >
       PT
     </button>
-    <a href="/donate" class="nav-donate" aria-current={pathname === '/donate' ? 'page' : undefined} data-i18n="nav.donate">
+    <a href="/donate#funding-goal" class="nav-donate" aria-current={pathname === '/donate' ? 'page' : undefined} data-i18n="nav.donate">
       Donate
     </a>
   </nav>
@@ -133,6 +133,8 @@ const { pathname } = Astro.url;
       'sponsors.goldThreshold': 'Minimum contribution: €3,500+',
       'sponsors.diamondTier': 'Diamond',
       'sponsors.diamondThreshold': 'Minimum contribution: €5,000',
+      'sponsors.oceanCrownTier': 'Ocean’s Crown',
+      'sponsors.oceanCrownThreshold': 'Minimum contribution: €10,000',
       'donate.sectionLabel': 'Support the team',
       'donate.title': 'Help us compete & grow',
       'donate.subtitle': 'Heroes of the Sea runs entirely on the support of people who believe in what student-led robotics can do. Every donation goes directly to the team.',
@@ -173,13 +175,23 @@ const { pathname } = Astro.url;
       'donate.talentPipelineDesc': 'Connect with motivated students and early-career engineers who are building practical technical skills every day.',
       'donate.sharedMission': 'Shared mission',
       'donate.sharedMissionDesc': 'Back a team that values creativity, teamwork, problem-solving and the future of engineering in Portugal.',
-      'donate.goalSectionLabel': 'Our Next Goal',
-      'donate.goalTitle': '€10,000 — Fund our 2026/27 season',
+      'donate.goalSectionLabel': 'Our campaign',
+      'donate.goalTitle': '€35,000 — Build our lab, robot and team',
       'donate.goalStatus': 'Fully funded. We have reached the long-term goal.',
       'donate.goalNext': 'Next goal:',
       'donate.goalLatest': 'Latest completed:',
       'donate.goalStart': 'No milestone reached yet.',
-      'donate.goalCopy': 'We have raised €2,500 toward our €10,000 goal to fund the 2026/27 season. Thank you for helping us get there.',
+      'donate.goalCopy': 'Donations raised so far covered transportation and accommodation for our first event. Those costs are fully paid; now help us build our lab, robot and team.',
+      'donate.levelUp': 'LEVEL UP · €3,000!',
+      'donate.netherlandsThanks': 'Thank you! We’re officially going to the Netherlands!',
+      'donate.buildNext': 'Help us build our lab, robot and team.',
+      'donate.roadmapTitle': 'Our road to €35,000',
+      'donate.roadmapNext': 'Next milestone: €5,000 for our lab',
+      'donate.roadmapStart': 'Starting line',
+      'donate.roadmapLab': 'Set up our lab',
+      'donate.roadmapRobot': 'Lab and competition robot',
+      'donate.roadmapTeam': 'Grow our team and compete in the Netherlands',
+      'donate.roadmapSeason': 'Fund the season and future development',
       'donate.ctaDonate': 'Donate',
       'donate.ctaMeetTeam': 'Meet the team',
       'donate.ctaTalk': 'Let’s talk!',
@@ -254,6 +266,8 @@ const { pathname } = Astro.url;
       'sponsors.goldThreshold': 'Contribuição mínima: €3.500+',
       'sponsors.diamondTier': 'Diamante',
       'sponsors.diamondThreshold': 'Contribuição mínima: €5.000',
+      'sponsors.oceanCrownTier': 'Coroa do Oceano',
+      'sponsors.oceanCrownThreshold': 'Contribuição mínima: €10.000',
       'donate.sectionLabel': 'Apoia a equipa',
       'donate.title': 'Ajuda-nos a competir e a crescer',
       'donate.subtitle': 'O Heroes of the Sea funciona inteiramente com o apoio de pessoas que acreditam no que a robótica liderada por estudantes pode fazer. Cada doação vai diretamente para a equipa.',
@@ -294,13 +308,23 @@ const { pathname } = Astro.url;
       'donate.talentPipelineDesc': 'Liga-te a estudantes motivados e engenheiros em início de carreira que estão a desenvolver competências técnicas práticas todos os dias.',
       'donate.sharedMission': 'Missão partilhada',
       'donate.sharedMissionDesc': 'Apoia uma equipa que valoriza a criatividade, o trabalho em equipa, a resolução de problemas e o futuro da engenharia em Portugal.',
-      'donate.goalSectionLabel': 'O nosso próximo objetivo',
-      'donate.goalTitle': '€10.000 — Financiar a temporada 2026/27',
+      'donate.goalSectionLabel': 'A nossa campanha',
+      'donate.goalTitle': '€35.000 — Construir o nosso laboratório, robô e equipa',
       'donate.goalStatus': 'Totalmente financiado. Alcançámos o objetivo de longo prazo.',
       'donate.goalNext': 'Próximo objetivo:',
       'donate.goalLatest': 'Último concluído:',
       'donate.goalStart': 'Ainda não foi atingido nenhum marco.',
-      'donate.goalCopy': 'Já angariámos €2.500 para o nosso objetivo de €10.000 para financiar a temporada 2026/27. Obrigado por nos ajudarem a chegar lá.',
+      'donate.goalCopy': 'As doações angariadas até agora cobriram o transporte e o alojamento para o nosso primeiro evento. Esses custos estão totalmente pagos; agora ajuda-nos a construir o nosso laboratório, robô e equipa.',
+      'donate.levelUp': 'SUBIMOS DE NÍVEL · €3.000!',
+      'donate.netherlandsThanks': 'Obrigado! Vamos oficialmente aos Países Baixos!',
+      'donate.buildNext': 'Ajuda-nos a construir o nosso laboratório, robô e equipa.',
+      'donate.roadmapTitle': 'O caminho até €35.000',
+      'donate.roadmapNext': 'Próximo marco: €5.000 para o laboratório',
+      'donate.roadmapStart': 'Ponto de partida',
+      'donate.roadmapLab': 'Preparar o laboratório',
+      'donate.roadmapRobot': 'Laboratório e robô de competição',
+      'donate.roadmapTeam': 'Fazer crescer a equipa e competir nos Países Baixos',
+      'donate.roadmapSeason': 'Financiar a temporada e o desenvolvimento futuro',
       'donate.ctaDonate': 'Doar',
       'donate.ctaMeetTeam': 'Conhece a equipa',
       'donate.ctaTalk': 'Vamos conversar!',
