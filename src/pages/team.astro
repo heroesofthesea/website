@@ -2,261 +2,161 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import teamData from '../data/team.json';
 
-interface MemberLink {
-  type: 'github' | 'linkedin' | string;
-  url: string;
-}
-
 interface Member {
   name: string;
   pronouns?: string;
   role: string;
-  group?: string;
-  bio?: string;
+  bio: string;
   photo?: string;
-  links?: MemberLink[];
 }
 
 const members = teamData.members as Member[];
-const orderedFeaturedNames = ['Pedro Dias', 'Martim Glória', 'Beatriz Sousa'];
-const featuredMembers = orderedFeaturedNames
-  .map(name => members.find(member => member.name === name))
-  .filter((member): member is Member => Boolean(member));
-const otherMembers = members.filter(member => !orderedFeaturedNames.includes(member.name));
-const leaderName = 'Martim Glória';
+const departments = [
+  { key: 'leadership', label: 'Leadership', memberNames: ['Martim Glória', 'Pedro Dias'] },
+  { key: 'hardware', label: 'Hardware', memberNames: ['Lourenço Freire', 'Filipe Jorge', 'Pedro Albernaz'] },
+  { key: 'software', label: 'Software', memberNames: ['Bruna Rung', 'Guilherme Albernaz'] },
+  { key: 'outreach', label: 'Outreach', memberNames: ['Dinis Carvalho'] },
+  { key: 'socialMedia', label: 'Social Media', memberNames: ['Alejandro Reyes', 'Nuno Araújo'] },
+  { key: 'mentorship', label: 'Mentorship', memberNames: ['Beatriz Sousa'] },
+];
+
+const portugueseTeamCopy: Record<string, { role: string; bio: string }> = {
+  'Pedro Dias': {
+    role: 'Lead Coach',
+    bio: 'Entre experiências de física, programação e robótica, Pedro traz a sala de aula para a oficina. Como professor de Física, Química e Informática, incentiva os estudantes a desmontar, questionar e descobrir como a tecnologia funciona na prática.',
+  },
+  'Martim Glória': {
+    role: 'Team Captain',
+    bio: 'Os interesses de Martim vão da informática e física à psicologia e literatura. Como capitão da equipa, combina o fascínio pela tecnologia com o desafio de liderar uma equipa internacional de robótica e transformar projetos ambiciosos dos estudantes em realidade.',
+  },
+  'Lourenço Freire': {
+    role: 'Hardware Lead & Developer',
+    bio: 'Artista, cosplayer e programador, Lourenço transita naturalmente entre o design digital e a fabricação física. Quer esteja a criar algo para um fato ou a trabalhar num robô, aborda a engenharia com a imaginação de um artista e a mentalidade de um criador.',
+  },
+  'Filipe Jorge': {
+    role: 'Hardware',
+    bio: 'O Filipe gosta mais de tecnologia quando pode trabalhar diretamente com ela. Em vez de depender de equipamento elaborado, gosta de experimentar com o que tem à disposição, improvisar soluções e encontrar formas engenhosas de fazer as coisas funcionar.',
+  },
+  'Pedro Albernaz': {
+    role: 'Hardware Developer',
+    bio: 'Com um forte interesse por Física e Química, Pedro gosta de ligar princípios científicos a desafios reais de engenharia. Interessa-se especialmente por perceber porque é que as coisas se comportam de determinada forma e como usar esse conhecimento para criar melhores soluções.',
+  },
+  'Bruna Rung': {
+    role: 'Software Lead & Developer',
+    bio: 'Para Bruna, programar é onde a lógica se encontra com a criatividade. Com interesses que abrangem o desenvolvimento de software e a música, gosta de explorar como código cuidadosamente estruturado transforma uma ideia em algo que funciona no mundo real.',
+  },
+  'Guilherme Albernaz': {
+    role: 'Software Developer',
+    bio: 'Guilherme sente-se atraído pelo lado matemático da informática, sobretudo pela lógica dos algoritmos e dos sistemas complexos. Gosta de perceber como decompor problemas em etapas precisas e transformá-las em software funcional.',
+  },
+  'Dinis Carvalho': {
+    role: 'Outreach',
+    bio: 'O Dinis tem interesses variados, da aviação e desportos radicais à tecnologia e à guitarra. Na divulgação, leva o entusiasmo por diferentes áreas para conversas com pessoas e organizações, ajudando a apresentar-lhes os projetos da equipa.',
+  },
+  'Alejandro Reyes': {
+    role: 'Social Media',
+    bio: 'Guitarrista com um forte lado criativo, Alejandro traz para a equipa o seu interesse pela música e pela expressão visual. Gosta de experimentar ideias e de encontrar formas envolventes de partilhar a personalidade e os projetos do Heroes of the Sea.',
+  },
+  'Nuno Araújo': {
+    role: 'Social Media',
+    bio: 'A música ocupa um lugar importante no mundo do Nuno, desde explorar diferentes géneros a descobrir novos artistas. Leva esse interesse por estilos e perspetivas diferentes para as redes sociais da equipa, ajudando a comunicar o que acontece para além do campo de competição.',
+  },
+  'Beatriz Sousa': {
+    role: 'External Mentor',
+    bio: 'Antiga aluna do Colégio Atlântico e atual estudante de Informática na NOVA FCT, Beatriz partilha a sua experiência com a próxima geração. Tendo participado no Astronauta por um Dia, sabe que as oportunidades para explorar a ciência podem ir muito além da sala de aula.',
+  },
+};
+
+const departmentPt: Record<string, string> = {
+  leadership: 'Liderança',
+  hardware: 'Hardware',
+  software: 'Software',
+  outreach: 'Divulgação',
+  socialMedia: 'Redes sociais',
+  mentorship: 'Mentoria',
+};
 
 function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map(w => w[0])
-    .join('')
-    .toUpperCase();
+  return name.split(' ').filter(Boolean).map(part => part[0]).slice(0, 2).join('').toUpperCase();
 }
-
-const linkIcons: Record<string, string> = {
-  github: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`,
-  linkedin: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
-};
 ---
 
 <BaseLayout
   title="Team"
-  description="Meet the students of Heroes of the Sea — builders, programmers, strategists, and everything in between."
+  description="Meet the students and mentors of Heroes of the Sea — FTC Team #34200 from Portugal."
 >
-
-  <div class="page-hero">
+  <div class="page-hero team-page-hero">
     <div class="container">
       <span class="section-label" data-i18n="team.label">The people behind the robot</span>
       <h1 data-i18n="team.title">Meet the team</h1>
     </div>
   </div>
 
-  <section class="section section--tight" aria-label="Team members">
+  <section class="section section--tight team-directory" aria-label="Team members">
     <div class="container">
-      <div class="member-grid member-grid--featured">
-        {featuredMembers.map(member => (
-          <article
-            class="member-card member-card--featured"
-            aria-label={`${member.name}, ${member.role}`}
-          >
+      {departments.map((department) => {
+        const departmentMembers = department.memberNames
+          .map(name => members.find(member => member.name === name))
+          .filter((member): member is Member => Boolean(member));
 
-            <div class="member-photo-wrap" aria-hidden="true">
-              {member.photo ? (
-                <img
-                  src={member.photo}
-                  alt={`Photo of ${member.name}`}
-                  width="72"
-                  height="72"
-                  loading="lazy"
-                />
-              ) : (
-                <div class="member-initials">{getInitials(member.name)}</div>
-              )}
+        return (
+          <section class="team-department" aria-labelledby={`department-${department.key}`}>
+            <h2
+              class="visually-hidden"
+              id={`department-${department.key}`}
+              data-department-title
+              data-title-en={department.label}
+              data-title-pt={departmentPt[department.key]}
+            >{department.label}</h2>
+
+            <div class="member-grid" role="list" aria-label={department.label}>
+              {departmentMembers.map(member => {
+                const pt = portugueseTeamCopy[member.name];
+                return (
+                  <article class="member-card" role="listitem" aria-label={`${member.name}, ${member.role}`}>
+                    <div class="member-card-top">
+                      <div class="member-photo-wrap">
+                        {member.photo ? (
+                          <img src={member.photo} alt={`Photo of ${member.name}`} width="88" height="88" loading="lazy" decoding="async" />
+                        ) : (
+                          <div class="member-initials" aria-label={`Initials for ${member.name}`}>{getInitials(member.name)}</div>
+                        )}
+                      </div>
+                      <div class="member-heading-copy">
+                        <div class="member-name-line">
+                          <h3 class="member-name">{member.name}</h3>
+                          {member.pronouns && <span class="member-pronouns">{member.pronouns}</span>}
+                        </div>
+                        <p class="member-role" data-team-role data-role-en={member.role} data-role-pt={pt?.role ?? member.role}>{member.role}</p>
+                      </div>
+                    </div>
+                    <p class="member-bio" data-team-bio data-bio-en={member.bio} data-bio-pt={pt?.bio ?? member.bio}>{member.bio}</p>
+                  </article>
+                );
+              })}
             </div>
-
-            <div>
-              <p class="member-name">
-                {member.name}
-                {member.pronouns && member.pronouns.trim() && (
-                  <span class="member-pronouns">{member.pronouns}</span>
-                )}
-              </p>
-              <p
-                class="member-role"
-                data-team-role
-                data-role-en={member.role}
-                data-role-pt={
-                  member.name === 'Martim Glória' ? 'Capitão da equipa' :
-                  member.name === 'Lourenço Freire' ? 'Líder de hardware e programador' :
-                  member.name === 'Bruna Rung' ? 'Líder de software e programadora' :
-                  member.name === 'Alejandro Reyes' || member.name === 'Nuno Araújo' ? 'Redes sociais' :
-                  member.name === 'Beatriz Sousa' ? 'Mentora externa' :
-                  member.name === 'Pedro Dias' ? 'Treinador principal' :
-                  member.name === 'Guilherme Albernaz' ? 'Desenvolvedor de software' :
-                  member.name === 'Pedro Albernaz' ? 'Desenvolvedor de hardware' :
-                  member.name === 'Filipe Jorge' ? 'Hardware' :
-                  member.name === 'Revealing soon!' ? 'Membro da equipa' :
-                  member.role
-                }
-              >{member.role}</p>
-            </div>
-
-            {member.bio && member.bio.trim() && (
-              <p
-                class="member-bio"
-                data-team-bio
-                data-bio-en={member.bio}
-                data-bio-pt={
-                  member.name === 'Martim Glória' ? 'Estudante internacional apaixonado por inovação tecnológica, psicologia, literatura de física e muito mais!!!.' :
-                  member.name === 'Lourenço Freire' ? 'Artista, cosplayer, programador e membro da robótica — combinando criatividade, engenharia e criação prática em cada construção.' :
-                  member.name === 'Bruna Rung' ? 'Programadora com amor por música, lógica e resolução criativa de problemas — transformando código e criatividade em projetos significativos.' :
-                  member.name === 'Alejandro Reyes' || member.name === 'Nuno Araújo' || member.name === 'Filipe Jorge' ? 'Descrição pendente.' :
-                  member.name === 'Beatriz Sousa' ? 'Ex-aluna do Colégio Atlântico, atualmente a estudar Ciência da Computação na NOVA FCT. Participou no Astronauta por um Dia.' :
-                  member.name === 'Pedro Dias' ? 'Professor de Física, Química, CS, Robótica e STEM, apaixonado por ensinar e descobrir novas formas de experimentar tecnologia.' :
-                  member.name === 'Guilherme Albernaz' ? 'Entusiasta de Ciência da Computação e Matemática, sempre a idealizar sistemas lógicos e pensamento computacional.' :
-                  member.name === 'Pedro Albernaz' ? 'Estudante de Química e Física, apaixonado por problemas do mundo real e pelas soluções de engenharia que lhes podem responder.' :
-                  member.name === 'Revealing soon!' ? 'A revelar em breve!' :
-                  member.bio
-                }
-              >{member.bio}</p>
-            )}
-
-            {member.links && member.links.length > 0 && (
-              <ul class="member-links" role="list" aria-label={`Links for ${member.name}`}>
-                {member.links.map(link => (
-                  <li>
-                    <a
-                      class="member-link"
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${member.name} on ${link.type.charAt(0).toUpperCase() + link.type.slice(1)}`}
-                    >
-                      <Fragment set:html={linkIcons[link.type] ?? ''} />
-                      {link.type.charAt(0).toUpperCase() + link.type.slice(1)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-          </article>
-        ))}
-      </div>
-
-      <div class="member-grid">
-        {otherMembers.map(member => (
-          <article
-            class={`member-card ${member.name === leaderName ? 'member-card--leader' : ''}`}
-            aria-label={`${member.name}, ${member.role}`}
-          >
-
-            <div class="member-photo-wrap" aria-hidden="true">
-              {member.photo ? (
-                <img
-                  src={member.photo}
-                  alt={`Photo of ${member.name}`}
-                  width="72"
-                  height="72"
-                  loading="lazy"
-                />
-              ) : (
-                <div class="member-initials">{getInitials(member.name)}</div>
-              )}
-            </div>
-
-            <div>
-              <p class="member-name">
-                {member.name}
-                {member.pronouns && member.pronouns.trim() && (
-                  <span class="member-pronouns">{member.pronouns}</span>
-                )}
-              </p>
-              <p
-                class="member-role"
-                data-team-role
-                data-role-en={member.role}
-                data-role-pt={
-                  member.name === 'Martim Glória' ? 'Capitão da equipa' :
-                  member.name === 'Lourenço Freire' ? 'Líder de hardware e programador' :
-                  member.name === 'Bruna Rung' ? 'Líder de software e programadora' :
-                  member.name === 'Beato' ? 'Líder de redes sociais' :
-                  member.name === 'Beatriz Sousa' ? 'Mentora externa' :
-                  member.name === 'Pedro Dias' ? 'Treinador principal' :
-                  member.name === 'Guilherme Albernaz' ? 'Desenvolvedor de software' :
-                  member.name === 'Pedro Albernaz' ? 'Desenvolvedor de hardware' :
-                  member.name === 'Revealing soon!' ? 'Membro da equipa' :
-                  member.role
-                }
-              >{member.role}</p>
-            </div>
-
-            {member.bio && member.bio.trim() && (
-              <p
-                class="member-bio"
-                data-team-bio
-                data-bio-en={member.bio}
-                data-bio-pt={
-                  member.name === 'Martim Glória' ? 'Estudante internacional apaixonado por inovação tecnológica, psicologia, literatura de física e muito mais!!!.' :
-                  member.name === 'Lourenço Freire' ? 'Artista, cosplayer, programador e membro da robótica — combinando criatividade, engenharia e criação prática em cada construção.' :
-                  member.name === 'Bruna Rung' ? 'Programadora com amor por música, lógica e resolução criativa de problemas — transformando código e criatividade em projetos significativos.' :
-                  member.name === 'Beato' ? 'Beato faz parte da equipa de liderança do HOTS e da equipa de operações da Hack Club.' :
-                  member.name === 'Beatriz Sousa' ? 'Ex-aluna do Colégio Atlântico, atualmente a estudar Ciência da Computação na NOVA FCT. Participou no Astronauta por um Dia.' :
-                  member.name === 'Pedro Dias' ? 'Professor de Física, Química, CS, Robótica e STEM, apaixonado por ensinar e descobrir novas formas de experimentar tecnologia.' :
-                  member.name === 'Guilherme Albernaz' ? 'Entusiasta de Ciência da Computação e Matemática, sempre a idealizar sistemas lógicos e pensamento computacional.' :
-                  member.name === 'Pedro Albernaz' ? 'Estudante de Química e Física, apaixonado por problemas do mundo real e pelas soluções de engenharia que lhes podem responder.' :
-                  member.name === 'Revealing soon!' ? 'A revelar em breve!' :
-                  member.bio
-                }
-              >{member.bio}</p>
-            )}
-
-            {member.links && member.links.length > 0 && (
-              <ul class="member-links" role="list" aria-label={`Links for ${member.name}`}>
-                {member.links.map(link => (
-                  <li>
-                    <a
-                      class="member-link"
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${member.name} on ${link.type.charAt(0).toUpperCase() + link.type.slice(1)}`}
-                    >
-                      <Fragment set:html={linkIcons[link.type] ?? ''} />
-                      {link.type.charAt(0).toUpperCase() + link.type.slice(1)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-          </article>
-        ))}
-      </div>
+          </section>
+        );
+      })}
     </div>
   </section>
 
   <script>
-    const updateTeamText = () => {
+    const updateTeamLanguage = () => {
       const lang = document.documentElement.lang === 'pt' ? 'pt' : 'en';
 
-      document.querySelectorAll('[data-team-role]').forEach((element) => {
-        const el = element as HTMLElement;
-        const nextText = lang === 'pt' ? el.dataset.rolePt : el.dataset.roleEn;
-        if (nextText) el.textContent = nextText;
+      document.querySelectorAll<HTMLElement>('[data-team-role]').forEach((element) => {
+        element.textContent = lang === 'pt' ? element.dataset.rolePt ?? element.dataset.roleEn ?? '' : element.dataset.roleEn ?? '';
       });
-
-      document.querySelectorAll('[data-team-bio]').forEach((element) => {
-        const el = element as HTMLElement;
-        const nextText = lang === 'pt' ? el.dataset.bioPt : el.dataset.bioEn;
-        if (nextText) el.textContent = nextText;
+      document.querySelectorAll<HTMLElement>('[data-team-bio]').forEach((element) => {
+        element.textContent = lang === 'pt' ? element.dataset.bioPt ?? element.dataset.bioEn ?? '' : element.dataset.bioEn ?? '';
+      });
+      document.querySelectorAll<HTMLElement>('[data-department-title]').forEach((element) => {
+        element.textContent = lang === 'pt' ? element.dataset.titlePt ?? element.dataset.titleEn ?? '' : element.dataset.titleEn ?? '';
       });
     };
 
-    document.addEventListener('site-language-change', updateTeamText);
-    updateTeamText();
+    document.addEventListener('site-language-change', updateTeamLanguage);
+    updateTeamLanguage();
   </script>
-
 </BaseLayout>

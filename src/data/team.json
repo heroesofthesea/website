@@ -5,104 +5,88 @@
       "pronouns": "(he/him)",
       "role": "Team Captain",
       "group": "Leadership",
-      "bio": "International Student passionate about technology innovation, psychology, physics literature and so much more!",
-      "photo": "/images/martimgloria.jpg",
-      "links": [
-        {
-          "type": "linkedin",
-          "url": "https://www.linkedin.com/in/martim-gl%C3%B3ria-396179349/"
-        },
-        {
-          "type": "github",
-          "url": "https://github.com/MGVs009"
-        }
-      ]
+      "bio": "Martim's interests stretch from computer science and physics to psychology and literature. As team captain, he combines his fascination with technology with the challenge of leading an international robotics team and helping turn ambitious student projects into reality.",
+      "photo": "/images/martimgloria.jpg"
     },
     {
       "name": "Lourenço Freire",
       "pronouns": "(he/him)",
-      "role": "Hardware Lead and Developer",
+      "role": "Hardware Lead & Developer",
       "group": "Development",
-      "bio": "Artist, cosplayer, developer, and robotics member — blending creativity, engineering, and hands-on making into every build.",
-      "photo": "/images/lourencofreire.png",
-      "links": [
-        {
-          "type": "github",
-          "url": "https://github.com/"
-        }
-      ]
+      "bio": "Artist, cosplayer and developer, Lourenço moves comfortably between digital design and physical fabrication. Whether he's creating something for a costume or working on a robot, he approaches engineering with the imagination of an artist and the mindset of a maker.",
+      "photo": "/images/lourencofreire.png"
     },
     {
       "name": "Bruna Rung",
       "pronouns": "(she/her)",
-      "role": "Software Lead and Developer",
+      "role": "Software Lead & Developer",
       "group": "Development",
-      "bio": "Software developer with a love for music, logic, and creative problem-solving — turning code and creativity into meaningful projects.",
-      "photo": "/images/burna-rung.jpeg",
-      "links": []
+      "bio": "For Bruna, programming is where logic meets creativity. With interests spanning software development and music, she enjoys exploring how carefully structured code can turn an idea into something that works in the real world.",
+      "photo": "/images/burna-rung.jpeg"
     },
     {
       "name": "Alejandro Reyes",
       "pronouns": "(he/him)",
       "role": "Social Media",
-      "group": "Social Media",
-      "bio": "Description pending.",
-      "photo": "/images/alejandroreyes.jpg",
-      "links": []
+      "group": "Communications",
+      "bio": "A guitarist with a strong creative streak, Alejandro brings his interest in music and visual expression to the team. He enjoys experimenting with ideas and finding engaging ways to share the personality and projects of the Heroes of the Sea.",
+      "photo": "/images/alejandroreyes.jpg"
     },
     {
       "name": "Nuno Araújo",
       "pronouns": "(he/him)",
       "role": "Social Media",
-      "group": "Social Media",
-      "bio": "Description pending.",
-      "photo": "/images/nunoaraujo.jpg",
-      "links": []
+      "group": "Communications",
+      "bio": "Music is a big part of Nuno's world, from exploring different genres to discovering new artists. He brings that same interest in different styles and perspectives to the team's social media, helping communicate what happens beyond the competition field.",
+      "photo": "/images/nunoaraujo.jpg"
     },
     {
       "name": "Filipe Jorge",
       "pronouns": "(he/him)",
       "role": "Hardware",
-      "group": "Hardware",
-      "bio": "Description pending.",
-      "photo": "/images/filipejorge.jpg",
-      "links": []
+      "group": "Development",
+      "bio": "Filipe likes technology best when he can get his hands on it. Rather than relying on elaborate equipment, he enjoys experimenting with whatever is available, improvising solutions and finding clever ways to make things work.",
+      "photo": "/images/filipejorge.jpg"
+    },
+    {
+      "name": "Dinis Carvalho",
+      "pronouns": "(he/him)",
+      "role": "Outreach",
+      "group": "Communications",
+      "bio": "Dinis has a wide range of interests, from aviation and extreme sports to technology and playing guitar. In outreach, he brings that enthusiasm for different worlds into conversations with people and organisations, helping introduce them to the team's projects.",
+      "photo": "/images/diniscarvalho.png"
     },
     {
       "name": "Beatriz Sousa",
       "pronouns": "(she/her)",
       "role": "External Mentor",
-      "group": "External Mentor",
-      "bio": "Colégio Atlântico alumnus, currently studying Computer Science at NOVA FCT. She participated in Astronauta por um Dia.",
-      "photo": "/images/beatriz-sousa.png",
-      "links": []
+      "group": "Mentorship",
+      "bio": "A Colégio Atlântico alumna now studying Computer Science at NOVA FCT, Beatriz brings her experience back to the next generation of students. Having participated in Astronauta por um Dia, she knows that opportunities to explore science can go far beyond the classroom.",
+      "photo": "/images/beatriz-sousa.png"
     },
     {
       "name": "Pedro Dias",
       "pronouns": "(he/him)",
-      "role": "Lead coach",
-      "group": "Coaching",
-      "bio": "Physics, Chemistry, CS, Robotics, and STEM teacher, passionate about teaching and discovering new ways to tinker with technology.",
-      "photo": "/pedro-dias.jpg",
-      "links": []
+      "role": "Lead Coach",
+      "group": "Leadership",
+      "bio": "From physics experiments to programming and robotics, Pedro brings the classroom into the workshop. As a teacher of Physics, Chemistry and Computer Science, he encourages students to take things apart, ask questions and discover how technology actually works.",
+      "photo": "/pedro-dias.jpg"
     },
     {
       "name": "Guilherme Albernaz",
       "pronouns": "(he/him)",
       "role": "Software Developer",
       "group": "Development",
-      "bio": "Computer Science and Mathematics enthusiast, always idealizing logical systems and computational thinking.",
-      "photo": "/images/guilhermealbernaz.jpg",
-      "links": []
+      "bio": "Guilherme is drawn to the mathematical side of computing, particularly the logic behind algorithms and complex systems. He enjoys understanding how problems can be broken down into precise steps and translated into working software.",
+      "photo": "/images/guilhermealbernaz.jpg"
     },
     {
       "name": "Pedro Albernaz",
       "pronouns": "(he/him)",
-      "role": "Hardware developer",
+      "role": "Hardware Developer",
       "group": "Development",
-      "bio": "Chemistry and Physics student, passionate about real-world problems and their possible engineering solutions.",
-      "photo": "/images/pedroalbernaz.jpg",
-      "links": []
+      "bio": "With a strong interest in Physics and Chemistry, Pedro enjoys connecting scientific principles to real engineering challenges. He's particularly interested in understanding why things behave the way they do and how that knowledge can be used to build better solutions.",
+      "photo": "/images/pedroalbernaz.jpg"
     }
   ]
 }
